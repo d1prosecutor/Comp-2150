@@ -5,42 +5,34 @@ import java.time.LocalDate;
 
 public abstract class Activity
 {
-    public static ActivityList allLists;
+    public static ActivityList allActivities = new ActivityList();
     private static int TOTAL_TIME_SPENT_IN_ALL = 0;
 
-
     //Instance variables (Fields)
-    private String name;
-    private String location;
+    public String name;
+    public String location;
 
-    private LocalDate date;
-    private Duration duration;
+    public LocalDate date;
+    public Duration duration;
 
-    private int distance;
-
-    private int numLaps;
-
-    private int lapLength;
-
-    private int elevationGain;
-
-
-    public int totalTime;
-
-
-    //Constrcutor
-    public Activity(String name, String location, LocalDate date,
-                    Duration duration, int distance, int numLaps, int lapLength, int elevationGain)
+    //Constructor
+    public Activity(String name, String location, LocalDate date, Duration duration)
     {
         this.name = name;
         this.location = location;
         this.date = date;
         this.duration = duration;
-        this.distance = distance;
-        this.numLaps = numLaps;
-        this.elevationGain = elevationGain;
 
-        allLists.addActivity(this);
+        //Keep track of the duration (time) spent in all activities
+        TOTAL_TIME_SPENT_IN_ALL += duration.toHours();
+    }
+
+
+    //Update the list of all activities after creating each activity
+    //Is called from the child classes
+    public void trackActivity(Activity newActivity)
+    {
+        allActivities.addActivity(newActivity);
     }
 
     //Instance Methods
@@ -58,9 +50,14 @@ public abstract class Activity
         return 0;
     }
 
-    private boolean searchForActivity()
+    private boolean QueryActivity()
     {
         return false;
+    }
+
+    private static int timeBetweenDates(LocalDate firstDate, LocalDate lastDate)
+    {
+        return allActivities.calculateTimeBetweenDates(firstDate, lastDate);
     }
 
     public abstract void print();
@@ -68,5 +65,10 @@ public abstract class Activity
     public LocalDate getDate()
     {
         return date;
+    }
+
+    public Duration getDuration()
+    {
+        return duration;
     }
 }
