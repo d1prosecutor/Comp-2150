@@ -18,6 +18,9 @@ public class Run extends Activity
         this.distance = distance;
         this.elevation = elevationGain;
 
+        //Print the details of the activity being added
+        query();
+
         trackActivity(this);
     }
 

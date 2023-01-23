@@ -49,6 +49,9 @@ public class Swim extends Activity
         System.out.println(">>> Querying activities of type SWIMMING");
         System.out.println("========== Activities ==========");
 
+        //Print the details of the activity being added
+        query();
+
         swimmingList.print();
     }
 

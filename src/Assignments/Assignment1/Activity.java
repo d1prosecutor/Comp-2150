@@ -22,6 +22,8 @@ public abstract class Activity
         this.location = location;
         this.date = date;
         this.duration = duration;
+
+        System.out.print("Adding Activity: ");
     }
 
     //Instance Methods
