@@ -18,9 +18,6 @@ public class Walking extends Activity
         this.distance = distance;
         this.elevation = elevationGain;
 
-        //Keep track of the total duration of all cycling activities to avoid repeated calculation
-        totalTime += duration.toHours();
-
         trackActivity(this);
     }
 
@@ -31,6 +28,9 @@ public class Walking extends Activity
     {
         super.trackActivity(newActivity);
         walkingList.addActivity(newActivity);
+
+        //Keep track of the total duration of all cycling activities to avoid repeated calculation
+        totalTime += duration.toHours();
     }
 
     private double calcPace()
@@ -38,14 +38,15 @@ public class Walking extends Activity
         return duration.toMinutes() / (double) distance;
     }
 
-    private int trackDuration()
-    {
-        return 0;
-    }
-
     @Override
     public void print()
     {
-
+        System.out.println("========== Activities ==========");
+        System.out.println(date + " " + "Running: " + this.name + "at " + this.location);
+        System.out.println("duration: " + this.getDuration().toHoursPart() + " hour(s) and " +
+                getDuration().toMinutesPart() + " minutes(s);");
+        System.out.println("distance: " + distance + "km;");
+        System.out.println("elev: " + elevation + "m;");
+        System.out.println("average pace : " + calcPace() + "km/h;");
     }
 }

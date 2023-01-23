@@ -18,9 +18,6 @@ public class Swimming extends Activity
         this.numLaps = numLaps;
         this.lapLength = lapLength;
 
-        //Keep track of the total duration of all cycling activities to avoid repeated calculation
-        totalTime += duration.toHours();
-
         trackActivity(this);
     }
 
@@ -31,22 +28,30 @@ public class Swimming extends Activity
     {
         super.trackActivity(newActivity);
         swimmingList.addActivity(newActivity);
+
+        //Keep track of the total duration of all cycling activities to avoid repeated calculation
+        totalTime += duration.toHours();
+    }
+
+    private double calcDistance()
+    {
+        return (lapLength * 1000) * numLaps;
     }
 
     private double calcPace()
     {
-        double distance = (lapLength / 1000.0) * numLaps;
-        return duration.toMinutes() / distance;
-    }
-
-    private int trackDuration()
-    {
-        return 0;
+        return duration.toMinutes() / calcDistance();
     }
 
     @Override
     public void print()
     {
-
+        System.out.println("========== Activities ==========");
+        System.out.println(date + " " + "Running: " + this.name + "at " + this.location);
+        System.out.println("duration: " + this.getDuration().toHoursPart() + " hour(s) and " +
+                getDuration().toMinutesPart() + " minutes(s);");
+        System.out.println("number of laps: " + numLaps + " laps;");
+        System.out.println("lapLength: " + lapLength + "m");
+        System.out.println("average pace : " + calcPace() + "km/h;");
     }
 }

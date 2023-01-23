@@ -22,10 +22,9 @@ public abstract class Activity
         this.location = location;
         this.date = date;
         this.duration = duration;
-
-        //Keep track of the duration (time) spent in all activities
-        TOTAL_TIME_SPENT_IN_ALL += duration.toHours();
     }
+
+    //Instance Methods
 
 
     //Update the list of all activities after creating each activity
@@ -33,21 +32,9 @@ public abstract class Activity
     public void trackActivity(Activity newActivity)
     {
         allActivities.addActivity(newActivity);
-    }
 
-    //Instance Methods
-    private int calcPace()
-    {
-        //This method may not be needed
-        // Convert distance to kilometers
-        return 0;
-    }
-
-    private int trackDuration()
-    {
-        //TOTAL_TIME_SPENT_IN_ALL += duration;
-        //In child classes, track total duration of specific activities
-        return 0;
+        //Keep track of the duration (time) spent in all activities
+        TOTAL_TIME_SPENT_IN_ALL += duration.toHours();
     }
 
     private boolean QueryActivity()
