@@ -44,7 +44,7 @@ public class Cycle extends Activity
     }
 
 
-    public void print()
+    public  void print()
     {
         System.out.println(">>> Querying activities of type CYCLING");
         System.out.println("========== Activities ==========");
