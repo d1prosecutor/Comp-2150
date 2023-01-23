@@ -26,7 +26,7 @@ public class ActivityTracker
 
         String activityFileName = inputReader.nextLine();
 
-        System.out.println("Going to read[" + activityFileName + "].");
+        System.out.println("Going to read [" + activityFileName + "].");
 
         try
         {

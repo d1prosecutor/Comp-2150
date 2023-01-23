@@ -7,7 +7,7 @@ public abstract class Activity
 {
     public static ActivityList allActivities = new ActivityList();
     //track the total time across all activities
-    private static Duration TOTAL_TIME;
+    private static Duration TOTAL_TIME = Duration.ZERO;
 
     //Instance variables (Fields)
     public String name;
@@ -65,5 +65,8 @@ public abstract class Activity
         allActivities.print();
     }
 
-    public abstract void query();
+    public void query()
+    {
+        System.out.println("[" + date + "] " + "Running: " + this.name + "at " + this.location);
+    }
 }

@@ -10,7 +10,7 @@ public class Cycle extends Activity
     private int elevation;
 
     private static ActivityList cyclingList;
-    private static int totalTime;
+    private static Duration totalTime = Duration.ZERO;
 
     public Cycle(String name, String location, LocalDate date, Duration duration,
                  int distance, int elevationGain)
@@ -35,7 +35,7 @@ public class Cycle extends Activity
         cyclingList.addActivity(newActivity);
 
         //Keep track of the total duration of all cycling activities to avoid repeated calculation
-        totalTime += duration.toHours();
+        totalTime = totalTime.plus(duration);
     }
 
     private double calcAverageSpeed()
@@ -44,7 +44,7 @@ public class Cycle extends Activity
     }
 
 
-    public  void print()
+    public void print()
     {
         System.out.println(">>> Querying activities of type CYCLING");
         System.out.println("========== Activities ==========");
@@ -53,7 +53,7 @@ public class Cycle extends Activity
     @Override
     public void query()
     {
-        System.out.println(date + " " + "Running: " + this.name + "at " + this.location);
+        super.query();
         System.out.println("duration: " + this.getDuration().toHoursPart() + " hour(s) and " +
                 getDuration().toMinutesPart() + " minutes(s);");
         System.out.println("distance: " + distance + "km;");

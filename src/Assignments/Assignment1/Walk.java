@@ -7,7 +7,7 @@ public class Walk extends Activity
 {
     private int distance;
     private int elevation;
-    private static int totalTime;
+    private static Duration totalTime = Duration.ZERO;
 
     private static ActivityList walkingList = new ActivityList();
 
@@ -33,7 +33,7 @@ public class Walk extends Activity
         walkingList.addActivity(newActivity);
 
         //Keep track of the total duration of all cycling activities to avoid repeated calculation
-        totalTime += duration.toHours();
+        totalTime = totalTime.plus(duration);
     }
 
     private double calcPace()
@@ -52,7 +52,7 @@ public class Walk extends Activity
 
     public void query()
     {
-        System.out.println(date + " " + "Running: " + this.name + "at " + this.location);
+        super.query();
         System.out.println("duration: " + this.getDuration().toHoursPart() + " hour(s) and " +
                 getDuration().toMinutesPart() + " minutes(s);");
         System.out.println("distance: " + distance + "km;");

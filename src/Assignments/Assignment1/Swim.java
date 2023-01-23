@@ -7,7 +7,7 @@ public class Swim extends Activity
 {
     private int numLaps;
     private int lapLength;
-    private static int totalTime;
+    private static Duration totalTime = Duration.ZERO;
 
     private static ActivityList swimmingList = new ActivityList();
 
@@ -30,7 +30,7 @@ public class Swim extends Activity
         swimmingList.addActivity(newActivity);
 
         //Keep track of the total duration of all cycling activities to avoid repeated calculation
-        totalTime += duration.toHours();
+        totalTime = totalTime.plus(duration);
     }
 
     private double calcDistance()
@@ -51,14 +51,13 @@ public class Swim extends Activity
 
         //Print the details of the activity being added
         query();
-
         swimmingList.print();
     }
 
     @Override
     public void query()
     {
-        System.out.println(date + " " + "Running: " + this.name + "at " + this.location);
+        super.query();
         System.out.println("duration: " + this.getDuration().toHoursPart() + " hour(s) and " +
                 getDuration().toMinutesPart() + " minutes(s);");
         System.out.println("number of laps: " + numLaps + " laps;");
