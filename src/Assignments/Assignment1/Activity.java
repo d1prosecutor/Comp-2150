@@ -6,12 +6,12 @@ import java.time.LocalDate;
 public abstract class Activity
 {
     public static ActivityList allActivities = new ActivityList();
-    private static int TOTAL_TIME_SPENT_IN_ALL = 0;
+    //track the total time across all activities
+    private static Duration TOTAL_TIME;
 
     //Instance variables (Fields)
     public String name;
     public String location;
-
     public LocalDate date;
     public Duration duration;
 
@@ -34,12 +34,7 @@ public abstract class Activity
         allActivities.addActivity(newActivity);
 
         //Keep track of the duration (time) spent in all activities
-        TOTAL_TIME_SPENT_IN_ALL += duration.toHours();
-    }
-
-    private boolean QueryActivity()
-    {
-        return false;
+        TOTAL_TIME = TOTAL_TIME.plus(newActivity.duration);
     }
 
     private static int timeBetweenDates(LocalDate firstDate, LocalDate lastDate)
@@ -47,7 +42,6 @@ public abstract class Activity
         return allActivities.calculateTimeBetweenDates(firstDate, lastDate);
     }
 
-    public abstract void print();
 
     public LocalDate getDate()
     {
@@ -58,4 +52,16 @@ public abstract class Activity
     {
         return duration;
     }
+
+    public void print()
+    {
+        System.out.println(">>> Querying total activity time: ");
+        System.out.println(">>> " + TOTAL_TIME.toHoursPart() + " hours and " +
+                TOTAL_TIME.toMinutesPart() + " minutes.");
+        System.out.println("========== Activities ==========");
+
+        allActivities.print();
+    }
+
+    public abstract void query();
 }

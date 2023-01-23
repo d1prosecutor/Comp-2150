@@ -40,4 +40,14 @@ public class Node
     {
         next = tempNode;
     }
+
+    public void print()
+    {
+        data.query();
+
+        if (next != null)
+        {
+            next.print();
+        }
+    }
 }

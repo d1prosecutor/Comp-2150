@@ -2,17 +2,18 @@ package Assignments.Assignment1;
 
 import java.time.Duration;
 import java.time.LocalDate;
+//import java.time.LocalTime;
 
-public class Walking extends Activity
+public class Cycle extends Activity
 {
     private int distance;
     private int elevation;
+
+    private static ActivityList cyclingList;
     private static int totalTime;
 
-    private static ActivityList walkingList = new ActivityList();
-
-    public Walking(String name, String location, LocalDate date, Duration duration,
-                   int distance, int elevationGain)
+    public Cycle(String name, String location, LocalDate date, Duration duration,
+                 int distance, int elevationGain)
     {
         super(name, location, date, duration);
         this.distance = distance;
@@ -21,32 +22,39 @@ public class Walking extends Activity
         trackActivity(this);
     }
 
-    //Update the List of all walking activities
+
+    //Update the List of all cycling activities
     //Update the List of all Activities
     @Override
     public void trackActivity(Activity newActivity)
     {
         super.trackActivity(newActivity);
-        walkingList.addActivity(newActivity);
+        cyclingList.addActivity(newActivity);
 
         //Keep track of the total duration of all cycling activities to avoid repeated calculation
         totalTime += duration.toHours();
     }
 
-    private double calcPace()
+    private double calcAverageSpeed()
     {
-        return duration.toMinutes() / (double) distance;
+        return (double) distance / duration.toHours();
+    }
+
+
+    public void print()
+    {
+        System.out.println(">>> Querying activities of type CYCLING");
+        System.out.println("========== Activities ==========");
     }
 
     @Override
-    public void print()
+    public void query()
     {
-        System.out.println("========== Activities ==========");
         System.out.println(date + " " + "Running: " + this.name + "at " + this.location);
         System.out.println("duration: " + this.getDuration().toHoursPart() + " hour(s) and " +
                 getDuration().toMinutesPart() + " minutes(s);");
         System.out.println("distance: " + distance + "km;");
         System.out.println("elev: " + elevation + "m;");
-        System.out.println("average pace : " + calcPace() + "km/h;");
+        System.out.println("average pace : " + calcAverageSpeed() + "km/h;");
     }
 }

@@ -69,4 +69,18 @@ public class ActivityList
 
         return totalTime;
     }
+
+    public boolean isEmpty()
+    {
+        return top == null;
+    }
+
+
+    public void print()
+    {
+        if (top != null)
+        {
+            top.print();
+        }
+    }
 }

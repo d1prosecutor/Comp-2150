@@ -3,7 +3,7 @@ package Assignments.Assignment1;
 import java.time.Duration;
 import java.time.LocalDate;
 
-public class Swimming extends Activity
+public class Swim extends Activity
 {
     private int numLaps;
     private int lapLength;
@@ -11,8 +11,8 @@ public class Swimming extends Activity
 
     private static ActivityList swimmingList = new ActivityList();
 
-    public Swimming(String name, String location, LocalDate date,
-                    Duration duration, int numLaps, int lapLength)
+    public Swim(String name, String location, LocalDate date,
+                Duration duration, int numLaps, int lapLength)
     {
         super(name, location, date, duration);
         this.numLaps = numLaps;
@@ -46,7 +46,15 @@ public class Swimming extends Activity
     @Override
     public void print()
     {
+        System.out.println(">>> Querying activities of type SWIMMING");
         System.out.println("========== Activities ==========");
+
+        swimmingList.print();
+    }
+
+    @Override
+    public void query()
+    {
         System.out.println(date + " " + "Running: " + this.name + "at " + this.location);
         System.out.println("duration: " + this.getDuration().toHoursPart() + " hour(s) and " +
                 getDuration().toMinutesPart() + " minutes(s);");
