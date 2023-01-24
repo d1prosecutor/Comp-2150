@@ -1,5 +1,6 @@
 package Assignments.Assignment1;
 
+import java.time.Duration;
 import java.time.LocalDate;
 
 public class ActivityList
@@ -49,22 +50,51 @@ public class ActivityList
     }
 
 
-    public int calculateTimeBetweenDates(LocalDate firstDate, LocalDate lastDate)
+    public void printBetweenDates(LocalDate firstDate, LocalDate lastDate)
     {
-        int totalTime = 0;
+        Duration totalTime = calcTimeBetweenDates(firstDate, lastDate);
         Node tempNode = top;
 
         //sum  the duration (total time) of all activities between two dates (inclusive)
+        System.out.println(">>> " + totalTime.toHoursPart() + " hours and " +
+                totalTime.toMinutesPart() + " minutes.");
+        System.out.println("========== Activities ==========");
+
+        //Print all the activites between these two dates (inclusive)
         while (tempNode != null)
         {
             if (tempNode.getData().getDate().isEqual(firstDate) ||
                     tempNode.getData().getDate().isEqual(lastDate) ||
                     (tempNode.getData().getDate().isAfter(firstDate) &&
-                            tempNode.getData().getDate().isBefore(lastDate)))
+                            tempNode.getData().getDate().isBefore(lastDate)) ||
+                    (tempNode.getData().getDate().isAfter(lastDate) &&
+                            tempNode.getData().getDate().isBefore(firstDate)))
             {
-                totalTime += tempNode.getData().getDuration().toHours();
-                tempNode = tempNode.getNext();
+                tempNode.printSpecific();
             }
+            tempNode = tempNode.getNext();
+        }
+
+
+    }
+
+    private Duration calcTimeBetweenDates(LocalDate firstDate, LocalDate lastDate)
+    {
+        Duration totalTime = Duration.ZERO;
+        Node tempNode = top;
+
+        while (tempNode != null)
+        {
+            if (tempNode.getData().getDate().isEqual(firstDate) ||
+                    tempNode.getData().getDate().isEqual(lastDate) ||
+                    (tempNode.getData().getDate().isAfter(firstDate) &&
+                            tempNode.getData().getDate().isBefore(lastDate)) ||
+                    (tempNode.getData().getDate().isAfter(lastDate) &&
+                            tempNode.getData().getDate().isBefore(firstDate)))
+            {
+                totalTime = totalTime.plus(tempNode.getData().getDuration());
+            }
+            tempNode = tempNode.getNext();
         }
 
         return totalTime;
@@ -80,7 +110,7 @@ public class ActivityList
     {
         if (top != null)
         {
-            top.print();
+            top.printAll();
         }
     }
 }

@@ -44,10 +44,12 @@ public class Cycle extends Activity
     }
 
 
-    public void print()
+    public static void print()
     {
         System.out.println(">>> Querying activities of type CYCLING");
         System.out.println("========== Activities ==========");
+
+        cyclingList.print();
     }
 
     @Override

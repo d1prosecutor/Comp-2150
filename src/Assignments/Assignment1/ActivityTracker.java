@@ -81,12 +81,29 @@ public class ActivityTracker
                 {
                     if (tokens[1].equals("TOTAL_TIME"))
                     {
+                        Activity.print();
                     } else if (tokens[1].equals("ACTIVITY"))
                     {
-
+                        String activityType = tokens[2];
+                        if (activityType.equals(activityTypes.get(0)))
+                        {
+                            Walk.print();
+                        } else if (activityType.equals(activityTypes.get(1)))
+                        {
+                            Run.print();
+                        } else if (activityType.equals(activityTypes.get(2)))
+                        {
+                            Cycle.print();
+                        } else if (activityType.equals(activityTypes.get(3)))
+                        {
+                            Swim.print();
+                        }
                     } else if (tokens[1].equals("BETWEEN"))
                     {
+                        LocalDate firstDate = LocalDate.parse(tokens[2]);
+                        LocalDate secondDate = LocalDate.parse(tokens[3]);
 
+                        Activity.queryBetweenDates(firstDate, secondDate);
                     }
                 } else if (Objects.equals(tokens[0], "QUIT"))
                 {
@@ -96,7 +113,6 @@ public class ActivityTracker
             }
         } catch (
                 FileNotFoundException e)
-
         {
             System.out.println(e.getMessage());
         }

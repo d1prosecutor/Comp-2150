@@ -41,11 +41,13 @@ public class Run extends Activity
         return duration.toMinutes() / (double) distance;
     }
 
-    @Override
-    public void print()
+
+    public static void print()
     {
         System.out.println(">>> Querying activities of type RUNNING");
         System.out.println("========== Activities ==========");
+
+        runningList.print();
     }
 
     @Override
@@ -56,6 +58,6 @@ public class Run extends Activity
                 getDuration().toMinutesPart() + " minutes(s);");
         System.out.println("distance: " + distance + "km;");
         System.out.println("elev: " + elevation + "m;");
-        System.out.format("average pace: %.2fkm/h;\n\n", calcPace());
+        System.out.format("average pace: %.2fmin/km;\n\n", calcPace());
     }
 }

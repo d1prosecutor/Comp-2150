@@ -39,9 +39,10 @@ public abstract class Activity
         TOTAL_TIME = TOTAL_TIME.plus(newActivity.duration);
     }
 
-    private static int timeBetweenDates(LocalDate firstDate, LocalDate lastDate)
+    public static void queryBetweenDates(LocalDate firstDate, LocalDate lastDate)
     {
-        return allActivities.calculateTimeBetweenDates(firstDate, lastDate);
+        System.out.println(">>> Querying activity time between " + firstDate + " and " + lastDate + ":");
+        allActivities.printBetweenDates(firstDate, lastDate);
     }
 
 
@@ -55,7 +56,7 @@ public abstract class Activity
         return duration;
     }
 
-    public void print()
+    public static void print()
     {
         System.out.println(">>> Querying total activity time: ");
         System.out.println(">>> " + TOTAL_TIME.toHoursPart() + " hours and " +

@@ -43,14 +43,13 @@ public class Swim extends Activity
         return duration.toMinutes() / calcDistance();
     }
 
-    @Override
-    public void print()
+
+    public static void print()
     {
         System.out.println(">>> Querying activities of type SWIMMING");
         System.out.println("========== Activities ==========");
 
         //Print the details of the activity being added
-        query();
         swimmingList.print();
     }
 
@@ -62,6 +61,6 @@ public class Swim extends Activity
                 getDuration().toMinutesPart() + " minutes(s);");
         System.out.println("number of laps: " + numLaps + " laps;");
         System.out.println("lapLength: " + lapLength + "m");
-        System.out.format("average pace: %.2fkm/h;\n\n", calcPace());
+        System.out.format("average pace: %.2fmin/km;\n\n", calcPace());
     }
 }

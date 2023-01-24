@@ -41,13 +41,18 @@ public class Node
         next = tempNode;
     }
 
-    public void print()
+    public void printAll()
     {
         data.query();
 
         if (next != null)
         {
-            next.print();
+            next.printAll();
         }
+    }
+
+    public void printSpecific()
+    {
+        data.query();
     }
 }
