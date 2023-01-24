@@ -26,7 +26,7 @@ public class ActivityTracker
 
         String activityFileName = inputReader.nextLine();
 
-        System.out.println("Going to read [" + activityFileName + "].");
+        System.out.println("Going to read [" + activityFileName + "]...\n");
 
         try
         {
@@ -60,21 +60,21 @@ public class ActivityTracker
                         int distance = Integer.parseInt(tokens[5]);
                         int elevation = Integer.parseInt(tokens[6]);
 
-                        newActivity = new Walk(name, location, date, duration,
+                        newActivity = new Run(name, location, date, duration,
                                 distance, elevation);
                     } else if (tokens[0].equals(activityTypes.get(2)))
                     {
                         int distance = Integer.parseInt(tokens[5]);
                         int elevation = Integer.parseInt(tokens[6]);
 
-                        newActivity = new Walk(name, location, date, duration,
+                        newActivity = new Cycle(name, location, date, duration,
                                 distance, elevation);
                     } else if (tokens[0].equals(activityTypes.get(3)))
                     {
                         int numlaps = Integer.parseInt(tokens[5]);
                         int lapLength = Integer.parseInt(tokens[6]);
 
-                        newActivity = new Walk(name, location, date, duration,
+                        newActivity = new Swim(name, location, date, duration,
                                 numlaps, lapLength);
                     }
                 } else if (Objects.equals(tokens[0], "QUERY"))

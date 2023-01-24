@@ -67,6 +67,6 @@ public abstract class Activity
 
     public void query()
     {
-        System.out.println("[" + date + "] " + "Running: " + this.name + "at " + this.location);
+        System.out.println("[" + date + "] " + "Running: " + this.name + " at " + this.location);
     }
 }

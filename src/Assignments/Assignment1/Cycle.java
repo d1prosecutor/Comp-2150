@@ -9,7 +9,7 @@ public class Cycle extends Activity
     private int distance;
     private int elevation;
 
-    private static ActivityList cyclingList;
+    private static ActivityList cyclingList = new ActivityList();
     private static Duration totalTime = Duration.ZERO;
 
     public Cycle(String name, String location, LocalDate date, Duration duration,
@@ -38,9 +38,9 @@ public class Cycle extends Activity
         totalTime = totalTime.plus(duration);
     }
 
-    private double calcAverageSpeed()
+    private float calcSpeed()
     {
-        return (double) distance / duration.toHours();
+        return (float) distance * 60 / duration.toMinutes();
     }
 
 
@@ -58,6 +58,6 @@ public class Cycle extends Activity
                 getDuration().toMinutesPart() + " minutes(s);");
         System.out.println("distance: " + distance + "km;");
         System.out.println("elev: " + elevation + "m;");
-        System.out.println("average pace : " + calcAverageSpeed() + "km/h;");
+        System.out.format("average speed: %.2fkm/h;\n\n", calcSpeed());
     }
 }
