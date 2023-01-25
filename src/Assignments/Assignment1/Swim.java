@@ -30,7 +30,7 @@ public class Swim extends Activity
         swimmingList.addActivity(newActivity);
 
         //Keep track of the total duration of all cycling activities to avoid repeated calculation
-        totalTime = totalTime.plus(duration);
+        totalTime = totalTime.plus(getDuration());
     }
 
     private double calcDistance()
@@ -40,7 +40,7 @@ public class Swim extends Activity
 
     private double calcPace()
     {
-        return duration.toMinutes() / calcDistance();
+        return getDuration().toMinutes() / calcDistance();
     }
 
 

@@ -35,12 +35,12 @@ public class Cycle extends Activity
         cyclingList.addActivity(newActivity);
 
         //Keep track of the total duration of all cycling activities to avoid repeated calculation
-        totalTime = totalTime.plus(duration);
+        totalTime = totalTime.plus(getDuration());
     }
 
     private float calcSpeed()
     {
-        return (float) distance * 60 / duration.toMinutes();
+        return (float) distance * 60 / getDuration().toMinutes();
     }
 
 

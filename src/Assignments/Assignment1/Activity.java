@@ -10,10 +10,10 @@ public abstract class Activity
     private static Duration TOTAL_TIME = Duration.ZERO;
 
     //Instance variables (Fields)
-    public String name;
-    public String location;
-    public LocalDate date;
-    public Duration duration;
+    private String name;
+    private String location;
+    private LocalDate date;
+    private Duration duration;
 
     //Constructor
     public Activity(String name, String location, LocalDate date, Duration duration)
@@ -45,6 +45,10 @@ public abstract class Activity
         allActivities.printBetweenDates(firstDate, lastDate);
     }
 
+    public String getName()
+    {
+        return name;
+    }
 
     public LocalDate getDate()
     {
@@ -70,4 +74,5 @@ public abstract class Activity
     {
         System.out.println("[" + date + "] " + "Running: " + this.name + " at " + this.location);
     }
+
 }

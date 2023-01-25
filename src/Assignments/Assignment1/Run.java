@@ -33,12 +33,12 @@ public class Run extends Activity
         runningList.addActivity(newActivity);
 
         //Keep track of the total duration of all cycling activities to avoid repeated calculation
-        totalTime = totalTime.plus(duration);
+        totalTime = totalTime.plus(getDuration());
     }
 
     private double calcPace()
     {
-        return duration.toMinutes() / (double) distance;
+        return getDuration().toMinutes() / (double) distance;
     }
 
 
