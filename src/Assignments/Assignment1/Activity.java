@@ -45,19 +45,24 @@ public abstract class Activity
         allActivities.printBetweenDates(firstDate, lastDate);
     }
 
-    public String getName()
+    protected String getName()
     {
         return name;
     }
 
-    public LocalDate getDate()
+    protected LocalDate getDate()
     {
         return date;
     }
 
-    public Duration getDuration()
+    protected Duration getDuration()
     {
         return duration;
+    }
+
+    protected String getLocation()
+    {
+        return location;
     }
 
     public static void print()
@@ -70,9 +75,5 @@ public abstract class Activity
         allActivities.print();
     }
 
-    public void query()
-    {
-        System.out.println("[" + date + "] " + "Running: " + this.name + " at " + this.location);
-    }
-
+    public abstract void query();
 }

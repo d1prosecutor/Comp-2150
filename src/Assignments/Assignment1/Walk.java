@@ -52,7 +52,7 @@ public class Walk extends Activity
 
     public void query()
     {
-        super.query();
+        System.out.println("[" + getDate() + "] Walking: " + getName() + " at " + getLocation());
         System.out.println("duration: " + this.getDuration().toHoursPart() + " hour(s) and " +
                 getDuration().toMinutesPart() + " minutes(s);");
         System.out.println("distance: " + distance + "km;");

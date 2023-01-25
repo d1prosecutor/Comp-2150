@@ -53,7 +53,7 @@ public class Run extends Activity
     @Override
     public void query()
     {
-        super.query();
+        System.out.println("[" + getDate() + "] Running: " + getName() + " at " + getLocation());
         System.out.println("duration: " + this.getDuration().toHoursPart() + " hour(s) and " +
                 getDuration().toMinutesPart() + " minutes(s);");
         System.out.println("distance: " + distance + "km;");
