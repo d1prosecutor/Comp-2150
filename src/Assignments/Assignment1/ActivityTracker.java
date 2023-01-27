@@ -132,7 +132,7 @@ public class ActivityTracker
                             secondDate = LocalDate.now();
                         } else
                         {
-                            secondDate = LocalDate.parse(tokens[2]);
+                            secondDate = LocalDate.parse(tokens[3]);
                         }
 
                         Activity.queryBetweenDates(firstDate, secondDate);
