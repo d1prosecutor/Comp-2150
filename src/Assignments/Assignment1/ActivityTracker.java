@@ -45,7 +45,16 @@ public class ActivityTracker
 
                     String name = tokens[1];
                     String location = tokens[2];
-                    LocalDate date = LocalDate.parse(tokens[3]);
+
+                    LocalDate date;
+                    if (tokens[3].toLowerCase().equals("today"))
+                    {
+                        date = LocalDate.now();
+                    } else
+                    {
+                        date = LocalDate.parse(tokens[3]);
+                    }
+
                     Duration duration = Duration.parse(tokens[4]);
 
                     if (tokens[0].equals(activityTypes.get(0)))
@@ -100,8 +109,25 @@ public class ActivityTracker
                         }
                     } else if (tokens[1].equals("BETWEEN"))
                     {
-                        LocalDate firstDate = LocalDate.parse(tokens[2]);
-                        LocalDate secondDate = LocalDate.parse(tokens[3]);
+                        LocalDate firstDate;
+                        LocalDate secondDate;
+
+
+                        if (tokens[2].toLowerCase().equals("today"))
+                        {
+                            firstDate = LocalDate.now();
+                        } else
+                        {
+                            firstDate = LocalDate.parse(tokens[2]);
+                        }
+
+                        if (tokens[3].toLowerCase().equals("today"))
+                        {
+                            secondDate = LocalDate.now();
+                        } else
+                        {
+                            secondDate = LocalDate.parse(tokens[2]);
+                        }
 
                         Activity.queryBetweenDates(firstDate, secondDate);
                     }
