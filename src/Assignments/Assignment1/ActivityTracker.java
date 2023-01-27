@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class ActivityTracker
@@ -13,11 +12,18 @@ public class ActivityTracker
     public static void main(String[] args)
     {
         //Variables for activity types
+
+        String running = "RUNNING";
+        String walking = "WALKING";
+        String cycling = "CYCLING";
+        String swimming = "SWIMMING";
+
         ArrayList<String> activityTypes = new ArrayList<>();
-        activityTypes.add("WALKING");
-        activityTypes.add("RUNNING");
-        activityTypes.add("CYCLING");
-        activityTypes.add("SWIMMING");
+        activityTypes.add(walking);
+        activityTypes.add(running);
+        activityTypes.add(cycling);
+        activityTypes.add(swimming);
+
 
         Scanner inputReader = new Scanner(System.in);
 
@@ -47,7 +53,7 @@ public class ActivityTracker
                     String location = tokens[2];
 
                     LocalDate date;
-                    if (tokens[3].toLowerCase().equals("today"))
+                    if (tokens[3].equalsIgnoreCase("today"))
                     {
                         date = LocalDate.now();
                     } else
@@ -57,28 +63,28 @@ public class ActivityTracker
 
                     Duration duration = Duration.parse(tokens[4]);
 
-                    if (tokens[0].equals(activityTypes.get(0)))
+                    if (tokens[0].equals(walking))
                     {
                         int distance = Integer.parseInt(tokens[5]);
                         int elevation = Integer.parseInt(tokens[6]);
 
                         newActivity = new Walk(name, location, date, duration,
                                 distance, elevation);
-                    } else if (tokens[0].equals(activityTypes.get(1)))
+                    } else if (tokens[0].equals(running))
                     {
                         int distance = Integer.parseInt(tokens[5]);
                         int elevation = Integer.parseInt(tokens[6]);
 
                         newActivity = new Run(name, location, date, duration,
                                 distance, elevation);
-                    } else if (tokens[0].equals(activityTypes.get(2)))
+                    } else if (tokens[0].equals(cycling))
                     {
                         int distance = Integer.parseInt(tokens[5]);
                         int elevation = Integer.parseInt(tokens[6]);
 
                         newActivity = new Cycle(name, location, date, duration,
                                 distance, elevation);
-                    } else if (tokens[0].equals(activityTypes.get(3)))
+                    } else if (tokens[0].equals(swimming))
                     {
                         int numlaps = Integer.parseInt(tokens[5]);
                         int lapLength = Integer.parseInt(tokens[6]);
@@ -86,7 +92,7 @@ public class ActivityTracker
                         newActivity = new Swim(name, location, date, duration,
                                 numlaps, lapLength);
                     }
-                } else if (Objects.equals(tokens[0], "QUERY"))
+                } else if (tokens[0].equals("QUERY"))
                 {
                     if (tokens[1].equals("TOTAL_TIME"))
                     {
@@ -94,16 +100,16 @@ public class ActivityTracker
                     } else if (tokens[1].equals("ACTIVITY"))
                     {
                         String activityType = tokens[2];
-                        if (activityType.equals(activityTypes.get(0)))
+                        if (activityType.equals(walking))
                         {
                             Walk.print();
-                        } else if (activityType.equals(activityTypes.get(1)))
+                        } else if (activityType.equals(running))
                         {
                             Run.print();
-                        } else if (activityType.equals(activityTypes.get(2)))
+                        } else if (activityType.equals(cycling))
                         {
                             Cycle.print();
-                        } else if (activityType.equals(activityTypes.get(3)))
+                        } else if (activityType.equals(swimming))
                         {
                             Swim.print();
                         }
@@ -113,7 +119,7 @@ public class ActivityTracker
                         LocalDate secondDate;
 
 
-                        if (tokens[2].toLowerCase().equals("today"))
+                        if (tokens[2].equalsIgnoreCase("today"))
                         {
                             firstDate = LocalDate.now();
                         } else
@@ -121,7 +127,7 @@ public class ActivityTracker
                             firstDate = LocalDate.parse(tokens[2]);
                         }
 
-                        if (tokens[3].toLowerCase().equals("today"))
+                        if (tokens[3].equalsIgnoreCase("today"))
                         {
                             secondDate = LocalDate.now();
                         } else
@@ -131,7 +137,7 @@ public class ActivityTracker
 
                         Activity.queryBetweenDates(firstDate, secondDate);
                     }
-                } else if (Objects.equals(tokens[0], "QUIT"))
+                } else if (tokens[0].equals("QUIT"))
                 {
                     System.out.println("Exiting Activity Tracker...\nBye.");
                     System.exit(0);
