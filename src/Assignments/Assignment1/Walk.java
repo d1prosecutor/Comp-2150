@@ -15,13 +15,18 @@ public class Walk extends Activity
                 int distance, int elevationGain)
     {
         super(name, location, date, duration);
-        this.distance = distance;
-        this.elevation = elevationGain;
 
-        //Print the details of the activity being added
-        query();
+        //Create the activity if it doesn't already exist
+        if (walkingList.searchForActivity(this))
+        {
+            this.distance = distance;
+            this.elevation = elevationGain;
 
-        trackActivity(this);
+            //Print the details of the activity being added
+            query();
+
+            trackActivity(this);
+        }
     }
 
     //Update the List of all walking activities

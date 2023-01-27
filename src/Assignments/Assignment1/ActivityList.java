@@ -43,7 +43,7 @@ public class ActivityList
 
         if (top != null)
         {
-            top.search(thisActivity);
+            found = top.search(thisActivity);
         }
 
         return found;

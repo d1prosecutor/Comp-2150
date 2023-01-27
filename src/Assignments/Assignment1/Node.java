@@ -19,7 +19,7 @@ public class Node
 
         do
         {
-            found = tempNode.data == thisActivity;
+            found = tempNode.data.compareTo(thisActivity);
             tempNode = tempNode.next;
         } while (tempNode != null && !found);
 

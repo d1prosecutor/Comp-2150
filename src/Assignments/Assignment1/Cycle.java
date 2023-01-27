@@ -16,13 +16,20 @@ public class Cycle extends Activity
                  int distance, int elevationGain)
     {
         super(name, location, date, duration);
-        this.distance = distance;
-        this.elevation = elevationGain;
 
-        //Print the details of the activity being added
-        query();
+        //Create the activity if it doesn't already exist
+        if (cyclingList.searchForActivity(this))
+        {
+            System.out.print("Adding Activity: ");
 
-        trackActivity(this);
+            this.distance = distance;
+            this.elevation = elevationGain;
+
+            //Print the details of the activity being added
+            query();
+
+            trackActivity(this);
+        }
     }
 
 

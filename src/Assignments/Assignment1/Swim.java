@@ -15,10 +15,20 @@ public class Swim extends Activity
                 Duration duration, int numLaps, int lapLength)
     {
         super(name, location, date, duration);
-        this.numLaps = numLaps;
-        this.lapLength = lapLength;
 
-        trackActivity(this);
+        //Create the activity if it doesn't already exist
+        if (swimmingList.searchForActivity(this))
+        {
+            System.out.print("Adding Activity: ");
+
+            this.numLaps = numLaps;
+            this.lapLength = lapLength;
+
+            //Print the details of the activity being added
+            query();
+
+            trackActivity(this);
+        }
     }
 
     //Update the List of all swimming activities

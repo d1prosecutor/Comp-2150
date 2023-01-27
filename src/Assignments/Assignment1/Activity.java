@@ -22,12 +22,9 @@ public abstract class Activity
         this.location = location;
         this.date = date;
         this.duration = duration;
-
-        System.out.print("Adding Activity: ");
     }
 
     //Instance Methods
-
 
     //Update the list of all activities after creating each activity
     //Is called from the child classes
@@ -76,4 +73,10 @@ public abstract class Activity
     }
 
     public abstract void query();
+
+    public boolean compareTo(Activity thisActivity)
+    {
+        return (name.equals(thisActivity.name) && location.equals(thisActivity.location) &&
+                date.isEqual(thisActivity.date) && duration.equals(thisActivity.duration));
+    }
 }
