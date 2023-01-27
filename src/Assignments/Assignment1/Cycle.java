@@ -18,7 +18,7 @@ public class Cycle extends Activity
         super(name, location, date, duration);
 
         //Create the activity if it doesn't already exist
-        if (cyclingList.searchForActivity(this))
+        if (!cyclingList.searchForActivity(this))
         {
             System.out.print("Adding Activity: ");
 
@@ -68,5 +68,11 @@ public class Cycle extends Activity
         System.out.println("distance: " + distance + "km;");
         System.out.println("elev: " + elevation + "m;");
         System.out.format("average speed: %.2fkm/h;\n\n", calcSpeed());
+    }
+
+    public boolean compareTo(Activity thisactivity)
+    {
+        return (super.compareTo(thisactivity) && distance == ((Cycle) thisactivity).distance &&
+                elevation == ((Cycle) thisactivity).elevation);
     }
 }

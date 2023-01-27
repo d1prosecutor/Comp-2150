@@ -17,7 +17,7 @@ public class Run extends Activity
         super(name, location, date, duration);
 
         //Create the activity if it doesn't already exist
-        if (runningList.searchForActivity(this))
+        if (!runningList.searchForActivity(this))
         {
             System.out.print("Adding Activity: ");
 
@@ -66,5 +66,11 @@ public class Run extends Activity
         System.out.println("distance: " + distance + "km;");
         System.out.println("elev: " + elevation + "m;");
         System.out.format("average pace: %.2fmin/km;\n\n", calcPace());
+    }
+
+    public boolean compareTo(Activity thisactivity)
+    {
+        return (super.compareTo(thisactivity) && distance == ((Run) thisactivity).distance &&
+                elevation == ((Run) thisactivity).elevation);
     }
 }

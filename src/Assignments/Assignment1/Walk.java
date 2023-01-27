@@ -17,7 +17,7 @@ public class Walk extends Activity
         super(name, location, date, duration);
 
         //Create the activity if it doesn't already exist
-        if (walkingList.searchForActivity(this))
+        if (!walkingList.searchForActivity(this))
         {
             this.distance = distance;
             this.elevation = elevationGain;
@@ -63,5 +63,11 @@ public class Walk extends Activity
         System.out.println("distance: " + distance + "km;");
         System.out.println("elev: " + elevation + "m;");
         System.out.format("average pace: %.2fmin/km;\n\n", calcPace());
+    }
+
+    public boolean compareTo(Activity thisactivity)
+    {
+        return (super.compareTo(thisactivity) && distance == ((Walk) thisactivity).distance &&
+                elevation == ((Walk) thisactivity).elevation);
     }
 }
