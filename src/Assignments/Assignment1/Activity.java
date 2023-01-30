@@ -38,7 +38,7 @@ public abstract class Activity
 
     public static void queryBetweenDates(LocalDate firstDate, LocalDate lastDate)
     {
-        System.out.println(">>> Querying activity time between " + firstDate + " and " + lastDate + ":");
+        System.out.println("\n>>> Querying activity time between " + firstDate + " and " + lastDate + ":");
         allActivitiesList.printBetweenDates(firstDate, lastDate);
     }
 
@@ -64,7 +64,7 @@ public abstract class Activity
 
     public static void print()
     {
-        System.out.println(">>> Querying total activity time: ");
+        System.out.println("\n>>> Querying total activity time: ");
         System.out.println(">>> " + TOTAL_TIME.toHours() + " hour(s) and " +
                 TOTAL_TIME.toMinutesPart() + " minute(s).");
         System.out.println("========== Activities ==========");
