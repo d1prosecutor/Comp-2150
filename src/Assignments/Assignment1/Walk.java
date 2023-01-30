@@ -52,6 +52,8 @@ public class Walk extends Activity
     public static void print()
     {
         System.out.println(">>> Querying activities of type WALKING");
+        System.out.println(">>> " + totalTime.toHoursPart() + " hour(s) and " +
+                totalTime.toMinutesPart() + " minute(s).");
         System.out.println("========== Activities ==========");
 
         walkingList.print();
