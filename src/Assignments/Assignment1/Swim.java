@@ -76,7 +76,11 @@ public class Swim extends Activity
 
     public boolean compareTo(Activity thisActivity)
     {
-        return (super.compareTo(thisActivity) && numLaps == ((Swim) thisActivity).numLaps &&
-                lapLength == ((Swim) thisActivity).lapLength);
+        if (thisActivity instanceof Swim)
+        {
+            return (super.compareTo(thisActivity) && numLaps == ((Swim) thisActivity).numLaps &&
+                    lapLength == ((Swim) thisActivity).lapLength);
+        }
+        return false;
     }
 }

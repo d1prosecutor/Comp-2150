@@ -69,7 +69,11 @@ public class Walk extends Activity
 
     public boolean compareTo(Activity thisActivity)
     {
-        return (super.compareTo(thisActivity) && distance == ((Walk) thisActivity).distance &&
-                elevation == ((Walk) thisActivity).elevation);
+        if (thisActivity instanceof Walk)
+        {
+            return (super.compareTo(thisActivity) && distance == ((Walk) thisActivity).distance &&
+                    elevation == ((Walk) thisActivity).elevation);
+        }
+        return false;
     }
 }

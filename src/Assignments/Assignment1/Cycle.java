@@ -72,7 +72,11 @@ public class Cycle extends Activity
 
     public boolean compareTo(Activity thisActivity)
     {
-        return (super.compareTo(thisActivity) && (distance == ((Cycle) thisActivity).distance) &&
-                (elevation == ((Cycle) thisActivity).elevation));
+        if (thisActivity instanceof Cycle)
+        {
+            return (super.compareTo(thisActivity) && (distance == ((Cycle) thisActivity).distance) &&
+                    (elevation == ((Cycle) thisActivity).elevation));
+        }
+        return false;
     }
 }

@@ -70,7 +70,14 @@ public class Run extends Activity
 
     public boolean compareTo(Activity thisActivity)
     {
-        return (super.compareTo(thisActivity) && distance == ((Run) thisActivity).distance &&
-                elevation == ((Run) thisActivity).elevation);
+
+        if (thisActivity instanceof Run)
+        {
+            return (super.compareTo(thisActivity) && distance == ((Run) thisActivity).distance &&
+                    elevation == ((Run) thisActivity).elevation);
+        }
+
+        return false;
     }
 }
+
