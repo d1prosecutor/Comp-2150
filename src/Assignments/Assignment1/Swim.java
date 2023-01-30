@@ -69,6 +69,8 @@ public class Swim extends Activity
     public void query()
     {
         float pace = calcPace();
+        int paceHours = ((int) pace);
+        int paceMinutes = (int) ((calcPace() * 60) % 60);
 
         System.out.println("[" + getDate() + "] Swimming: " + getName() + " at " + getLocation());
         System.out.println("duration: " + this.getDuration().toHoursPart() + " hour(s) and " +
@@ -77,7 +79,7 @@ public class Swim extends Activity
         System.out.println("lapLength: " + lapLength + "m");
         System.out.println("average pace: " + ((int) pace) + ":" + (int) ((calcPace() * 60) % 60) + " min/km\n");
         System.out.format("average pace: %d:%02d min/km\n",
-                ((int) pace), (int) ((calcPace() * 60) % 60));
+                paceHours, paceMinutes);
     }
 
     public boolean compareTo(Activity thisActivity)
