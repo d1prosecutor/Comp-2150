@@ -72,7 +72,7 @@ public class Run extends Activity
                 getDuration().toMinutesPart() + " minutes(s);");
         System.out.println("distance: " + distance + "km;");
         System.out.println("elev: " + elevation + "m;");
-        System.out.format("average pace: %d:%02d min/km\n",
+        System.out.format("average pace: %d:%02d min/km\n\n",
                 paceHours, paceMinutes);
     }
 
