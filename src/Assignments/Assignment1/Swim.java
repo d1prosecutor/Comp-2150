@@ -43,12 +43,12 @@ public class Swim extends Activity
         totalTime = totalTime.plus(getDuration());
     }
 
-    private double calcDistance()
+    private float calcDistance()
     {
         return (lapLength * 1000) * numLaps;
     }
 
-    private double calcPace()
+    private float calcPace()
     {
         return getDuration().toMinutes() / calcDistance();
     }
@@ -68,12 +68,16 @@ public class Swim extends Activity
     @Override
     public void query()
     {
+        float pace = calcPace();
+
         System.out.println("[" + getDate() + "] Swimming: " + getName() + " at " + getLocation());
         System.out.println("duration: " + this.getDuration().toHoursPart() + " hour(s) and " +
                 getDuration().toMinutesPart() + " minutes(s);");
         System.out.println("number of laps: " + numLaps + " laps;");
         System.out.println("lapLength: " + lapLength + "m");
-        System.out.format("average pace: %.2fmin/km;\n\n", calcPace());
+        System.out.println("average pace: " + ((int) pace) + ":" + (int) ((calcPace() * 60) % 60) + " min/km\n");
+        System.out.format("average pace: %d:%02d min/km\n",
+                ((int) pace), (int) ((calcPace() * 60) % 60));
     }
 
     public boolean compareTo(Activity thisActivity)

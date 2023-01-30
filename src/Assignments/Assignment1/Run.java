@@ -43,9 +43,9 @@ public class Run extends Activity
         totalTime = totalTime.plus(getDuration());
     }
 
-    private double calcPace()
+    private float calcPace()
     {
-        return getDuration().toMinutes() / (double) distance;
+        return getDuration().toMinutes() / (float) distance;
     }
 
 
@@ -62,12 +62,15 @@ public class Run extends Activity
     @Override
     public void query()
     {
+        float pace = calcPace();
+
         System.out.println("[" + getDate() + "] Running: " + getName() + " at " + getLocation());
         System.out.println("duration: " + this.getDuration().toHoursPart() + " hour(s) and " +
                 getDuration().toMinutesPart() + " minutes(s);");
         System.out.println("distance: " + distance + "km;");
         System.out.println("elev: " + elevation + "m;");
-        System.out.format("average pace: %.2fmin/km;\n\n", calcPace());
+        System.out.format("average pace: %d:%02d min/km\n",
+                ((int) pace), (int) ((calcPace() * 60) % 60));
     }
 
     public boolean compareTo(Activity thisActivity)
