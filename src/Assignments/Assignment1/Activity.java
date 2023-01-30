@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 public abstract class Activity
 {
-    public static ActivityList allActivities = new ActivityList();
+    public static ActivityList allActivitiesList = new ActivityList();
     //track the total time across all activities
     private static Duration TOTAL_TIME = Duration.ZERO;
 
@@ -30,7 +30,7 @@ public abstract class Activity
     //Is called from the child classes
     public void trackActivity(Activity newActivity)
     {
-        allActivities.addActivity(newActivity);
+        allActivitiesList.addActivity(newActivity);
 
         //Keep track of the duration (time) spent in all activities
         TOTAL_TIME = TOTAL_TIME.plus(newActivity.duration);
@@ -39,7 +39,7 @@ public abstract class Activity
     public static void queryBetweenDates(LocalDate firstDate, LocalDate lastDate)
     {
         System.out.println(">>> Querying activity time between " + firstDate + " and " + lastDate + ":");
-        allActivities.printBetweenDates(firstDate, lastDate);
+        allActivitiesList.printBetweenDates(firstDate, lastDate);
     }
 
     protected String getName()
@@ -65,18 +65,18 @@ public abstract class Activity
     public static void print()
     {
         System.out.println(">>> Querying total activity time: ");
-        System.out.println(">>> " + TOTAL_TIME.toHoursPart() + " hours and " +
-                TOTAL_TIME.toMinutesPart() + " minutes.");
+        System.out.println(">>> " + TOTAL_TIME.toHours() + " hour(s) and " +
+                TOTAL_TIME.toMinutesPart() + " minute(s).");
         System.out.println("========== Activities ==========");
 
-        allActivities.print();
+        allActivitiesList.print();
     }
 
     public abstract void query();
 
     public boolean compareTo(Activity thisActivity)
     {
-        return (name.equals(thisActivity.name) && location.equals(thisActivity.location) &&
+        return (name.equalsIgnoreCase(thisActivity.name) && location.equalsIgnoreCase(thisActivity.location) &&
                 date.isEqual(thisActivity.date) && duration.equals(thisActivity.duration));
     }
 }

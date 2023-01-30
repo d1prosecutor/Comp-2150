@@ -16,13 +16,13 @@ public class Run extends Activity
     {
         super(name, location, date, duration);
 
+        this.distance = distance;
+        this.elevation = elevationGain;
+
         //Create the activity if it doesn't already exist
         if (!runningList.searchForActivity(this))
         {
             System.out.print("Adding Activity: ");
-
-            this.distance = distance;
-            this.elevation = elevationGain;
 
             //Print the details of the activity being added
             query();
@@ -68,9 +68,9 @@ public class Run extends Activity
         System.out.format("average pace: %.2fmin/km;\n\n", calcPace());
     }
 
-    public boolean compareTo(Activity thisactivity)
+    public boolean compareTo(Activity thisActivity)
     {
-        return (super.compareTo(thisactivity) && distance == ((Run) thisactivity).distance &&
-                elevation == ((Run) thisactivity).elevation);
+        return (super.compareTo(thisActivity) && distance == ((Run) thisActivity).distance &&
+                elevation == ((Run) thisActivity).elevation);
     }
 }

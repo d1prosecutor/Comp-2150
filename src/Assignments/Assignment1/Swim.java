@@ -16,13 +16,13 @@ public class Swim extends Activity
     {
         super(name, location, date, duration);
 
+        this.numLaps = numLaps;
+        this.lapLength = lapLength;
+
         //Create the activity if it doesn't already exist
         if (!swimmingList.searchForActivity(this))
         {
             System.out.print("Adding Activity: ");
-
-            this.numLaps = numLaps;
-            this.lapLength = lapLength;
 
             //Print the details of the activity being added
             query();
@@ -74,9 +74,9 @@ public class Swim extends Activity
         System.out.format("average pace: %.2fmin/km;\n\n", calcPace());
     }
 
-    public boolean compareTo(Activity thisactivity)
+    public boolean compareTo(Activity thisActivity)
     {
-        return (super.compareTo(thisactivity) && numLaps == ((Swim) thisactivity).numLaps &&
-                lapLength == ((Swim) thisactivity).lapLength);
+        return (super.compareTo(thisActivity) && numLaps == ((Swim) thisActivity).numLaps &&
+                lapLength == ((Swim) thisActivity).lapLength);
     }
 }
