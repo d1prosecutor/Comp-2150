@@ -53,7 +53,7 @@ public class Cycle extends Activity
 
     public static void print()
     {
-        System.out.println(">>> Querying activities of type CYCLING");
+        System.out.println("\n>>> Querying activities of type CYCLING");
         System.out.println(">>> " + totalTime.toHoursPart() + " hour(s) and " +
                 totalTime.toMinutesPart() + " minute(s).");
         System.out.println("========== Activities ==========");

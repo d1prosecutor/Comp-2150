@@ -51,7 +51,7 @@ public class Run extends Activity
 
     public static void print()
     {
-        System.out.println(">>> Querying activities of type RUNNING");
+        System.out.println("\n>>> Querying activities of type RUNNING");
         System.out.println(">>> " + totalTime.toHoursPart() + " hour(s) and " +
                 totalTime.toMinutesPart() + " minute(s).");
         System.out.println("========== Activities ==========");

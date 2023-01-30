@@ -56,7 +56,7 @@ public class Swim extends Activity
 
     public static void print()
     {
-        System.out.println(">>> Querying activities of type SWIMMING");
+        System.out.println("\n>>> Querying activities of type SWIMMING");
         System.out.println(">>> " + totalTime.toHoursPart() + " hour(s) and " +
                 totalTime.toMinutesPart() + " minute(s).");
         System.out.println("========== Activities ==========");
