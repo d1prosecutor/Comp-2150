@@ -3,8 +3,14 @@ package Assignments.Assignment1;
 
 public class Node
 {
+    //Instance variables
     private Activity data;
     private Node next;
+
+    //Constructors
+    public Node()
+    {
+    }
 
     public Node(Activity data, Node next)
     {
@@ -26,21 +32,6 @@ public class Node
         return found;
     }
 
-    public Node getNext()
-    {
-        return next;
-    }
-
-    public Activity getData()
-    {
-        return data;
-    }
-
-    public void setNext(Node tempNode)
-    {
-        next = tempNode;
-    }
-
     public void printAll()
     {
         data.query();
@@ -54,5 +45,20 @@ public class Node
     public void printSpecific()
     {
         data.query();
+    }
+
+    public Node getNext()
+    {
+        return next;
+    }
+
+    public Activity getData()
+    {
+        return data;
+    }
+
+    public void setNext(Node tempNode)
+    {
+        next = tempNode;
     }
 }

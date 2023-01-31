@@ -15,7 +15,8 @@ public abstract class Activity
     private LocalDate date;
     private Duration duration;
 
-    //Constructor
+    //Constructors
+    public Activity(){};
     public Activity(String name, String location, LocalDate date, Duration duration)
     {
         this.name = name;

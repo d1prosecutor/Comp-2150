@@ -18,7 +18,7 @@ public class ActivityList
         Node previous = null;
         if (!searchForActivity(newActivity))
         {
-            //Ordered insert based on the Local date
+            //Ordered insert based on the Local date (earliest first)
             while (current != null && newActivity.getDate().isAfter(current.getData().getDate()))
             {
                 previous = current;
