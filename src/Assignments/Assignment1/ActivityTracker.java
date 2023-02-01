@@ -1,5 +1,16 @@
 package Assignments.Assignment1;
 
+/***********************************************************************
+ * NAME: Chukwunaza Chukwuocha
+ * STUDENT NUMBER: 7928676
+ * COURSE: COMP 2150, SECTION: A02
+ * INSTRUCTOR: Olivier Tremblay-Savard
+ * ASSIGNMENT: Assignment 1
+ *
+ * REMARKS: Implements the main method that controls all the operations
+ *          performed on the activities
+ **********************************************************************/
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.Duration;
@@ -18,6 +29,7 @@ public class ActivityTracker
         String cycling = "CYCLING";
         String swimming = "SWIMMING";
 
+        //An arrayList containing the types of activities just to make the code cleaner
         ArrayList<String> activityTypes = new ArrayList<>();
         activityTypes.add(walking);
         activityTypes.add(running);
@@ -45,6 +57,7 @@ public class ActivityTracker
                 nextLine = fileReader.nextLine();
                 tokens = nextLine.trim().split("\\s+");
 
+                //If the first Word signifies a type of activity
                 if (activityTypes.contains(tokens[0]))
                 {
                     Activity newActivity;
@@ -70,6 +83,7 @@ public class ActivityTracker
 
                         newActivity = new Walk(name, location, date, duration,
                                 distance, elevation);
+
                     } else if (tokens[0].equals(running))
                     {
                         int distance = Integer.parseInt(tokens[5]);
@@ -77,6 +91,7 @@ public class ActivityTracker
 
                         newActivity = new Run(name, location, date, duration,
                                 distance, elevation);
+
                     } else if (tokens[0].equals(cycling))
                     {
                         int distance = Integer.parseInt(tokens[5]);
@@ -84,6 +99,7 @@ public class ActivityTracker
 
                         newActivity = new Cycle(name, location, date, duration,
                                 distance, elevation);
+
                     } else if (tokens[0].equals(swimming))
                     {
                         int numlaps = Integer.parseInt(tokens[5]);
@@ -118,7 +134,8 @@ public class ActivityTracker
                         LocalDate firstDate;
                         LocalDate secondDate;
 
-
+                        //Modify the program to accept "today" as a correct date
+                        //Check if the first date is "today"
                         if (tokens[2].equalsIgnoreCase("today"))
                         {
                             firstDate = LocalDate.now();
@@ -127,6 +144,7 @@ public class ActivityTracker
                             firstDate = LocalDate.parse(tokens[2]);
                         }
 
+                        //Check if the second date is "today"
                         if (tokens[3].equalsIgnoreCase("today"))
                         {
                             secondDate = LocalDate.now();

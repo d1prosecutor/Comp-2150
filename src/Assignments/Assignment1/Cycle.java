@@ -1,5 +1,5 @@
 package Assignments.Assignment1;
-/***************************************************************************************
+/*******************************************************************************
  * NAME: Chukwunaza Chukwuocha
  * STUDENT NUMBER: 7928676
  * COURSE: COMP 2150, SECTION: A02
@@ -7,7 +7,7 @@ package Assignments.Assignment1;
  * ASSIGNMENT: Assignment 1
  *
  * REMARKS: Implements the Cycle class, which is a type of Activity(superclass).
- ***************************************************************************************/
+ ******************************************************************************/
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -50,6 +50,7 @@ public class Cycle extends Activity
         }
     }
 
+    //Instance Methods
 
     /******************************************************************************
      * trackActivity

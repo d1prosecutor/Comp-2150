@@ -1,5 +1,15 @@
 package Assignments.Assignment1;
 
+/***********************************************************************
+ * NAME: Chukwunaza Chukwuocha
+ * STUDENT NUMBER: 7928676
+ * COURSE: COMP 2150, SECTION: A02
+ * INSTRUCTOR: Olivier Tremblay-Savard
+ * ASSIGNMENT: Assignment 1
+ *
+ * REMARKS: Implements the linked list class used to store activities.
+ **********************************************************************/
+
 import java.time.Duration;
 import java.time.LocalDate;
 
@@ -7,24 +17,37 @@ public class ActivityList
 {
     private Node top;
 
+    //Constructor
     public ActivityList()
     {
         top = null;
     }
 
+    //Instance Methods
+
+    /******************************************************************************
+     * addActivity
+     *
+     * PURPOSE: This Method adds the activity given to the list of activities
+     *
+     * INPUT PARAMETERS:
+     *      newActivity: The new Activity to be added to the list
+     *******************************************************************************/
     public void addActivity(Activity newActivity)
     {
         Node current = top;
         Node previous = null;
         if (!searchForActivity(newActivity))
         {
-            //Ordered insert based on the Local date (earliest first)
+            //Ordered insert based on the Local date (the earliest first)
+            //This loop finds the correct location to insert the new activity
             while (current != null && newActivity.getDate().isAfter(current.getData().getDate()))
             {
                 previous = current;
                 current = current.getNext();
             }
 
+            //Insert the activity at the right spot
             if (previous == null)
             {
                 top = new Node(newActivity, top);
@@ -36,7 +59,19 @@ public class ActivityList
         }
     }
 
-
+    /******************************************************************************
+     * search
+     *
+     * PURPOSE: This Method uses the search method implemented in the Node class
+     *          to check if an activity is already in the list
+     *
+     * INPUT PARAMETERS:
+     *      thisActivity: The new Activity to be searched for in the list
+     *
+     *  OUTPUT PARAMETERS:
+     *          The method returns true if the two activities are the same and false
+     *          otherwise
+     *******************************************************************************/
     public boolean searchForActivity(Activity thisActivity)
     {
         boolean found = false;
@@ -50,6 +85,15 @@ public class ActivityList
     }
 
 
+    /******************************************************************************
+     * printBetweenDates
+     *
+     * PURPOSE: This Method prints all activities occurring between two specified
+     *          dates
+     *
+     * INPUT PARAMETERS:
+     *      The two parameters are the dates that specify the range of activities
+     *******************************************************************************/
     public void printBetweenDates(LocalDate firstDate, LocalDate lastDate)
     {
         Duration totalTime = calcTimeBetweenDates(firstDate, lastDate);
@@ -60,7 +104,7 @@ public class ActivityList
                 totalTime.toMinutesPart() + " minutes.");
         System.out.println("========== Activities ==========");
 
-        //Print all the activites between these two dates (inclusive)
+        //Print all the activities between these two dates (inclusive)
         while (tempNode != null)
         {
             if (tempNode.getData().getDate().isEqual(firstDate) ||
@@ -74,10 +118,20 @@ public class ActivityList
             }
             tempNode = tempNode.getNext();
         }
-
-
     }
 
+    /******************************************************************************
+     * queryBetweenDates
+     *
+     * PURPOSE: This Method calculates the total duration of activities occurring
+     * between two specified dates
+     *
+     * INPUT PARAMETERS:
+     *      The two parameters are the dates that specify the range of activities
+     *
+     * OUTPUT PARAMETERS:
+     *      The total duration of activities occurring between two specified dates
+     *******************************************************************************/
     private Duration calcTimeBetweenDates(LocalDate firstDate, LocalDate lastDate)
     {
         Duration totalTime = Duration.ZERO;
@@ -100,12 +154,12 @@ public class ActivityList
         return totalTime;
     }
 
-    public boolean isEmpty()
-    {
-        return top == null;
-    }
-
-
+    /**********************************************************************
+     * print
+     *
+     * PURPOSE: This method prints out the details of all activities stored
+     *          in the List
+     *********************************************************************/
     public void print()
     {
         if (top != null)

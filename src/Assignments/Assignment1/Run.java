@@ -1,5 +1,5 @@
 package Assignments.Assignment1;
-/***************************************************************************************
+/*****************************************************************************
  * NAME: Chukwunaza Chukwuocha
  * STUDENT NUMBER: 7928676
  * COURSE: COMP 2150, SECTION: A02
@@ -7,7 +7,7 @@ package Assignments.Assignment1;
  * ASSIGNMENT: Assignment 1
  *
  * REMARKS: Implements the Run class, which is a type of Activity(superclass).
- ***************************************************************************************/
+ ****************************************************************************/
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -49,6 +49,8 @@ public class Run extends Activity
             trackActivity(this);
         }
     }
+
+    //Instance Methods
 
     /******************************************************************************
      * trackActivity
@@ -141,7 +143,6 @@ public class Run extends Activity
      *******************************************************************************/
     public boolean compareTo(Activity thisActivity)
     {
-
         if (thisActivity instanceof Run)
         {
             return (super.compareTo(thisActivity) && distance == ((Run) thisActivity).distance &&
