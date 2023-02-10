@@ -58,5 +58,13 @@ int main(int argc, char *argv[])
 		}
 
 		// Now print out stats here
+		cout << "################################" << endl;
+		cout << "The simulation has ended." << endl;
+		cout << "The number of additional workers was " << numAddEmp << "." << endl;
+		cout << "The total number of work days was ";						 //<< numWorkDays <<"." << endl;
+		cout << "The cost of additional workers was ";						 //<< costOfAdditionalWorkers <<"." << endl;
+		cout << "The total profit before paying workers was ";				 //<< prevProfit <<"." << endl;
+		cout << "The total profit when considering additional workers was "; //<< finalProfit  <<"." << endl;
+		cout << "################################" << endl;
 	}
 }

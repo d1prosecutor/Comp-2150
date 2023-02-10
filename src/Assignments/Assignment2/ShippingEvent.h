@@ -13,5 +13,6 @@ public:
     ShippingEvent(Event *, int);
 
     // instance methods
+    float calcDiscount(int);
     void processEvent() override;
 };

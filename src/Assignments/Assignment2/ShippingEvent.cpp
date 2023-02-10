@@ -16,15 +16,18 @@ void ShippingEvent::processEvent()
     this->Event::processEvent();
 
     // Print the detail specific to just events to be shipped
-    cout << "has been shipped." << endl;
+    cout << "has been shipped. ";
 
+    float discount = 0;
     if (getCustomerType() == "primero")
     {
         if (getTime() - arrivalTime > 7)
         {
             // Calculate discount here
+            discount = calcDiscount(getOrderValue());
 
-            // Insert penalty
+            // print out the penalty
+            cout << "*** Penalty paid: $" << discount << ".";
         }
     }
     else if (getCustomerType() == "standard")
@@ -32,10 +35,14 @@ void ShippingEvent::processEvent()
         if (getTime() - arrivalTime > 23)
         {
             // Calculate discount here
+            discount = calcDiscount(getOrderValue());
 
-            // Insert penalty here
+            // print out the penalty
+            cout << "*** Penalty paid: $" << discount << ".";
         }
     }
+    // End the print line
+    cout << endl;
 
     // The worker who was attending to this shipped order is free to take another order
     numFreeWorkers++;
