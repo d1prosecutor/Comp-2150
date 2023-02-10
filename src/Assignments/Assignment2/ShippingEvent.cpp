@@ -22,6 +22,8 @@ void ShippingEvent::processEvent()
     {
         if (getTime() - arrivalTime > 7)
         {
+            // Calculate discount here
+
             // Insert penalty
         }
     }
@@ -29,7 +31,9 @@ void ShippingEvent::processEvent()
     {
         if (getTime() - arrivalTime > 23)
         {
-            // Insert penalty
+            // Calculate discount here
+
+            // Insert penalty here
         }
     }
 
@@ -44,4 +48,9 @@ void ShippingEvent::processEvent()
         // Add this new order to the list of pending orders
         Event::addToQueue(nextEvent);
     }
+}
+
+float ShippingEvent::calcDiscount(int orderValue)
+{
+    return (15 / 100.0) * (float)orderValue;
 }
