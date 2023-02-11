@@ -133,6 +133,7 @@ void EventSimulator::readLine()
 void EventSimulator::printStats()
 {
 	// Now print out stats here
+	cout << endl;
 	cout << "################################" << endl;
 	cout << "The simulation has ended." << endl;
 	cout << "The number of additional workers was " << numAddEmp << "." << endl;
@@ -141,6 +142,7 @@ void EventSimulator::printStats()
 	cout << "The total profit before paying workers was " << ArrivalEvent::getinitialProfit() << "." << endl;
 	cout << "The total profit when considering additional workers was " << calcFinalProfit() << "." << endl;
 	cout << "################################" << endl;
+	cout << endl;
 }
 
 float EventSimulator::calcCostOfBusiness()

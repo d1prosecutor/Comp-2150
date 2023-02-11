@@ -9,7 +9,7 @@ using namespace std;
 
 // Initialize Class variables
 int Event::ID = 0;
-int numWorkDays = 0;
+int Event::numWorkDays = 0;
 int Event::numFreeWorkers = 0; // Put the approprite number here
 PriorityQueue *Event::eventQueue = new PriorityQueue();
 PriorityQueue *Event::pendingOrders = new PriorityQueue();
