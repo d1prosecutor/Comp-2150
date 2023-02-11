@@ -91,7 +91,7 @@ void Event::calcNumWorkDays(int currTime)
 void Event::processEvent()
 {
     // Print out the details common to all the events
-    cout << "TIME: " << time << " -> Order " << orderID << " (" + customerType + ", $" << orderValue << ") ";
+    cout << "TIME: " << currTime << " -> Order " << orderID << " (" + customerType + ", $" << orderValue << ") ";
 }
 
 int Event::getCurrTime()

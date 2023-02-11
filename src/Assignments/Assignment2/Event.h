@@ -19,11 +19,11 @@ protected:
     static PriorityQueue *pendingOrders;
 
     // Instance Variables
-    int orderID;
     int currTime;
+    string customerType;
     int orderValue;
     int arrivalTime;
-    string customerType;
+    int orderID;
 
 public:
     // Constructors
