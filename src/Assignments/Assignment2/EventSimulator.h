@@ -22,10 +22,10 @@ public:
     // Instance methods
     static int getNumEmp();
     static int getFreeEmp();
-    static int incrFreeEmp();
-    static int decrFreeEmp();
     static void printStats();
     static int hasNextLine();
+    static void incrFreeEmp();
+    static void decrFreeEmp();
     static void readNextLine();
     static void startSimulation();
 };

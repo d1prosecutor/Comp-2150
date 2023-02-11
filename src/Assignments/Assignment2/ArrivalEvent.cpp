@@ -37,7 +37,7 @@ void ArrivalEvent::processEvent()
         cout << "arrives. " << endl;
 
         // Start processing the next event in the queue if there is an available worker
-        if (Event::getNumFreeWorkers() > 0)
+        if (EventSimulator::getFreeEmp() > 0)
         {
             // Get the next order in the pending orders list and start processing it
             Event *processNode = new PrepareEvent(Event::getNextPending(), currTime, arrivalTime);

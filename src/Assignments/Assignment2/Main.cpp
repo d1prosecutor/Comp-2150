@@ -20,5 +20,7 @@ int main(int argc, char *argv[])
 
     newSimulation->startSimulation();
 
+    cout << endl
+         << "End of Program" << endl;
     return 0;
 }

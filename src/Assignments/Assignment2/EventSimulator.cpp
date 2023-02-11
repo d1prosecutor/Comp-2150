@@ -18,10 +18,11 @@ ifstream EventSimulator::inputFile;
 EventSimulator::EventSimulator() {}
 EventSimulator::EventSimulator(string filename, int numAddEmp)
 {
-	// Initialize the number of workers and free workers to the same at the begining of the simulation
+	// Initialize the number of additional employees to the value received from the file,
+	// And free workers to 1 more than the number of additional employees (because we're including Geoff)
 	// Also initialize filename
 	EventSimulator::numAddEmp = numAddEmp;
-	EventSimulator::numFreeEmp = numAddEmp;
+	EventSimulator::numFreeEmp = numAddEmp + 1;
 	EventSimulator::filename = filename;
 
 	cout << "The filename is: " << filename << endl;
@@ -77,8 +78,8 @@ void EventSimulator::readNextLine()
 		sst >> value;		 // extracting the order value
 
 		// Put the first line into the event queue
-		Event *firstArrival = new ArrivalEvent(time, customerType, value, time);
-		Event::addToQueue(firstArrival);
+		Event *nextArrival = new ArrivalEvent(time, customerType, value, time);
+		Event::addToQueue(nextArrival);
 	}
 }
 
@@ -89,14 +90,14 @@ void EventSimulator::printStats()
 	cout << fixed << setprecision(2);
 
 	cout << endl;
-	cout << "################################" << endl;
+	cout << "########################" << endl;
 	cout << "The simulation has ended." << endl;
 	cout << "The number of additional workers was " << numAddEmp << "." << endl;
 	cout << "The total number of work days was " << Event::getNumWorkDays() << "." << endl;
 	cout << "The cost of additional workers was $" << Event::calcCostOfBusiness(numAddEmp) << "." << endl;
 	cout << "The total profit before paying workers was $" << ArrivalEvent::getInitialProfit() << "." << endl;
 	cout << "The total profit when considering additional workers was $" << Event::calcFinalProfit(numAddEmp) << "." << endl;
-	cout << "################################" << endl;
+	cout << "########################" << endl;
 	cout << endl;
 }
 
@@ -110,12 +111,12 @@ int EventSimulator::getFreeEmp()
 	return EventSimulator::numFreeEmp;
 }
 
-int EventSimulator::incrFreeEmp()
+void EventSimulator::incrFreeEmp()
 {
 	EventSimulator::numFreeEmp++;
 }
 
-int EventSimulator::decrFreeEmp()
+void EventSimulator::decrFreeEmp()
 {
 	EventSimulator::numFreeEmp--;
 }
