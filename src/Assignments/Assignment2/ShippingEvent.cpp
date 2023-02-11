@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -20,6 +21,9 @@ void ShippingEvent::processEvent()
     cout << "has been shipped. ";
 
     float discount = 0;
+
+    // truncating the output to 2 decimal places
+    cout << fixed << setprecision(2);
     if (customerType == "primero")
     {
         if (currTime - arrivalTime > 7)

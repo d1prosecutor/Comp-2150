@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -80,14 +81,17 @@ void EventSimulator::readNextLine()
 void EventSimulator::printStats()
 {
 	// Now print out stats here
+	// truncating the output to 2 decimal places
+	cout << fixed << setprecision(2);
+
 	cout << endl;
 	cout << "################################" << endl;
 	cout << "The simulation has ended." << endl;
 	cout << "The number of additional workers was " << numAddEmp << "." << endl;
 	cout << "The total number of work days was " << Event::getNumWorkDays() << "." << endl;
-	cout << "The cost of additional workers was " << Event::calcCostOfBusiness() << "." << endl;
-	cout << "The total profit before paying workers was " << ArrivalEvent::getInitialProfit() << "." << endl;
-	cout << "The total profit when considering additional workers was " << Event::calcFinalProfit() << "." << endl;
+	cout << "The cost of additional workers was $" << Event::calcCostOfBusiness() << "." << endl;
+	cout << "The total profit before paying workers was $" << ArrivalEvent::getInitialProfit() << "." << endl;
+	cout << "The total profit when considering additional workers was $" << Event::calcFinalProfit() << "." << endl;
 	cout << "################################" << endl;
 	cout << endl;
 }
