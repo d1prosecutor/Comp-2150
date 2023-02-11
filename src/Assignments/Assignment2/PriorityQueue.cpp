@@ -14,14 +14,14 @@ void PriorityQueue::enqueue(Event *newEvent, int priority, int id)
     Node *temp = front;
     Node *prev = nullptr;
 
-    // Order the events by TIME priority
+    // Order the events by TIME-priority
     while (temp != nullptr && temp->getEvent()->getCurrTime() < priority)
     {
         prev = temp;
         temp = temp->getNext();
     }
 
-    // If the times are the same, order the events by ORDER_ID priority
+    // If the times are the same, order the events by ORDER_ID-priority
     if (temp != nullptr && temp->getEvent()->getCurrTime() == priority)
     {
         while (temp != nullptr && temp->getEvent()->getOrderID() < id)

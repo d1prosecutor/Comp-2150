@@ -11,7 +11,6 @@ using namespace std;
 
 // Initialize Class variables
 int Event::ID = 0;
-int Event::numWorkers = 0;
 int Event::numWorkDays = 0;
 int Event::numFreeWorkers = 2;
 PriorityQueue *Event::eventQueue = new PriorityQueue();
@@ -73,18 +72,18 @@ void Event::calcNumWorkDays(int currTime)
     Event::numWorkDays = ceil(currTime / 8.0f);
 }
 
-float Event::calcCostOfBusiness()
+float Event::calcCostOfBusiness(int numWorkers)
 {
     // Calculate the cost of additional workers
     float empWage = 13.50;
     int numStdHrs = 8;
-    return (Event::getNumWorkDays() * numStdHrs * empWage * Event::numWorkers) +
-           (Event::getNumWorkDays() * Event::numWorkers);
+    return (Event::getNumWorkDays() * numStdHrs * empWage * numWorkers) +
+           (Event::getNumWorkDays() * numWorkers);
 }
 
-float Event::calcFinalProfit()
+float Event::calcFinalProfit(int numWorkers)
 {
-    return ArrivalEvent::getInitialProfit() - Event::calcCostOfBusiness();
+    return ArrivalEvent::getInitialProfit() - Event::calcCostOfBusiness(numWorkers);
 }
 
 int Event::getNumFreeWorkers()

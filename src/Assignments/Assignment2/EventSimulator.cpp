@@ -88,9 +88,9 @@ void EventSimulator::printStats()
 	cout << "The simulation has ended." << endl;
 	cout << "The number of additional workers was " << numAddEmp << "." << endl;
 	cout << "The total number of work days was " << Event::getNumWorkDays() << "." << endl;
-	cout << "The cost of additional workers was $" << Event::calcCostOfBusiness() << "." << endl;
+	cout << "The cost of additional workers was $" << Event::calcCostOfBusiness(numAddEmp) << "." << endl;
 	cout << "The total profit before paying workers was $" << ArrivalEvent::getInitialProfit() << "." << endl;
-	cout << "The total profit when considering additional workers was $" << Event::calcFinalProfit() << "." << endl;
+	cout << "The total profit when considering additional workers was $" << Event::calcFinalProfit(numAddEmp) << "." << endl;
 	cout << "################################" << endl;
 	cout << endl;
 }

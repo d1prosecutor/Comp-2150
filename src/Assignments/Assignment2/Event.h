@@ -13,7 +13,6 @@ private:
 
 protected:
     // Class Variables
-    static int numWorkers;
     static int numFreeWorkers;
     static PriorityQueue *eventQueue;
     static PriorityQueue *pendingOrders;
@@ -32,23 +31,23 @@ public:
     Event(int, string, int, int);
 
     // Class methods
-    static void addToQueue(Event *);
-    static void addToPending(Event *);
-    static int getNumFreeWorkers();
-    static Event *getNextPending();
-    static Event *getNextEvent();
-    static bool queueIsEmpty();
     static bool lineIsEmpty();
+    static bool queueIsEmpty();
     static int getNumWorkDays();
-    static float calcFinalProfit();
-    static float calcCostOfBusiness();
+    static Event *getNextEvent();
+    static Event *getNextPending();
+    static int getNumFreeWorkers();
+    static void addToQueue(Event *);
     static void calcNumWorkDays(int);
+    static void addToPending(Event *);
+    static float calcFinalProfit(int);
+    static float calcCostOfBusiness(int);
 
     // Instance methods
+    int getOrderID();
     int getCurrTime();
+    int getOrderValue();
     int getArrivalTime();
     string getCustomerType();
-    int getOrderValue();
-    int getOrderID();
     virtual void processEvent();
 };
