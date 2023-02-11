@@ -1,10 +1,10 @@
 #include <iostream>
 
+using namespace std;
+
 #include "EventSimulator.h"
 #include "Event.h"
 #include "ArrivalEvent.h"
-
-using namespace std;
 
 // int main(int argc, char *argv[])
 // {

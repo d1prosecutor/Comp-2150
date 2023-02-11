@@ -1,9 +1,10 @@
 #pragma once
 
-#include "Event.h"
 #include <string>
-
 using namespace std;
+
+#include "Event.h"
+
 
 class ArrivalEvent : public Event
 {

@@ -2,11 +2,10 @@
 #include <fstream> //necessary to use ifstream (to open a file)
 #include <iostream>
 
-#include "Node.h"
 #include "ArrivalEvent.h"
 #include "PrepareEvent.h"
 #include "PriorityQueue.h"
-#include "EventSimulator.h"
+// #include "EventSimulator.h"
 
 using namespace std;
 
@@ -52,7 +51,7 @@ void ArrivalEvent::processEvent()
 
         if (not EOF)
         {
-          EventSimulator temp;
+        //   EventSimulator temp;
         }
     }
 }

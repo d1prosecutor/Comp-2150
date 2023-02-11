@@ -1,10 +1,10 @@
-#include "ArrivalEvent.h"
-#include "ShippingEvent.h"
-#include "PrepareEvent.h"
-#include "Node.h"
 #include <iostream>
 
 using namespace std;
+
+#include "ShippingEvent.h"
+#include "ArrivalEvent.h"
+#include "PrepareEvent.h"
 
 // Constructors
 ShippingEvent::ShippingEvent() {}

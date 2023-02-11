@@ -1,12 +1,11 @@
-#include "Event.h"
-#include "PriorityQueue.h"
-#include "ShippingEvent.h"
-#include "Node.h"
-
 #include <iostream>
 #include <cmath>
 
 using namespace std;
+
+#include "Event.h"
+#include "PriorityQueue.h"
+#include "Node.h"
 
 // Initialize Class variables
 int Event::ID = 0;

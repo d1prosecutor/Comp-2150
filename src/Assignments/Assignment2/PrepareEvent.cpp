@@ -1,10 +1,9 @@
-#include "PrepareEvent.h"
-#include "ShippingEvent.h"
-#include "PriorityQueue.h"
-#include "Node.h"
 #include <iostream>
 
 using namespace std;
+
+#include "PrepareEvent.h"
+#include "ShippingEvent.h"
 
 // Constructors
 PrepareEvent::PrepareEvent() {}
