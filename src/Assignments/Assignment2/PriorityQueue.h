@@ -7,16 +7,15 @@ class PriorityQueue
 {
 private:
     Node *front;
-    // Node *back;
 
 public:
     // Constructors
     PriorityQueue();
 
     // Instance methods
-    void enqueue(Event *, int, int);
-    Node *dequeue();
     Node *peek();
-    Event *remove(Event *);
     bool isEmpty();
+    Node *dequeue();
+    void enqueue(Event *, int, int);
+    void addToLine(Event *, int, int);
 };

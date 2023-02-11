@@ -5,7 +5,6 @@ using namespace std;
 
 #include "Event.h"
 
-
 class ArrivalEvent : public Event
 {
 private:
@@ -18,8 +17,8 @@ public:
     ArrivalEvent(int, string, int, int);
 
     // Class methods
-    static float getInitialProfit();
     static void updateProfit(float);
+    static float getInitialProfit();
 
     // Instance methods
     void processEvent() override;

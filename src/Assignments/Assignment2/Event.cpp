@@ -1,5 +1,5 @@
-#include <iostream>
 #include <cmath>
+#include <iostream>
 
 using namespace std;
 
@@ -13,7 +13,7 @@ using namespace std;
 int Event::ID = 0;
 int Event::numWorkers = 0;
 int Event::numWorkDays = 0;
-int Event::numFreeWorkers = 1;
+int Event::numFreeWorkers = 2;
 PriorityQueue *Event::eventQueue = new PriorityQueue();
 PriorityQueue *Event::pendingOrders = new PriorityQueue();
 
@@ -44,7 +44,7 @@ void Event::addToQueue(Event *newEvent)
 
 void Event::addToPending(Event *newEvent)
 {
-    Event::pendingOrders->enqueue(newEvent, newEvent->currTime, newEvent->orderID);
+    Event::pendingOrders->addToLine(newEvent, newEvent->currTime, newEvent->orderID);
 }
 
 Event *Event::getNextEvent()
@@ -67,6 +67,12 @@ bool Event::lineIsEmpty()
     return Event::pendingOrders->isEmpty();
 }
 
+void Event::calcNumWorkDays(int currTime)
+{
+    // Calculate the number of work days
+    Event::numWorkDays = ceil(currTime / 8.0f);
+}
+
 float Event::calcCostOfBusiness()
 {
     // Calculate the cost of additional workers
@@ -81,10 +87,14 @@ float Event::calcFinalProfit()
     return ArrivalEvent::getInitialProfit() - Event::calcCostOfBusiness();
 }
 
-void Event::calcNumWorkDays(int currTime)
+int Event::getNumFreeWorkers()
 {
-    // Calculate the number of work days
-    Event::numWorkDays = ceil(currTime / 8.0f);
+    return Event::numFreeWorkers;
+}
+
+int Event::getNumWorkDays()
+{
+    return Event::numWorkDays;
 }
 
 // Instance methods
@@ -117,14 +127,4 @@ int Event::getOrderValue()
 int Event::getOrderID()
 {
     return orderID;
-}
-
-int Event::getNumFreeWorkers()
-{
-    return Event::numFreeWorkers;
-}
-
-int Event::getNumWorkDays()
-{
-    return Event::numWorkDays;
 }

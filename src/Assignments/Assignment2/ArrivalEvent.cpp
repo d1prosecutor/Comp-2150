@@ -53,6 +53,7 @@ void ArrivalEvent::processEvent()
     }
 }
 
+// Class Methods
 float ArrivalEvent::getInitialProfit()
 {
     return ArrivalEvent::initialProfit;

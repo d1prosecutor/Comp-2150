@@ -1,5 +1,5 @@
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 
 using namespace std;
 
@@ -20,37 +20,15 @@ void ShippingEvent::processEvent()
     // Print the detail specific to just events to be shipped
     cout << "has been shipped. ";
 
-    float discount = 0;
-
     // truncating the output to 2 decimal places
     cout << fixed << setprecision(2);
     if (customerType == "primero")
     {
-        if (currTime - arrivalTime > 7)
-        {
-            // Calculate discount here
-            discount = calcDiscount(getOrderValue());
-
-            // Update the profit of the profit to reflect this discount
-            ArrivalEvent::updateProfit(-discount);
-
-            // print out the penalty
-            cout << "*** Penalty paid: $" << discount << ".";
-        }
+        printPrimeroDiscount();
     }
     else if (customerType == "standard")
     {
-        if (currTime - arrivalTime > 23)
-        {
-            // Calculate discount here
-            discount = calcDiscount(getOrderValue());
-
-            // Update the profit of the profit to reflect this discount
-            ArrivalEvent::updateProfit(-discount);
-
-            // print out the penalty
-            cout << "*** Penalty paid: $" << discount << ".";
-        }
+        printStandardDiscount();
     }
     // End the print line
     cout << endl;
@@ -72,4 +50,34 @@ void ShippingEvent::processEvent()
 float ShippingEvent::calcDiscount(int orderValue)
 {
     return (15 / 100.0f) * (float)orderValue;
+}
+
+void ShippingEvent::printPrimeroDiscount()
+{
+    if (currTime - arrivalTime > 7)
+    {
+        // Calculate discount here
+        float discount = calcDiscount(getOrderValue());
+
+        // Update the profit of the profit to reflect this discount
+        ArrivalEvent::updateProfit(-discount);
+
+        // print out the penalty
+        cout << "*** Penalty paid: $" << discount << ".";
+    }
+}
+
+void ShippingEvent::printStandardDiscount()
+{
+    if (currTime - arrivalTime > 23)
+    {
+        // Calculate discount here
+        float discount = calcDiscount(getOrderValue());
+
+        // Update the profit of the profit to reflect this discount
+        ArrivalEvent::updateProfit(-discount);
+
+        // print out the penalty
+        cout << "*** Penalty paid: $" << discount << ".";
+    }
 }

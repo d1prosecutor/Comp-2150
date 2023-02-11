@@ -1,12 +1,11 @@
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 
 using namespace std;
 
 #include "EventSimulator.h"
 #include "Event.h"
 #include "ArrivalEvent.h"
-
 #include "PrepareEvent.h"
 
 // Initializing Class Variables

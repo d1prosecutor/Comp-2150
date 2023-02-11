@@ -14,7 +14,7 @@ public:
     Node(Event *, Node *);
 
     // Instance methods
-    Event *getEvent();
     Node *getNext();
+    Event *getEvent();
     void setNext(Node *);
 };

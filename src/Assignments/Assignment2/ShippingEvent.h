@@ -11,5 +11,7 @@ public:
 
     // instance methods
     float calcDiscount(int);
+    void printPrimeroDiscount();
+    void printStandardDiscount();
     void processEvent() override;
 };
