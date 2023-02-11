@@ -9,9 +9,9 @@ using namespace std;
 class EventSimulator
 {
 private:
-    int numAddEmp;
-    string filename;
-    ifstream inputFile;
+    static int numAddEmp;
+    static string filename;
+    static ifstream inputFile;
 
 public:
     // Constructors
@@ -19,10 +19,10 @@ public:
     EventSimulator(string, int);
 
     // Instance methods
-    void printStats();
-    void startSimulation();
-    void readLine();
-    float calcFinalProfit();
-    int hasNextLine();
-    float calcCostOfBusiness();
+    static void printStats();
+    static int hasNextLine();
+    static void readNextLine();
+    static void startSimulation();
+    static float calcFinalProfit();
+    static float calcCostOfBusiness();
 };

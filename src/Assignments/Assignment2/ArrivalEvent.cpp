@@ -5,7 +5,7 @@
 #include "ArrivalEvent.h"
 #include "PrepareEvent.h"
 #include "PriorityQueue.h"
-// #include "EventSimulator.h"
+#include "EventSimulator.h"
 
 using namespace std;
 
@@ -49,9 +49,9 @@ void ArrivalEvent::processEvent()
             Event::addToQueue(processNode);
         }
 
-        if (not EOF)
+        if (EventSimulator::hasNextLine() != EOF)
         {
-        //   EventSimulator temp;
+            EventSimulator::readNextLine();
         }
     }
 }
