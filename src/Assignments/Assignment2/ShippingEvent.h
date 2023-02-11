@@ -4,9 +4,6 @@
 
 class ShippingEvent : public Event
 {
-private:
-    int arrivalTime;
-
 public:
     // Constructors
     ShippingEvent();

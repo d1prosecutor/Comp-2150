@@ -17,8 +17,7 @@ void ShippingEvent::processEvent()
     Event::processEvent();
 
     // Print the detail specific to just events to be shipped
-    cout << "has been shipped. "
-         << "arrival time is: " << arrivalTime;
+    cout << "has been shipped. ";
 
     float discount = 0;
     if (customerType == "primero")
@@ -58,7 +57,8 @@ void ShippingEvent::processEvent()
     if (!Event::lineIsEmpty())
     {
         // Attend to the order at the front of the waiting line
-        Event *nextEvent = new PrepareEvent(Event::getNextPending(), currTime, arrivalTime);
+        Event *tempEvent = Event::getNextPending();
+        Event *nextEvent = new PrepareEvent(tempEvent, currTime, tempEvent->getArrivalTime());
 
         // Add this new order to the list of pending orders
         Event::addToQueue(nextEvent);

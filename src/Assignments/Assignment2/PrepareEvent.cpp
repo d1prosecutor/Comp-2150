@@ -15,7 +15,7 @@ void PrepareEvent::processEvent()
     // Call the superclass 'processEvent' method to print the details common to all events
     Event::processEvent();
 
-    processTime = calcProcessTime(getOrderValue());
+    int processTime = calcProcessTime(getOrderValue());
 
     // Print the details specific to just events being processed
     cout << "is being prepared "
@@ -24,10 +24,11 @@ void PrepareEvent::processEvent()
     // Assign a worker to the event being prepared.
     Event::numFreeWorkers--;
 
+    // Calculate the time it will take to process and create a shipping order
     int shippingTime = currTime + processTime;
-
     Event *newShippingOrder = new ShippingEvent(this, shippingTime, arrivalTime);
 
+    // Add that new shipping order to the list of pending orders
     Event::addToQueue(newShippingOrder);
 }
 

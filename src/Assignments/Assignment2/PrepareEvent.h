@@ -5,9 +5,6 @@ class Event;
 
 class PrepareEvent : public Event
 {
-private:
-    int processTime;
-
 public:
     // Constructors
     PrepareEvent();

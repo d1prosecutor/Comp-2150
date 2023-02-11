@@ -34,7 +34,7 @@ void ArrivalEvent::processEvent()
         Event::processEvent();
 
         // Print the detail specific to just arrival events
-        cout << "arrives." << endl;
+        cout << "arrives. " << endl;
 
         // Start processing the next event in the queue if there is an available worker
         if (Event::getNumFreeWorkers() > 0)
