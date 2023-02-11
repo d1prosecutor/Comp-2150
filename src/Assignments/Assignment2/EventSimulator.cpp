@@ -10,6 +10,7 @@ using namespace std;
 
 // Initializing Class Variables
 int EventSimulator::numAddEmp = 0;
+int EventSimulator::numFreeEmp = 0;
 string EventSimulator::filename = "";
 ifstream EventSimulator::inputFile;
 
@@ -17,8 +18,12 @@ ifstream EventSimulator::inputFile;
 EventSimulator::EventSimulator() {}
 EventSimulator::EventSimulator(string filename, int numAddEmp)
 {
+	// Initialize the number of workers and free workers to the same at the begining of the simulation
+	// Also initialize filename
 	EventSimulator::numAddEmp = numAddEmp;
+	EventSimulator::numFreeEmp = numAddEmp;
 	EventSimulator::filename = filename;
+
 	cout << "The filename is: " << filename << endl;
 	cout << "The number of additional employees is: " << numAddEmp << endl;
 }
@@ -98,4 +103,19 @@ void EventSimulator::printStats()
 int EventSimulator::getNumEmp()
 {
 	return EventSimulator::numAddEmp;
+}
+
+int EventSimulator::getFreeEmp()
+{
+	return EventSimulator::numFreeEmp;
+}
+
+int EventSimulator::incrFreeEmp()
+{
+	EventSimulator::numFreeEmp++;
+}
+
+int EventSimulator::decrFreeEmp()
+{
+	EventSimulator::numFreeEmp--;
 }

@@ -13,7 +13,6 @@ private:
 
 protected:
     // Class Variables
-    static int numFreeWorkers;
     static PriorityQueue *eventQueue;
     static PriorityQueue *pendingOrders;
 

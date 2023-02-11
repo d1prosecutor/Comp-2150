@@ -6,6 +6,7 @@ using namespace std;
 #include "ShippingEvent.h"
 #include "ArrivalEvent.h"
 #include "PrepareEvent.h"
+#include "EventSimulator.h"
 
 // Constructors
 ShippingEvent::ShippingEvent() {}
@@ -34,7 +35,7 @@ void ShippingEvent::processEvent()
     cout << endl;
 
     // The worker who was attending to this shipped order is free to take another order
-    numFreeWorkers++;
+    EventSimulator::incrFreeEmp();
 
     if (!Event::lineIsEmpty())
     {

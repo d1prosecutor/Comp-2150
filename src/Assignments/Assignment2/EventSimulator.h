@@ -10,6 +10,7 @@ class EventSimulator
 {
 private:
     static int numAddEmp;
+    static int numFreeEmp;
     static string filename;
     static ifstream inputFile;
 
@@ -20,6 +21,9 @@ public:
 
     // Instance methods
     static int getNumEmp();
+    static int getFreeEmp();
+    static int incrFreeEmp();
+    static int decrFreeEmp();
     static void printStats();
     static int hasNextLine();
     static void readNextLine();

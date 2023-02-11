@@ -4,6 +4,7 @@ using namespace std;
 
 #include "PrepareEvent.h"
 #include "ShippingEvent.h"
+#include "EventSimulator.h"
 
 // Constructors
 PrepareEvent::PrepareEvent() {}
@@ -22,7 +23,7 @@ void PrepareEvent::processEvent()
          << "(prep. time = " << processTime << ")." << endl;
 
     // Assign a worker to the event being prepared.
-    Event::numFreeWorkers--;
+    EventSimulator::decrFreeEmp();
 
     // Calculate the time it will take to process and create a shipping order
     int shippingTime = currTime + processTime;

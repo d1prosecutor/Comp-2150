@@ -12,7 +12,6 @@ using namespace std;
 // Initialize Class variables
 int Event::ID = 0;
 int Event::numWorkDays = 0;
-int Event::numFreeWorkers = 1;
 PriorityQueue *Event::eventQueue = new PriorityQueue();
 PriorityQueue *Event::pendingOrders = new PriorityQueue();
 
@@ -84,11 +83,6 @@ float Event::calcCostOfBusiness(int numWorkers)
 float Event::calcFinalProfit(int numWorkers)
 {
     return ArrivalEvent::getInitialProfit() - Event::calcCostOfBusiness(numWorkers);
-}
-
-int Event::getNumFreeWorkers()
-{
-    return Event::numFreeWorkers;
 }
 
 int Event::getNumWorkDays()
