@@ -42,9 +42,7 @@ void EventSimulator::startSimulation()
 		while (!(Event::queueIsEmpty()))
 		{
 			Event *nextEvent = Event::getNextEvent();
-			// PrepareEvent *temp = dynamic_cast<PrepareEvent *>(nextEvent);
-			// if (temp != NULL)
-			// 	cout << "WORKS!!!";
+
 			nextEvent->processEvent();
 		}
 	}
@@ -72,9 +70,6 @@ void EventSimulator::readNextLine()
 		sst >> time;		 // extracting the time
 		sst >> customerType; // extracting the customerType
 		sst >> value;		 // extracting the order value
-
-		// To show that we parsed all the relevant information:
-		// cout << "time=" << time << " customerType=" << customerType << " value=" << value << endl;
 
 		// Put the first line into the event queue
 		Event *firstArrival = new ArrivalEvent(time, customerType, value, numAddEmp);

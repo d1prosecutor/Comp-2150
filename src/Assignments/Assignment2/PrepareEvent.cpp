@@ -7,7 +7,7 @@ using namespace std;
 
 // Constructors
 PrepareEvent::PrepareEvent() {}
-PrepareEvent::PrepareEvent(Event *currEvent) : Event(currEvent, currEvent->getTime()) {}
+PrepareEvent::PrepareEvent(Event *currEvent, int currentTime) : Event(currEvent, currentTime) {}
 
 // Instance methods
 void PrepareEvent::processEvent()

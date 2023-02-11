@@ -39,12 +39,12 @@ Event::Event(int time, string customerType, int orderValue, int numWorkers) : ti
 // Class methods
 void Event::addToQueue(Event *newEvent)
 {
-    Event::eventQueue->enqueue(newEvent, newEvent->getTime());
+    Event::eventQueue->enqueue(newEvent, newEvent->time, newEvent->orderID);
 }
 
 void Event::addToPending(Event *newEvent)
 {
-    Event::pendingOrders->enqueue(newEvent, newEvent->getTime());
+    Event::pendingOrders->enqueue(newEvent, newEvent->time, newEvent->orderID);
 }
 
 Event *Event::getNextEvent()
@@ -107,6 +107,11 @@ string Event::getCustomerType()
 int Event::getOrderValue()
 {
     return orderValue;
+}
+
+int Event::getOrderID()
+{
+    return orderID;
 }
 
 int Event::getNumFreeWorkers()

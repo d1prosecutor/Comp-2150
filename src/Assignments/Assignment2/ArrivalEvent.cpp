@@ -18,7 +18,7 @@ ArrivalEvent::ArrivalEvent() {}
 ArrivalEvent::ArrivalEvent(int time, string customerType, int orderValue, int numWorkers)
     : Event(time, customerType, orderValue, numWorkers)
 {
-    initialProfit *= orderValue / 2.0f;
+    initialProfit += (orderValue / 2.0f);
 }
 
 // Instance methods
@@ -40,7 +40,7 @@ void ArrivalEvent::processEvent()
         if (Event::getNumFreeWorkers() > 0)
         {
             // Get the next order in the pending orders list and start processing it
-            Event *processNode = new PrepareEvent(Event::getNextPending());
+            Event *processNode = new PrepareEvent(Event::getNextPending(), Event::getTime());
 
             // Insert the order in the pending events queue
             Event::addToQueue(processNode);

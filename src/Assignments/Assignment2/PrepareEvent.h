@@ -11,7 +11,7 @@ private:
 public:
     // Constructors
     PrepareEvent();
-    PrepareEvent(Event *);
+    PrepareEvent(Event *, int);
 
     // Instance methods
     int calcProcessTime(int);

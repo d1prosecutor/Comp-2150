@@ -58,7 +58,7 @@ void ShippingEvent::processEvent()
     if (!Event::lineIsEmpty())
     {
         // Attend to the order at the front of the waiting line
-        Event *nextEvent = new PrepareEvent(Event::getNextPending());
+        Event *nextEvent = new PrepareEvent(Event::getNextPending(), this->Event::getTime());
 
         // Add this new order to the list of pending orders
         Event::addToQueue(nextEvent);

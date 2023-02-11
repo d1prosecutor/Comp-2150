@@ -47,6 +47,7 @@ public:
     int getTime();
     string getCustomerType();
     int getOrderValue();
+    int getOrderID();
     void setTime(int);
     virtual void processEvent();
 };

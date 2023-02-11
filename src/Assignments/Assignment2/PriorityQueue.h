@@ -14,7 +14,7 @@ public:
     PriorityQueue();
 
     // Instance methods
-    void enqueue(Event *, int);
+    void enqueue(Event *, int, int);
     Node *dequeue();
     Node *peek();
     Event *remove(Event *);
