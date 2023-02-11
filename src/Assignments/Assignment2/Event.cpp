@@ -12,7 +12,7 @@ using namespace std;
 // Initialize Class variables
 int Event::ID = 0;
 int Event::numWorkDays = 0;
-int Event::numFreeWorkers = 2;
+int Event::numFreeWorkers = 1;
 PriorityQueue *Event::eventQueue = new PriorityQueue();
 PriorityQueue *Event::pendingOrders = new PriorityQueue();
 
@@ -46,7 +46,7 @@ void Event::addToPending(Event *newEvent)
     Event::pendingOrders->addToLine(newEvent, newEvent->currTime, newEvent->orderID);
 }
 
-Event *Event::getNextEvent()
+Event *Event::getNextOrder()
 {
     return Event::eventQueue->dequeue()->getEvent();
 }

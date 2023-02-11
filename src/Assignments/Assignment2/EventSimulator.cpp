@@ -41,7 +41,7 @@ void EventSimulator::startSimulation()
 		// Process the events in the Event Queue
 		while (!(Event::queueIsEmpty()))
 		{
-			Event *nextEvent = Event::getNextEvent();
+			Event *nextEvent = Event::getNextOrder();
 
 			nextEvent->processEvent();
 		}

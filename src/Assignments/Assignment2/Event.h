@@ -34,7 +34,7 @@ public:
     static bool lineIsEmpty();
     static bool queueIsEmpty();
     static int getNumWorkDays();
-    static Event *getNextEvent();
+    static Event *getNextOrder();
     static Event *getNextPending();
     static int getNumFreeWorkers();
     static void addToQueue(Event *);
