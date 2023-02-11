@@ -4,28 +4,36 @@
 using namespace std;
 
 #include "Event.h"
+#include "ArrivalEvent.h"
 #include "PriorityQueue.h"
+#include "EventSimulator.h"
 #include "Node.h"
 
 // Initialize Class variables
 int Event::ID = 0;
+int Event::numWorkers = 0;
 int Event::numWorkDays = 0;
-int Event::numFreeWorkers = 0; // Put the approprite number here
+int Event::numFreeWorkers = 1;
 PriorityQueue *Event::eventQueue = new PriorityQueue();
 PriorityQueue *Event::pendingOrders = new PriorityQueue();
 
 // Constructors
 Event::Event() {}
-Event::Event(Event *thisEvent, int newTime) : Event(newTime, thisEvent->customerType, thisEvent->orderValue) {}
-
-Event::Event(int time, string customerType, int orderValue) : time(time), customerType(customerType),
-                                                              orderValue(orderValue), orderID(Event::ID++)
+Event::Event(Event *thisEvent, int newTime) : time(newTime), customerType(thisEvent->customerType),
+                                              orderValue(thisEvent->orderValue), orderID(thisEvent->orderID)
 {
-    // Calculate the number of work days
-    Event::numWorkDays = ceil(time / 8.0f);
+    // Update the number of work days so far
+    Event::calcNumWorkDays(newTime);
+}
 
-    //  The 'max' function might not be needed since the list is ordered by time
-    //  Event::numWorkDays = max(Event::numWorkDays, ceil(time / 8.0f));
+Event::Event(int time, string customerType, int orderValue, int numWorkers) : time(time), customerType(customerType),
+                                                                              orderValue(orderValue), orderID(++Event::ID)
+{
+    // Set the number of workers
+    Event::numWorkers = numWorkers;
+
+    // Update the number of work days so far
+    Event::calcNumWorkDays(time);
 }
 
 // Class methods
@@ -59,11 +67,31 @@ bool Event::lineIsEmpty()
     return Event::pendingOrders->isEmpty();
 }
 
+float Event::calcCostOfBusiness()
+{
+    // Calculate the cost of additional workers
+    float empWage = 13.50;
+    int numStdHrs = 8;
+    return (Event::getNumWorkDays() * numStdHrs * empWage * Event::numWorkers) +
+           (Event::getNumWorkDays() * Event::numWorkers);
+}
+
+float Event::calcFinalProfit()
+{
+    return ArrivalEvent::getInitialProfit() - Event::calcCostOfBusiness();
+}
+
+void Event::calcNumWorkDays(int currTime)
+{
+    // Calculate the number of work days
+    Event::numWorkDays = ceil(currTime / 8.0f);
+}
+
 // Instance methods
 void Event::processEvent()
 {
     // Print out the details common to all the events
-    cout << "TIME: " << time << " -> Order " << orderID << "(" + customerType + ", $" << orderValue << ")";
+    cout << "TIME: " << time << " -> Order " << orderID << " (" + customerType + ", $" << orderValue << ") ";
 }
 
 int Event::getTime()

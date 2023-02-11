@@ -15,11 +15,10 @@ private:
 public:
     // Constructors
     ArrivalEvent();
-    ArrivalEvent(Event *);
-    ArrivalEvent(int, string, int);
+    ArrivalEvent(int, string, int, int);
 
     // Class methods
-    static float getinitialProfit();
+    static float getInitialProfit();
     static void updateProfit(float);
 
     // Instance methods

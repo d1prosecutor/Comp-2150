@@ -15,14 +15,11 @@ float ArrivalEvent::initialProfit = 0.0f;
 // Constructors
 ArrivalEvent::ArrivalEvent() {}
 
-ArrivalEvent::ArrivalEvent(Event *thisEvent) : ArrivalEvent(thisEvent->getTime(),
-                                                            thisEvent->getCustomerType(), thisEvent->getOrderValue())
+ArrivalEvent::ArrivalEvent(int time, string customerType, int orderValue, int numWorkers)
+    : Event(time, customerType, orderValue, numWorkers)
 {
     initialProfit *= orderValue / 2.0f;
 }
-
-ArrivalEvent::ArrivalEvent(int time, string customerType, int orderValue)
-    : Event(time, customerType, orderValue) {}
 
 // Instance methods
 void ArrivalEvent::processEvent()
@@ -56,7 +53,7 @@ void ArrivalEvent::processEvent()
     }
 }
 
-float ArrivalEvent::getinitialProfit()
+float ArrivalEvent::getInitialProfit()
 {
     return ArrivalEvent::initialProfit;
 }

@@ -37,7 +37,8 @@ Node *PriorityQueue::dequeue()
     // dequeue the event from the queue
     front = front->getNext();
 
-    // Free the memory allocated
+    // Free the memory allocated here
+    //
     return tempFront;
 
     //

@@ -10,7 +10,7 @@ private:
 public:
     // Constructors
     ShippingEvent();
-    ShippingEvent(Event *, int);
+    ShippingEvent(Event *, int, int);
 
     // instance methods
     float calcDiscount(int);

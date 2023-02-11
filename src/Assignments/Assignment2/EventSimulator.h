@@ -19,10 +19,9 @@ public:
     EventSimulator(string, int);
 
     // Instance methods
+    static int getNumEmp();
     static void printStats();
     static int hasNextLine();
     static void readNextLine();
     static void startSimulation();
-    static float calcFinalProfit();
-    static float calcCostOfBusiness();
 };

@@ -8,7 +8,8 @@ using namespace std;
 
 // Constructors
 ShippingEvent::ShippingEvent() {}
-ShippingEvent::ShippingEvent(Event *newShipping, int newtime) : Event(newShipping, newtime), arrivalTime(newShipping->getTime()) {}
+ShippingEvent::ShippingEvent(Event *newShipping, int newtime, int arrivalTime) : Event(newShipping, newtime),
+                                                                                 arrivalTime(arrivalTime) {}
 
 // Instance methods
 void ShippingEvent::processEvent()

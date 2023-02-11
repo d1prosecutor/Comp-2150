@@ -6,9 +6,11 @@ using namespace std;
 #include "Event.h"
 #include "ArrivalEvent.h"
 
+#include "PrepareEvent.h"
+
 // Initializing Class Variables
-int EventSimulator::numAddEmp;
-string EventSimulator::filename;
+int EventSimulator::numAddEmp = 0;
+string EventSimulator::filename = "";
 ifstream EventSimulator::inputFile;
 
 // Constructors
@@ -30,7 +32,7 @@ void EventSimulator::startSimulation()
 	//
 	inputFile.open(filename); // opening the file for reading
 
-	cout << "The first line of the file is: " << endl;
+	// cout << "The first line of the file is: " << endl;
 
 	if (hasNextLine() != EOF) // gets the next line from the file and saves it in 'line', if there is one
 	{
@@ -40,6 +42,9 @@ void EventSimulator::startSimulation()
 		while (!(Event::queueIsEmpty()))
 		{
 			Event *nextEvent = Event::getNextEvent();
+			// PrepareEvent *temp = dynamic_cast<PrepareEvent *>(nextEvent);
+			// if (temp != NULL)
+			// 	cout << "WORKS!!!";
 			nextEvent->processEvent();
 		}
 	}
@@ -69,10 +74,10 @@ void EventSimulator::readNextLine()
 		sst >> value;		 // extracting the order value
 
 		// To show that we parsed all the relevant information:
-		cout << "time=" << time << " customerType=" << customerType << " value=" << value << endl;
+		// cout << "time=" << time << " customerType=" << customerType << " value=" << value << endl;
 
 		// Put the first line into the event queue
-		Event *firstArrival = new ArrivalEvent(time, customerType, value);
+		Event *firstArrival = new ArrivalEvent(time, customerType, value, numAddEmp);
 		Event::addToQueue(firstArrival);
 	}
 }
@@ -85,22 +90,14 @@ void EventSimulator::printStats()
 	cout << "The simulation has ended." << endl;
 	cout << "The number of additional workers was " << numAddEmp << "." << endl;
 	cout << "The total number of work days was " << Event::getNumWorkDays() << "." << endl;
-	cout << "The cost of additional workers was " << calcCostOfBusiness() << "." << endl;
-	cout << "The total profit before paying workers was " << ArrivalEvent::getinitialProfit() << "." << endl;
-	cout << "The total profit when considering additional workers was " << calcFinalProfit() << "." << endl;
+	cout << "The cost of additional workers was " << Event::calcCostOfBusiness() << "." << endl;
+	cout << "The total profit before paying workers was " << ArrivalEvent::getInitialProfit() << "." << endl;
+	cout << "The total profit when considering additional workers was " << Event::calcFinalProfit() << "." << endl;
 	cout << "################################" << endl;
 	cout << endl;
 }
 
-float EventSimulator::calcCostOfBusiness()
+int EventSimulator::getNumEmp()
 {
-	// Calculate the cost of additional workers
-	float empWage = 13.50;
-	int numStdHrs = 8;
-	return (Event::getNumWorkDays() * numStdHrs * empWage * numAddEmp) + (Event::getNumWorkDays() * numAddEmp);
-}
-
-float EventSimulator::calcFinalProfit()
-{
-	return ArrivalEvent::getinitialProfit() - calcCostOfBusiness();
+	return EventSimulator::numAddEmp;
 }

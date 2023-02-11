@@ -13,9 +13,11 @@ private:
 
 protected:
     // Class Variables
+    static int numWorkers;
     static int numFreeWorkers;
     static PriorityQueue *eventQueue;
     static PriorityQueue *pendingOrders;
+
     // Instance Variables
     int time;
     string customerType;
@@ -26,7 +28,7 @@ public:
     // Constructors
     Event();
     Event(Event *, int);
-    Event(int, string, int);
+    Event(int, string, int, int);
 
     // Class methods
     static void addToQueue(Event *);
@@ -37,6 +39,9 @@ public:
     static bool queueIsEmpty();
     static bool lineIsEmpty();
     static int getNumWorkDays();
+    static float calcFinalProfit();
+    static float calcCostOfBusiness();
+    static void calcNumWorkDays(int);
 
     // Instance methods
     int getTime();
