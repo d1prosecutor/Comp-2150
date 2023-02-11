@@ -19,32 +19,32 @@ PriorityQueue *Event::pendingOrders = new PriorityQueue();
 
 // Constructors
 Event::Event() {}
-Event::Event(Event *thisEvent, int newTime) : time(newTime), customerType(thisEvent->customerType),
-                                              orderValue(thisEvent->orderValue), orderID(thisEvent->orderID)
+Event::Event(Event *thisEvent, int newTime, int arrivalTime) : currTime(newTime), customerType(thisEvent->customerType),
+                                                               orderValue(thisEvent->orderValue), arrivalTime(arrivalTime),
+                                                               orderID(thisEvent->orderID)
 {
     // Update the number of work days so far
     Event::calcNumWorkDays(newTime);
 }
 
-Event::Event(int time, string customerType, int orderValue, int numWorkers) : time(time), customerType(customerType),
-                                                                              orderValue(orderValue), orderID(++Event::ID)
+Event::Event(int currTime, string customerType, int orderValue, int arrivalTime) : currTime(currTime), customerType(customerType),
+                                                                                   orderValue(orderValue), arrivalTime(arrivalTime),
+                                                                                   orderID(++Event::ID)
 {
-    // Set the number of workers
-    Event::numWorkers = numWorkers;
 
     // Update the number of work days so far
-    Event::calcNumWorkDays(time);
+    Event::calcNumWorkDays(currTime);
 }
 
 // Class methods
 void Event::addToQueue(Event *newEvent)
 {
-    Event::eventQueue->enqueue(newEvent, newEvent->time, newEvent->orderID);
+    Event::eventQueue->enqueue(newEvent, newEvent->currTime, newEvent->orderID);
 }
 
 void Event::addToPending(Event *newEvent)
 {
-    Event::pendingOrders->enqueue(newEvent, newEvent->time, newEvent->orderID);
+    Event::pendingOrders->enqueue(newEvent, newEvent->currTime, newEvent->orderID);
 }
 
 Event *Event::getNextEvent()
@@ -94,9 +94,14 @@ void Event::processEvent()
     cout << "TIME: " << time << " -> Order " << orderID << " (" + customerType + ", $" << orderValue << ") ";
 }
 
-int Event::getTime()
+int Event::getCurrTime()
 {
-    return time;
+    return currTime;
+}
+
+int Event::getArrivalTime()
+{
+    return arrivalTime;
 }
 
 string Event::getCustomerType()
@@ -122,9 +127,4 @@ int Event::getNumFreeWorkers()
 int Event::getNumWorkDays()
 {
     return Event::numWorkDays;
-}
-
-void Event::setTime(int newTime)
-{
-    time = newTime;
 }

@@ -7,13 +7,13 @@ using namespace std;
 
 // Constructors
 PrepareEvent::PrepareEvent() {}
-PrepareEvent::PrepareEvent(Event *currEvent, int currentTime) : Event(currEvent, currentTime) {}
+PrepareEvent::PrepareEvent(Event *currEvent, int currentTime, int arrivalTime) : Event(currEvent, currentTime, arrivalTime) {}
 
 // Instance methods
 void PrepareEvent::processEvent()
 {
     // Call the superclass 'processEvent' method to print the details common to all events
-    this->Event::processEvent();
+    Event::processEvent();
 
     processTime = calcProcessTime(getOrderValue());
 
@@ -24,9 +24,9 @@ void PrepareEvent::processEvent()
     // Assign a worker to the event being prepared.
     Event::numFreeWorkers--;
 
-    int shippingTime = time + processTime;
+    int shippingTime = currTime + processTime;
 
-    Event *newShippingOrder = new ShippingEvent(this, shippingTime, time);
+    Event *newShippingOrder = new ShippingEvent(this, shippingTime, arrivalTime);
 
     Event::addToQueue(newShippingOrder);
 }

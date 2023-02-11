@@ -72,7 +72,7 @@ void EventSimulator::readNextLine()
 		sst >> value;		 // extracting the order value
 
 		// Put the first line into the event queue
-		Event *firstArrival = new ArrivalEvent(time, customerType, value, numAddEmp);
+		Event *firstArrival = new ArrivalEvent(time, customerType, value, time);
 		Event::addToQueue(firstArrival);
 	}
 }

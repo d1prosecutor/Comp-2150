@@ -19,15 +19,16 @@ protected:
     static PriorityQueue *pendingOrders;
 
     // Instance Variables
-    int time;
-    string customerType;
-    int orderValue;
     int orderID;
+    int currTime;
+    int orderValue;
+    int arrivalTime;
+    string customerType;
 
 public:
     // Constructors
     Event();
-    Event(Event *, int);
+    Event(Event *, int, int);
     Event(int, string, int, int);
 
     // Class methods
@@ -44,10 +45,10 @@ public:
     static void calcNumWorkDays(int);
 
     // Instance methods
-    int getTime();
+    int getCurrTime();
+    int getArrivalTime();
     string getCustomerType();
     int getOrderValue();
     int getOrderID();
-    void setTime(int);
     virtual void processEvent();
 };

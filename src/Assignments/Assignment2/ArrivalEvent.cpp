@@ -15,8 +15,8 @@ float ArrivalEvent::initialProfit = 0.0f;
 // Constructors
 ArrivalEvent::ArrivalEvent() {}
 
-ArrivalEvent::ArrivalEvent(int time, string customerType, int orderValue, int numWorkers)
-    : Event(time, customerType, orderValue, numWorkers)
+ArrivalEvent::ArrivalEvent(int time, string customerType, int orderValue, int arrivalTime)
+    : Event(time, customerType, orderValue, arrivalTime)
 {
     initialProfit += (orderValue / 2.0f);
 }
@@ -28,10 +28,10 @@ void ArrivalEvent::processEvent()
     Event::addToPending(this);
 
     // This check might cause problems, check if you'll remove it
-    if (getOrderValue() > 0)
+    if (orderValue > 0)
     {
         // Call the superclass 'processEvent' method to print the details common to all events
-        this->Event::processEvent();
+        Event::processEvent();
 
         // Print the detail specific to just arrival events
         cout << "arrives." << endl;
@@ -40,7 +40,7 @@ void ArrivalEvent::processEvent()
         if (Event::getNumFreeWorkers() > 0)
         {
             // Get the next order in the pending orders list and start processing it
-            Event *processNode = new PrepareEvent(Event::getNextPending(), Event::getTime());
+            Event *processNode = new PrepareEvent(Event::getNextPending(), currTime, arrivalTime);
 
             // Insert the order in the pending events queue
             Event::addToQueue(processNode);

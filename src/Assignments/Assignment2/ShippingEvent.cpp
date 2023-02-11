@@ -8,22 +8,22 @@ using namespace std;
 
 // Constructors
 ShippingEvent::ShippingEvent() {}
-ShippingEvent::ShippingEvent(Event *newShipping, int newtime, int arrivalTime) : Event(newShipping, newtime),
-                                                                                 arrivalTime(arrivalTime) {}
+ShippingEvent::ShippingEvent(Event *newShipping, int newtime, int arrivalTime) : Event(newShipping, newtime, arrivalTime) {}
 
 // Instance methods
 void ShippingEvent::processEvent()
 {
     // Call the superclass 'processEvent' method to print the details common to all events
-    this->Event::processEvent();
+    Event::processEvent();
 
     // Print the detail specific to just events to be shipped
-    cout << "has been shipped. ";
+    cout << "has been shipped. "
+         << "arrival time is: " << arrivalTime;
 
     float discount = 0;
-    if (getCustomerType() == "primero")
+    if (customerType == "primero")
     {
-        if (getTime() - arrivalTime > 7)
+        if (currTime - arrivalTime > 7)
         {
             // Calculate discount here
             discount = calcDiscount(getOrderValue());
@@ -35,9 +35,9 @@ void ShippingEvent::processEvent()
             cout << "*** Penalty paid: $" << discount << ".";
         }
     }
-    else if (getCustomerType() == "standard")
+    else if (customerType == "standard")
     {
-        if (getTime() - arrivalTime > 23)
+        if (currTime - arrivalTime > 23)
         {
             // Calculate discount here
             discount = calcDiscount(getOrderValue());
@@ -58,7 +58,7 @@ void ShippingEvent::processEvent()
     if (!Event::lineIsEmpty())
     {
         // Attend to the order at the front of the waiting line
-        Event *nextEvent = new PrepareEvent(Event::getNextPending(), this->Event::getTime());
+        Event *nextEvent = new PrepareEvent(Event::getNextPending(), currTime, arrivalTime);
 
         // Add this new order to the list of pending orders
         Event::addToQueue(nextEvent);
