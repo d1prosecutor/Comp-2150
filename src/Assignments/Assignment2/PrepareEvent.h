@@ -1,6 +1,7 @@
 #pragma once
 #include "Event.h"
 class Event;
+using namespace std;
 
 class PrepareEvent : public Event
 {

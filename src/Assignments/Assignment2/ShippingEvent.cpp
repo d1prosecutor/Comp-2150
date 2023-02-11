@@ -1,3 +1,4 @@
+#include "ArrivalEvent.h"
 #include "ShippingEvent.h"
 #include "PrepareEvent.h"
 #include "Node.h"
@@ -26,6 +27,9 @@ void ShippingEvent::processEvent()
             // Calculate discount here
             discount = calcDiscount(getOrderValue());
 
+            // Update the profit of the profit to reflect this discount
+            ArrivalEvent::updateProfit(-discount);
+
             // print out the penalty
             cout << "*** Penalty paid: $" << discount << ".";
         }
@@ -36,6 +40,9 @@ void ShippingEvent::processEvent()
         {
             // Calculate discount here
             discount = calcDiscount(getOrderValue());
+
+            // Update the profit of the profit to reflect this discount
+            ArrivalEvent::updateProfit(-discount);
 
             // print out the penalty
             cout << "*** Penalty paid: $" << discount << ".";
@@ -59,5 +66,5 @@ void ShippingEvent::processEvent()
 
 float ShippingEvent::calcDiscount(int orderValue)
 {
-    return (15 / 100.0) * (float)orderValue;
+    return (15 / 100.0f) * (float)orderValue;
 }

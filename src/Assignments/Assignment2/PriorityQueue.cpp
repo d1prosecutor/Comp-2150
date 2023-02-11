@@ -61,14 +61,10 @@ Event *PriorityQueue::remove(Event *thisEvent)
         curr = curr->getNext();
     }
 
-    Event *removedEvent;
+    Event *removedEvent = nullptr;
 
     // Get the event to remove from the queue
-    if (curr != nullptr)
-    {
-        // Should never be null
-        removedEvent = curr->getEvent();
-    }
+    removedEvent = curr->getEvent();
 
     if (prev == nullptr)
     {

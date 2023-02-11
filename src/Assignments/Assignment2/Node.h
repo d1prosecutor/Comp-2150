@@ -1,10 +1,8 @@
 #pragma once
-
 class Event;
 
 class Node
 {
-
 private:
     Event *thisEvent;
     Node *nextEvent;

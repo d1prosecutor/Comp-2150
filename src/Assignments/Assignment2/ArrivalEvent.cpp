@@ -1,16 +1,26 @@
-#include "ArrivalEvent.h"
-#include "PriorityQueue.h"
-#include "PrepareEvent.h"
-#include "Node.h"
+#include <sstream> //necessary for using stringstream
+#include <fstream> //necessary to use ifstream (to open a file)
 #include <iostream>
 
+#include "Node.h"
+#include "ArrivalEvent.h"
+#include "PrepareEvent.h"
+#include "PriorityQueue.h"
+#include "EventSimulator.h"
+
 using namespace std;
+
+// Initialize Class variables
+float ArrivalEvent::initialProfit = 0.0f;
 
 // Constructors
 ArrivalEvent::ArrivalEvent() {}
 
 ArrivalEvent::ArrivalEvent(Event *thisEvent) : ArrivalEvent(thisEvent->getTime(),
-                                                            thisEvent->getCustomerType(), thisEvent->getOrderValue()) {}
+                                                            thisEvent->getCustomerType(), thisEvent->getOrderValue())
+{
+    initialProfit *= orderValue / 2.0f;
+}
 
 ArrivalEvent::ArrivalEvent(int time, string customerType, int orderValue)
     : Event(time, customerType, orderValue) {}
@@ -42,10 +52,17 @@ void ArrivalEvent::processEvent()
 
         if (not EOF)
         {
-            /*
-            this is where the continuous file reading will be done
-            */
-            // Read next arrival and add it to the eventQueue
+          EventSimulator temp;
         }
     }
+}
+
+float ArrivalEvent::getinitialProfit()
+{
+    return ArrivalEvent::initialProfit;
+}
+
+void ArrivalEvent::updateProfit(float plusOrMinus)
+{
+    ArrivalEvent::initialProfit += plusOrMinus;
 }

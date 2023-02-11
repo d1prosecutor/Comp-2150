@@ -2,8 +2,6 @@
 
 class Event;
 
-using namespace std;
-
 // Constructors
 Node::Node() {}
 

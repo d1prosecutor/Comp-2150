@@ -1,12 +1,15 @@
 #pragma once
 
 #include <string>
+using namespace std;
+
 class PriorityQueue;
 
 class Event
 {
 private:
     static int ID;
+    static int numWorkDays;
 
 protected:
     // Class Variables
@@ -22,17 +25,18 @@ protected:
 public:
     // Constructors
     Event();
-    Event::Event(Event *, int);
+    Event(Event *, int);
     Event(int, string, int);
 
     // Class methods
-    static void *addToQueue(Event *);
-    static void *addToPending(Event *);
+    static void addToQueue(Event *);
+    static void addToPending(Event *);
     static int getNumFreeWorkers();
     static Event *getNextPending();
     static Event *getNextEvent();
     static bool queueIsEmpty();
     static bool lineIsEmpty();
+    static int getNumWorkDays();
 
     // Instance methods
     int getTime();
