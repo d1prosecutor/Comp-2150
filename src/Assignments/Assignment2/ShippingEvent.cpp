@@ -12,6 +12,9 @@ using namespace std;
 ShippingEvent::ShippingEvent() {}
 ShippingEvent::ShippingEvent(Event *newShipping, int newtime, int arrivalTime) : Event(newShipping, newtime, arrivalTime) {}
 
+// Destructor
+ShippingEvent::~ShippingEvent() {}
+
 // Instance methods
 void ShippingEvent::processEvent()
 {

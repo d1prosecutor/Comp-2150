@@ -10,6 +10,9 @@ using namespace std;
 PrepareEvent::PrepareEvent() {}
 PrepareEvent::PrepareEvent(Event *currEvent, int currentTime, int arrivalTime) : Event(currEvent, currentTime, arrivalTime) {}
 
+// Destructor
+PrepareEvent::~PrepareEvent() {}
+
 // Instance methods
 void PrepareEvent::processEvent()
 {

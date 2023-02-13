@@ -21,6 +21,9 @@ ArrivalEvent::ArrivalEvent(int time, string customerType, int orderValue, int ar
     initialProfit += (orderValue / 2.0f);
 }
 
+// Destructor
+ArrivalEvent::~ArrivalEvent() {}
+
 // Instance methods
 void ArrivalEvent::processEvent()
 {

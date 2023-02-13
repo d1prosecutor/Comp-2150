@@ -10,6 +10,7 @@ public:
     ShippingEvent(Event *, int, int);
 
     // instance methods
+    ~ShippingEvent();
     float calcDiscount(int);
     void printPrimeroDiscount();
     void printStandardDiscount();

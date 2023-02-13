@@ -11,6 +11,7 @@ public:
     PrepareEvent(Event *, int, int);
 
     // Instance methods
+    ~PrepareEvent();
     int calcProcessTime(int);
     void processEvent() override;
 };

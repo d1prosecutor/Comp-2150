@@ -21,5 +21,6 @@ public:
     static float getInitialProfit();
 
     // Instance methods
+    ~ArrivalEvent();
     void processEvent() override;
 };

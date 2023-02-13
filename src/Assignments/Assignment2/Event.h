@@ -43,6 +43,7 @@ public:
     static float calcCostOfBusiness(int);
 
     // Instance methods
+    virtual ~Event() = 0;
     virtual int getOrderID();
     virtual int getCurrTime();
     virtual int getOrderValue();
