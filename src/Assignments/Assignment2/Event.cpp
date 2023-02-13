@@ -29,10 +29,12 @@ Event::Event(int currTime, string customerType, int orderValue, int arrivalTime)
                                                                                    orderValue(orderValue), arrivalTime(arrivalTime),
                                                                                    orderID(++Event::ID)
 {
-
     // Update the number of work days so far
     Event::calcNumWorkDays(currTime);
 }
+
+// Destructor
+Event::~Event() {}
 
 // Class methods
 void Event::addToQueue(Event *newEvent)
