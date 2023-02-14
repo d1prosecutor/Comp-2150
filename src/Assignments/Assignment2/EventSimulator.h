@@ -19,7 +19,7 @@ public:
     EventSimulator();
     EventSimulator(string, int);
 
-    // Instance methods
+    // Class Methods
     static int getNumEmp();
     static int getFreeEmp();
     static void printStats();
@@ -27,5 +27,7 @@ public:
     static void incrFreeEmp();
     static void decrFreeEmp();
     static void readNextLine();
-    static void startSimulation();
+
+    // Instance methods
+    void startSimulation();
 };

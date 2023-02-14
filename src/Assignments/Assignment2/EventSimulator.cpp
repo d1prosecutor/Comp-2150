@@ -8,12 +8,6 @@ using namespace std;
 #include "ArrivalEvent.h"
 #include "PrepareEvent.h"
 
-// Initializing Class Variables
-int EventSimulator::numAddEmp = 0;
-int EventSimulator::numFreeEmp = 0;
-string EventSimulator::filename = "";
-ifstream EventSimulator::inputFile;
-
 // Constructors
 EventSimulator::EventSimulator() {}
 EventSimulator::EventSimulator(string filename, int numAddEmp)

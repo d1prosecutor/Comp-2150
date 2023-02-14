@@ -6,7 +6,6 @@ using namespace std;
 #include "Event.h"
 #include "ArrivalEvent.h"
 #include "PriorityQueue.h"
-#include "EventSimulator.h"
 #include "Node.h"
 
 // Initialize Class variables
@@ -33,7 +32,7 @@ Event::Event(int currTime, string customerType, int orderValue, int arrivalTime)
     Event::calcNumWorkDays(currTime);
 }
 
-// Destructor   
+// Destructor
 Event::~Event() {}
 
 // Class methods

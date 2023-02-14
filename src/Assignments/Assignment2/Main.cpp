@@ -16,9 +16,10 @@ int main(int argc, char *argv[])
     int numAddEmp = stoi(argv[2]);
 
     // Create a new Simulation and start the simulation
-    EventSimulator *newSimulation = new EventSimulator(filename, numAddEmp);
+    // EventSimulator *newSimulation = new EventSimulator(filename, numAddEmp);
+    EventSimulator newSimulation (filename, numAddEmp);
 
-    newSimulation->startSimulation();
+    newSimulation.startSimulation();
 
     cout << endl
          << "End of Program" << endl;

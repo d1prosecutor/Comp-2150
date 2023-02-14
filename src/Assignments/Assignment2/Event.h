@@ -35,7 +35,6 @@ public:
     static int getNumWorkDays();
     static Event *getNextOrder();
     static Event *getNextPending();
-    static int getNumFreeWorkers();
     static void addToQueue(Event *);
     static void calcNumWorkDays(int);
     static void addToPending(Event *);
