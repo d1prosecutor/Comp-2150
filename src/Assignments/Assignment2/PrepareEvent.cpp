@@ -6,6 +6,9 @@ using namespace std;
 #include "ShippingEvent.h"
 #include "EventSimulator.h"
 
+// Initializing class variables
+int PrepareEvent::pricePerHour = 200;
+
 // Constructors
 PrepareEvent::PrepareEvent() {}
 PrepareEvent::PrepareEvent(Event *currEvent, int currentTime, int arrivalTime) : Event(currEvent, currentTime, arrivalTime) {}
@@ -38,5 +41,5 @@ void PrepareEvent::processEvent()
 
 int PrepareEvent::calcProcessTime(int orderValue)
 {
-    return (orderValue + 200) / 200;
+    return (orderValue + PrepareEvent::pricePerHour) / PrepareEvent::pricePerHour;
 }

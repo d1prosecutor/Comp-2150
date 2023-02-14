@@ -8,6 +8,10 @@ using namespace std;
 #include "PrepareEvent.h"
 #include "EventSimulator.h"
 
+// Initializing Class Variables
+float ShippingEvent::discount = 15 / 100.0f;
+int ShippingEvent::primeroLateShip = 8;
+int ShippingEvent::standardLateShip = 24;
 // Constructors
 ShippingEvent::ShippingEvent() {}
 ShippingEvent::ShippingEvent(Event *newShipping, int newtime, int arrivalTime) : Event(newShipping, newtime, arrivalTime) {}
@@ -53,12 +57,12 @@ void ShippingEvent::processEvent()
 
 float ShippingEvent::calcDiscount(int orderValue)
 {
-    return (15 / 100.0f) * (float)orderValue;
+    return (ShippingEvent::discount) * (float)orderValue;
 }
 
 void ShippingEvent::printPrimeroDiscount()
 {
-    if (currTime - arrivalTime > 7)
+    if (currTime - arrivalTime >= ShippingEvent::primeroLateShip)
     {
         // Calculate discount here
         float discount = calcDiscount(getOrderValue());
@@ -73,7 +77,7 @@ void ShippingEvent::printPrimeroDiscount()
 
 void ShippingEvent::printStandardDiscount()
 {
-    if (currTime - arrivalTime > 23)
+    if (currTime - arrivalTime >= ShippingEvent::standardLateShip)
     {
         // Calculate discount here
         float discount = calcDiscount(getOrderValue());

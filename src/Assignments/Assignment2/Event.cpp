@@ -33,7 +33,7 @@ Event::Event(int currTime, string customerType, int orderValue, int arrivalTime)
     Event::calcNumWorkDays(currTime);
 }
 
-// Destructor
+// Destructor   
 Event::~Event() {}
 
 // Class methods

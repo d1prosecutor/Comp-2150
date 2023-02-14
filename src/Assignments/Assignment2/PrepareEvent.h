@@ -5,6 +5,9 @@ class Event;
 
 class PrepareEvent : public Event
 {
+private:
+    static int pricePerHour;
+
 public:
     // Constructors
     PrepareEvent();
