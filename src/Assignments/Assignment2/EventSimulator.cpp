@@ -18,6 +18,9 @@ EventSimulator::EventSimulator(string filename, int numAddEmp) : numAddEmp(numAd
 	cout << "The number of additional employees is: " << numAddEmp << endl;
 }
 
+// Destructor
+EventSimulator::~EventSimulator() {}
+
 // Instance methods
 void EventSimulator::startSimulation()
 {

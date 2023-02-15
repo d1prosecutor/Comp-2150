@@ -13,7 +13,7 @@ class EventSimulator
 {
 private:
     // Instance Variables
-    int empWage;
+    float empWage;
     int numAddEmp;
     int numFreeEmp;
     int numStdHrs;
@@ -27,6 +27,9 @@ public:
     // Constructors
     EventSimulator();
     EventSimulator(string, int);
+
+    //Destructor
+    ~EventSimulator();
 
     // Instance methods
     int getNumEmp();

@@ -21,12 +21,14 @@ public:
     Event(Event *, int);
     Event(Order *);
 
+    // Destructor
+    virtual ~Event() = 0;
+
     // Class methods
     static int getNumWorkDays();
     static void calcNumWorkDays(int);
 
     // Instance methods
-    virtual ~Event() = 0;
     const int getArrTime();
     const int getOrderID();
     const int getCurrTime();

@@ -13,6 +13,9 @@ public:
     Node();
     Node(Event *, Node *);
 
+    //Destructor
+    ~Node();
+
     // Instance methods
     Node *getNext();
     Event *getEvent();
