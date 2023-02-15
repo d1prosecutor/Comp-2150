@@ -14,6 +14,9 @@ Event::Event() {}
 
 Event::Event(Event *thisEvent, int newTime)
 {
+    // Initialize the order instance variable with the same order contained in the event passed in
+    thisOrder = thisEvent->thisOrder;
+
     // Update the current Time of the current event
     thisEvent->thisOrder->setCurrTime(newTime);
 

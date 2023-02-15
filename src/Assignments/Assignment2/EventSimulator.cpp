@@ -10,10 +10,13 @@ using namespace std;
 
 // Constructors
 EventSimulator::EventSimulator() {}
-EventSimulator::EventSimulator(string filename, int numAddEmp) : numAddEmp(numAddEmp),
-																 numFreeEmp(numAddEmp + 1), filename(filename),
-																 empWage(13.5), numStdHrs(8)
+EventSimulator::EventSimulator(string filename, int numAddEmp) : filename(filename), empWage(13.5), numAddEmp(numAddEmp),
+																 numFreeEmp(numAddEmp + 1), numStdHrs(8), initialProfit(0.0f)
+
 {
+	eventQueue = new PriorityQueue();
+	pendingOrders = new PriorityQueue();
+
 	cout << "The filename is: " << filename << endl;
 	cout << "The number of additional employees is: " << numAddEmp << endl;
 }

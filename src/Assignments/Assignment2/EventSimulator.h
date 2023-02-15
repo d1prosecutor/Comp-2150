@@ -13,22 +13,22 @@ class EventSimulator
 {
 private:
     // Instance Variables
+    string filename;
     float empWage;
     int numAddEmp;
     int numFreeEmp;
     int numStdHrs;
-    string filename;
     ifstream inputFile;
+    float initialProfit;
     PriorityQueue *eventQueue;
     PriorityQueue *pendingOrders;
-    float initialProfit;
 
 public:
     // Constructors
     EventSimulator();
     EventSimulator(string, int);
 
-    //Destructor
+    // Destructor
     ~EventSimulator();
 
     // Instance methods
