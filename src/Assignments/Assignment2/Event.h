@@ -18,8 +18,8 @@ private:
 public:
     // Constructors
     Event();
-    Event(Event *, int);
     Event(Order *);
+    Event(Event *, int);
 
     // Destructor
     virtual ~Event() = 0;

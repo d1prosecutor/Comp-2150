@@ -12,6 +12,12 @@ int Event::numWorkDays = 0;
 // Constructors
 Event::Event() {}
 
+Event::Event(Order *newOrder) : thisOrder(newOrder)
+{
+    // Update the number of work days so far
+    Event::calcNumWorkDays(newOrder->getCurrTime());
+}
+
 Event::Event(Event *thisEvent, int newTime)
 {
     // Initialize the order instance variable with the same order contained in the event passed in
@@ -22,12 +28,6 @@ Event::Event(Event *thisEvent, int newTime)
 
     // Update the number of work days so far
     Event::calcNumWorkDays(newTime);
-}
-
-Event::Event(Order *newOrder) : thisOrder(newOrder)
-{
-    // Update the number of work days so far
-    Event::calcNumWorkDays(newOrder->getCurrTime());
 }
 
 // Destructor
