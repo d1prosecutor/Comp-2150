@@ -20,7 +20,6 @@ int main(int argc, char *argv[])
     // newSimulation->startSimulation();
 
     EventSimulator newSimulation(filename, numAddEmp);
-
     newSimulation.startSimulation();
 
     cout << endl
