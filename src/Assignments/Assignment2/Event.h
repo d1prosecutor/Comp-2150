@@ -3,50 +3,34 @@
 #include <string>
 using namespace std;
 
-class PriorityQueue;
+class Order;
+class EventSimulator;
 
 class Event
 {
 private:
-    static int ID;
+    // Class variables
     static int numWorkDays;
 
-protected:
-    // Class Variables
-    static PriorityQueue *eventQueue;
-    static PriorityQueue *pendingOrders;
-
-    // Instance Variables
-    int currTime;
-    string customerType;
-    int orderValue;
-    int arrivalTime;
-    int orderID;
+    // Instance variables
+    Order *thisOrder;
 
 public:
     // Constructors
     Event();
-    Event(Event *, int, int);
-    Event(int, string, int, int);
+    Event(Event *, int);
+    Event(Order *);
 
     // Class methods
-    static bool lineIsEmpty();
-    static bool queueIsEmpty();
     static int getNumWorkDays();
-    static Event *getNextOrder();
-    static Event *getNextPending();
-    static void addToQueue(Event *);
     static void calcNumWorkDays(int);
-    static void addToPending(Event *);
-    static float calcFinalProfit(int);
-    static float calcCostOfBusiness(int);
 
     // Instance methods
     virtual ~Event() = 0;
-    virtual int getOrderID();
-    virtual int getCurrTime();
-    virtual int getOrderValue();
-    virtual void processEvent();
-    virtual int getArrivalTime();
-    virtual string getCustomerType();
+    const int getArrTime();
+    const int getOrderID();
+    const int getCurrTime();
+    const int getOrderValue();
+    const string getCustomerType();
+    virtual void processEvent(EventSimulator *);
 };

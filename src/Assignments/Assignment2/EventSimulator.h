@@ -6,28 +6,44 @@
 
 using namespace std;
 
+class Event;
+class PriorityQueue;
+
 class EventSimulator
 {
 private:
-    static int numAddEmp;
-    static int numFreeEmp;
-    static string filename;
-    static ifstream inputFile;
+    // Instance Variables
+    int empWage;
+    int numAddEmp;
+    int numFreeEmp;
+    int numStdHrs;
+    string filename;
+    ifstream inputFile;
+    PriorityQueue *eventQueue;
+    PriorityQueue *pendingOrders;
+    float initialProfit;
 
 public:
     // Constructors
     EventSimulator();
     EventSimulator(string, int);
 
-    // Class Methods
-    static int getNumEmp();
-    static int getFreeEmp();
-    static void printStats();
-    static int hasNextLine();
-    static void incrFreeEmp();
-    static void decrFreeEmp();
-    static void readNextLine();
-
     // Instance methods
+    int getNumEmp();
+    int getFreeEmp();
+    void printStats();
+    void incrFreeEmp();
+    void decrFreeEmp();
+    void readNextLine();
     void startSimulation();
+
+    bool lineIsEmpty();
+    bool queueIsEmpty();
+    Event *getNextOrder();
+    Event *getNextPending();
+    void addToQueue(Event *, int, int);
+    void addToPending(Event *, int, int);
+    void updateProfit(float plusOrMinus);
+    float calcFinalProfit(int);
+    float calcCostOfBusiness(int);
 };

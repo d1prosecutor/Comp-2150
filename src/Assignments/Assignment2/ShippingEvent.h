@@ -12,12 +12,13 @@ private:
 public:
     // Constructors
     ShippingEvent();
-    ShippingEvent(Event *, int, int);
+    ShippingEvent(Event *, int);
+
+    // Destructor
+    float calcDiscount(int);
 
     // instance methods
-    ~ShippingEvent();
-    float calcDiscount(int);
-    void printPrimeroDiscount();
-    void printStandardDiscount();
-    void processEvent() override;
+    void printPrimeroDiscount(EventSimulator *);
+    void printStandardDiscount(EventSimulator *);
+    void processEvent(EventSimulator *thisSimulation) override;
 };

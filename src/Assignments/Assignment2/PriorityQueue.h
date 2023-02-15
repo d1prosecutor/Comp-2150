@@ -12,10 +12,12 @@ public:
     // Constructors
     PriorityQueue();
 
+    // Destructor
+    ~PriorityQueue();
+
     // Instance methods
-    Node *peek();
     bool isEmpty();
-    Node *dequeue();
+    Event *dequeue();
     void enqueue(Event *, int, int);
     void addToLine(Event *, int, int);
 };

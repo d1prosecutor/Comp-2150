@@ -11,16 +11,16 @@ int PrepareEvent::pricePerHour = 200;
 
 // Constructors
 PrepareEvent::PrepareEvent() {}
-PrepareEvent::PrepareEvent(Event *currEvent, int currentTime, int arrivalTime) : Event(currEvent, currentTime, arrivalTime) {}
+PrepareEvent::PrepareEvent(Event *currEvent, int currentTime) : Event(currEvent, currentTime) {}
 
 // Destructor
 PrepareEvent::~PrepareEvent() {}
 
 // Instance methods
-void PrepareEvent::processEvent()
+void PrepareEvent::processEvent(EventSimulator *thisSimulation)
 {
     // Call the superclass 'processEvent' method to print the details common to all events
-    Event::processEvent();
+    Event::processEvent(thisSimulation);
 
     int processTime = calcProcessTime(getOrderValue());
 
@@ -29,14 +29,14 @@ void PrepareEvent::processEvent()
          << "(prep. time = " << processTime << ")." << endl;
 
     // Assign a worker to the event being prepared.
-    EventSimulator::decrFreeEmp();
+    thisSimulation->decrFreeEmp();
 
     // Calculate the time it will take to process and create a shipping order
-    int shippingTime = currTime + processTime;
-    Event *newShippingOrder = new ShippingEvent(this, shippingTime, arrivalTime);
+    int shippingTime = getCurrTime() + processTime;
+    Event *newShippingOrder = new ShippingEvent(this, shippingTime);
 
     // Add that new shipping order to the list of pending orders
-    Event::addToQueue(newShippingOrder);
+    thisSimulation->addToQueue(newShippingOrder, newShippingOrder->getCurrTime(), newShippingOrder->getOrderID());
 }
 
 int PrepareEvent::calcProcessTime(int orderValue)

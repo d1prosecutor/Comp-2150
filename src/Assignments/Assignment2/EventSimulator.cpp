@@ -4,26 +4,21 @@
 using namespace std;
 
 #include "EventSimulator.h"
-#include "Event.h"
 #include "ArrivalEvent.h"
-#include "PrepareEvent.h"
+#include "PriorityQueue.h"
+#include "Order.h"
 
 // Constructors
 EventSimulator::EventSimulator() {}
-EventSimulator::EventSimulator(string filename, int numAddEmp)
+EventSimulator::EventSimulator(string filename, int numAddEmp) : numAddEmp(numAddEmp),
+																 numFreeEmp(numAddEmp + 1), filename(filename),
+																 empWage(13.5), numStdHrs(8)
 {
-	// Initialize the number of additional employees to the value received from the file,
-	// And free workers to 1 more than the number of additional employees (because we're including Geoff)
-	// Also initialize filename
-	EventSimulator::numAddEmp = numAddEmp;
-	EventSimulator::numFreeEmp = numAddEmp + 1;
-	EventSimulator::filename = filename;
-
 	cout << "The filename is: " << filename << endl;
 	cout << "The number of additional employees is: " << numAddEmp << endl;
 }
 
-// Instance method
+// Instance methods
 void EventSimulator::startSimulation()
 {
 
@@ -34,26 +29,18 @@ void EventSimulator::startSimulation()
 
 	// cout << "The first line of the file is: " << endl;
 
-	if (hasNextLine() != EOF) // gets the next line from the file and saves it in 'line', if there is one
+	readNextLine(); // gets the next line from the file and saves it in 'line', if there is one
+
+	// Process the events in the Event Queue
+	while (!(queueIsEmpty()))
 	{
-		readNextLine();
+		Event *nextEvent = getNextOrder();
 
-		// Process the events in the Event Queue
-		while (!(Event::queueIsEmpty()))
-		{
-			Event *nextEvent = Event::getNextOrder();
-
-			nextEvent->processEvent();
-		}
+		nextEvent->processEvent(this);
 	}
 
 	// Print out the statistics
 	printStats();
-}
-
-int EventSimulator::hasNextLine()
-{
-	return (inputFile.peek());
 }
 
 void EventSimulator::readNextLine()
@@ -72,8 +59,11 @@ void EventSimulator::readNextLine()
 		sst >> value;		 // extracting the order value
 
 		// Put the first line into the event queue
-		Event *nextArrival = new ArrivalEvent(time, customerType, value, time);
-		Event::addToQueue(nextArrival);
+		Event *nextArrival = new ArrivalEvent(new Order(time, customerType, value, time));
+		addToQueue(nextArrival, time, nextArrival->getOrderID());
+
+		// Update the profit with each new Order Created
+		initialProfit += (value / 2.0f);
 	}
 }
 
@@ -88,11 +78,38 @@ void EventSimulator::printStats()
 	cout << "The simulation has ended." << endl;
 	cout << "The number of additional workers was " << numAddEmp << "." << endl;
 	cout << "The total number of work days was " << Event::getNumWorkDays() << "." << endl;
-	cout << "The cost of additional workers was $" << Event::calcCostOfBusiness(numAddEmp) << "." << endl;
-	cout << "The total profit before paying workers was $" << ArrivalEvent::getInitialProfit() << "." << endl;
-	cout << "The total profit when considering additional workers was $" << Event::calcFinalProfit(numAddEmp) << "." << endl;
+	cout << "The cost of additional workers was $" << calcCostOfBusiness(numAddEmp) << "." << endl;
+	cout << "The total profit before paying workers was $" << initialProfit << "." << endl;
+	cout << "The total profit when considering additional workers was $" << calcFinalProfit(numAddEmp) << "." << endl;
 	cout << "########################" << endl;
 	cout << endl;
+}
+
+void EventSimulator::updateProfit(float plusOrMinus)
+{
+	initialProfit += plusOrMinus;
+}
+
+float EventSimulator::calcCostOfBusiness(int numWorkers)
+{
+	// Calculate the cost of additional workers
+	return (Event::getNumWorkDays() * numStdHrs * empWage * numWorkers) +
+		   (Event::getNumWorkDays() * numWorkers);
+}
+
+float EventSimulator::calcFinalProfit(int numWorkers)
+{
+	return initialProfit - calcCostOfBusiness(numWorkers);
+}
+
+void EventSimulator::addToQueue(Event *newEvent, int timePriority, int orderPriority)
+{
+	eventQueue->enqueue(newEvent, timePriority, orderPriority);
+}
+
+void EventSimulator::addToPending(Event *newEvent, int timePriority, int orderPriority)
+{
+	pendingOrders->addToLine(newEvent, timePriority, orderPriority);
 }
 
 int EventSimulator::getNumEmp()
@@ -113,4 +130,24 @@ void EventSimulator::incrFreeEmp()
 void EventSimulator::decrFreeEmp()
 {
 	EventSimulator::numFreeEmp--;
+}
+
+Event *EventSimulator::getNextOrder()
+{
+	return eventQueue->dequeue();
+}
+
+Event *EventSimulator::getNextPending()
+{
+	return pendingOrders->dequeue();
+}
+
+bool EventSimulator::queueIsEmpty()
+{
+	return eventQueue->isEmpty();
+}
+
+bool EventSimulator::lineIsEmpty()
+{
+	return pendingOrders->isEmpty();
 }

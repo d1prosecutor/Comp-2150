@@ -8,6 +8,9 @@ PriorityQueue::PriorityQueue()
     front = nullptr;
 }
 
+// Destructor
+PriorityQueue::~PriorityQueue() {}
+
 // Instance methods
 void PriorityQueue::enqueue(Event *newEvent, int priority, int id)
 {
@@ -22,15 +25,6 @@ void PriorityQueue::enqueue(Event *newEvent, int priority, int id)
         prev = temp;
         temp = temp->getNext();
     }
-
-    // if (temp != nullptr && temp->getEvent()->getCurrTime() == priority)
-    // {
-    //     while (temp != nullptr && (temp->getEvent()->getCurrTime() == priority && temp->getEvent()->getOrderID() < id))
-    //     {
-    //         prev = temp;
-    //         temp = temp->getNext();
-    //     }
-    // }
 
     if (prev != nullptr)
     {
@@ -90,7 +84,7 @@ void PriorityQueue::addToLine(Event *newEvent, int priority, int id)
     }
 }
 
-Node *PriorityQueue::dequeue()
+Event *PriorityQueue::dequeue()
 {
     Node *tempFront = front;
 
@@ -99,7 +93,7 @@ Node *PriorityQueue::dequeue()
 
     // Free the memory allocated here
     //
-    return tempFront;
+    return tempFront->getEvent();
 
     //
     // Check for memory leaks here
@@ -109,9 +103,4 @@ Node *PriorityQueue::dequeue()
 bool PriorityQueue::isEmpty()
 {
     return front == nullptr;
-}
-
-Node *PriorityQueue::peek()
-{
-    return front;
 }

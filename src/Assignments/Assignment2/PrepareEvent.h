@@ -11,10 +11,12 @@ private:
 public:
     // Constructors
     PrepareEvent();
-    PrepareEvent(Event *, int, int);
+    PrepareEvent(Event *, int);
+
+    // Destructor
+    ~PrepareEvent();
 
     // Instance methods
-    ~PrepareEvent();
     int calcProcessTime(int);
-    void processEvent() override;
+    void processEvent(EventSimulator *thisSimulation) override;
 };

@@ -1,7 +1,5 @@
 #include "Node.h"
 
-class Event;
-
 // Constructors
 Node::Node() {}
 
