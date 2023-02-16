@@ -1,13 +1,9 @@
-#include <cmath>
 #include <iostream>
 
 using namespace std;
 
 #include "Event.h"
 #include "Order.h"
-
-// Initialize Class variables
-int Event::numWorkDays = 0;
 
 // Constructors
 Event::Event() {}
@@ -25,25 +21,10 @@ Event::Event(Event *thisEvent, int newTime)
 
     // Update the current Time of the current event
     thisEvent->thisOrder->setCurrTime(newTime);
-
-    // Update the number of work days so far
-    Event::calcNumWorkDays(newTime);
 }
 
 // Destructor
 Event::~Event() {}
-
-// Class methods
-void Event::calcNumWorkDays(int currTime)
-{
-    // Calculate the number of work days
-    Event::numWorkDays = ceil(currTime / 8.0f);
-}
-
-int Event::getNumWorkDays()
-{
-    return Event::numWorkDays;
-}
 
 // Instance methods
 void Event::processEvent(EventSimulator *thisSimulation)

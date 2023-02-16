@@ -18,6 +18,7 @@ private:
     int numAddEmp;
     int numFreeEmp;
     int numStdHrs;
+    int numWorkDays;
     ifstream inputFile;
     float initialProfit;
     PriorityQueue *eventQueue;

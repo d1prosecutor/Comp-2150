@@ -1,3 +1,4 @@
+#include <cmath>
 #include <iomanip>
 #include <iostream>
 
@@ -11,7 +12,8 @@ using namespace std;
 // Constructors
 EventSimulator::EventSimulator() {}
 EventSimulator::EventSimulator(string filename, int numAddEmp) : filename(filename), empWage(13.5), numAddEmp(numAddEmp),
-																 numFreeEmp(numAddEmp + 1), numStdHrs(8), initialProfit(0.0f)
+																 numFreeEmp(numAddEmp + 1), numStdHrs(8), initialProfit(0.0f),
+																 numWorkDays(0)
 
 {
 	eventQueue = new PriorityQueue();
@@ -43,6 +45,9 @@ void EventSimulator::startSimulation()
 		Event *nextEvent = getNextOrder();
 
 		nextEvent->processEvent(this);
+
+		// Update the total number of work days so far
+		numWorkDays = ceil(nextEvent->getCurrTime() / numStdHrs);
 	}
 
 	// Print out the statistics
@@ -83,7 +88,7 @@ void EventSimulator::printStats()
 	cout << "########################" << endl;
 	cout << "The simulation has ended." << endl;
 	cout << "The number of additional workers was " << numAddEmp << "." << endl;
-	cout << "The total number of work days was " << Event::getNumWorkDays() << "." << endl;
+	cout << "The total number of work days was " << numWorkDays << "." << endl;
 	cout << "The cost of additional workers was $" << calcCostOfBusiness(numAddEmp) << "." << endl;
 	cout << "The total profit before paying workers was $" << initialProfit << "." << endl;
 	cout << "The total profit when considering additional workers was $" << calcFinalProfit(numAddEmp) << "." << endl;
@@ -99,8 +104,8 @@ void EventSimulator::updateProfit(float plusOrMinus)
 float EventSimulator::calcCostOfBusiness(int numWorkers)
 {
 	// Calculate the cost of additional workers
-	return (Event::getNumWorkDays() * numStdHrs * empWage * numWorkers) +
-		   (Event::getNumWorkDays() * numWorkers);
+	return (numWorkDays * numStdHrs * empWage * numWorkers) +
+		   (numWorkDays * numWorkers);
 }
 
 float EventSimulator::calcFinalProfit(int numWorkers)

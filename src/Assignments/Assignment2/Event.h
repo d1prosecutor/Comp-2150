@@ -9,9 +9,6 @@ class EventSimulator;
 class Event
 {
 private:
-    // Class variables
-    static int numWorkDays;
-
     // Instance variables
     Order *thisOrder;
 
@@ -23,10 +20,6 @@ public:
 
     // Destructor
     virtual ~Event() = 0;
-
-    // Class methods
-    static int getNumWorkDays();
-    static void calcNumWorkDays(int);
 
     // Instance methods
     const int getArrTime();
