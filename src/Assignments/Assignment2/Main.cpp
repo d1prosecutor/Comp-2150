@@ -12,8 +12,11 @@ int main(int argc, char *argv[])
     }
 
     // Parse the arguments required for the file reading
-    string filename = argv[1];
-    int numAddEmp = stoi(argv[2]);
+    // string filename = argv[1];
+    // int numAddEmp = stoi(argv[2]);
+
+    string filename = "test.txt";
+    int numAddEmp = 1;
 
     // Create a new Simulation and start the simulation
     // EventSimulator *newSimulation = new EventSimulator(filename, numAddEmp);
