@@ -56,20 +56,12 @@ void PriorityQueue::addToLine(Event *newEvent, int priority, int id)
     if (newEvent->getCustomerType() == "standard")
     {
         // Then Order the events by TIME priority
-        while (temp != nullptr && temp->getEvent()->getCurrTime() < priority)
+        // If the times are the same, order the events by ORDER_ID priority
+        while (temp != nullptr && ((temp->getEvent()->getCurrTime() < priority) ||
+                                   (temp->getEvent()->getCurrTime() == priority && temp->getEvent()->getOrderID() < id)))
         {
             prev = temp;
             temp = temp->getNext();
-        }
-
-        // If the times are the same, order the events by ORDER_ID priority
-        if (temp != nullptr && temp->getEvent()->getCurrTime() == priority)
-        {
-            while (temp != nullptr && temp->getEvent()->getOrderID() < id)
-            {
-                prev = temp;
-                temp = temp->getNext();
-            }
         }
     }
 
