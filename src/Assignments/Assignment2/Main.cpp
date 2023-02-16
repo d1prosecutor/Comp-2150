@@ -4,12 +4,12 @@
 using namespace std;
 int main(int argc, char *argv[])
 {
-    if (argc != 3)
-    {
-        cout << "USAGE: FileReadingExample.exe filename numAdditionalEmp" << endl;
-        cout << "where numAdditionalEmp is an integer >= 0." << endl;
-        return 0;
-    }
+    // if (argc != 3)
+    // {
+    //     cout << "USAGE: FileReadingExample.exe filename numAdditionalEmp" << endl;
+    //     cout << "where numAdditionalEmp is an integer >= 0." << endl;
+    //     return 0;
+    // }
 
     // Parse the arguments required for the file reading
     // string filename = argv[1];
