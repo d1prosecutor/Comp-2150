@@ -8,11 +8,7 @@ using namespace std;
 // Constructors
 Event::Event() {}
 
-Event::Event(Order *newOrder) : thisOrder(newOrder)
-{
-    // Update the number of work days so far
-    Event::calcNumWorkDays(newOrder->getCurrTime());
-}
+Event::Event(Order *newOrder) : thisOrder(newOrder){}
 
 Event::Event(Event *thisEvent, int newTime)
 {

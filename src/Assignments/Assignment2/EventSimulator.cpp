@@ -12,8 +12,8 @@ using namespace std;
 // Constructors
 EventSimulator::EventSimulator() {}
 EventSimulator::EventSimulator(string filename, int numAddEmp) : filename(filename), empWage(13.5), numAddEmp(numAddEmp),
-																 numFreeEmp(numAddEmp + 1), numStdHrs(8), initialProfit(0.0f),
-																 numWorkDays(0)
+																 numFreeEmp(numAddEmp + 1), numStdHrs(8), numWorkDays(0),
+																 initialProfit(0.0f)
 
 {
 	eventQueue = new PriorityQueue();
@@ -47,7 +47,7 @@ void EventSimulator::startSimulation()
 		nextEvent->processEvent(this);
 
 		// Update the total number of work days so far
-		numWorkDays = ceil(nextEvent->getCurrTime() / numStdHrs);
+		numWorkDays = ceil(nextEvent->getCurrTime() / (float)numStdHrs);
 	}
 
 	// Print out the statistics
