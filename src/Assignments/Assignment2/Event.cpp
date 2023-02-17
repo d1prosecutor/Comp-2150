@@ -21,7 +21,7 @@ Event::Event(Event *thisEvent, int newTime)
     thisOrder->setCurrTime(newTime);
 }
 
-// Destry
+// Empty Pure Virtual Destructor implementation which is necessary for the code to compile
 Event::~Event() {}
 
 // Instance methods
