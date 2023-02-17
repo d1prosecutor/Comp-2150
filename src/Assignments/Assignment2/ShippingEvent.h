@@ -15,7 +15,7 @@ public:
     ShippingEvent(Event *, int);
 
     // Destructor
-    ~ShippingEvent();
+    // ~ShippingEvent();
 
     // instance methods
     float calcDiscount(int) const;

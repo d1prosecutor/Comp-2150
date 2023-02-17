@@ -16,7 +16,7 @@ ShippingEvent::ShippingEvent() {}
 ShippingEvent::ShippingEvent(Event *newShipping, int newtime) : Event(newShipping, newtime) {}
 
 // Destructor
-ShippingEvent::~ShippingEvent() {}
+// ShippingEvent::~ShippingEvent() {}
 
 // Instance methods
 void ShippingEvent::processEvent(EventSimulator *thisSimulation)

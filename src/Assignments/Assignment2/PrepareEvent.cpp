@@ -14,7 +14,7 @@ PrepareEvent::PrepareEvent() {}
 PrepareEvent::PrepareEvent(Event *currEvent, int currentTime) : Event(currEvent, currentTime) {}
 
 // Destructor
-PrepareEvent::~PrepareEvent() {}
+// PrepareEvent::~PrepareEvent() {}
 
 // Instance methods
 void PrepareEvent::processEvent(EventSimulator *thisSimulation)

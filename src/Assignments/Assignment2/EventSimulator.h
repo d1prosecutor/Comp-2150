@@ -33,8 +33,7 @@ public:
     ~EventSimulator();
 
     // Accessors
-    // int getNumEmp() const;
-    // int getFreeEmp() const;
+    int getFreeEmp() const;
 
     // Instance methods
     bool lineIsEmpty() const;

@@ -9,7 +9,10 @@ PriorityQueue::PriorityQueue()
 }
 
 // Destructor
-PriorityQueue::~PriorityQueue() {}
+PriorityQueue::~PriorityQueue()
+{
+    delete front;
+}
 
 // Instance methods
 void PriorityQueue::enqueue(Event *newEvent, int priority, int id)

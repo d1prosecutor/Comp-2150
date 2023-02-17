@@ -20,7 +20,10 @@ Event::Event(Event *thisEvent, int newTime)
 }
 
 // Destructor
-Event::~Event() {}
+Event::~Event()
+{
+    delete thisOrder;
+}
 
 // Instance methods
 void Event::processEvent(EventSimulator *thisSimulation)

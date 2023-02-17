@@ -24,7 +24,11 @@ EventSimulator::EventSimulator(string filename, int numAddEmp) : filename(filena
 }
 
 // Destructor
-EventSimulator::~EventSimulator() {}
+EventSimulator::~EventSimulator()
+{
+	delete pendingOrders;
+	delete eventQueue;
+}
 
 // Instance methods
 void EventSimulator::startSimulation()
@@ -143,6 +147,12 @@ bool EventSimulator::lineIsEmpty() const
 	return pendingOrders->isEmpty();
 }
 
+// Accessors
+int EventSimulator::getFreeEmp() const
+{
+	return numFreeEmp;
+}
+
 // Mutators
 void EventSimulator::incrFreeEmp()
 {
@@ -153,14 +163,3 @@ void EventSimulator::decrFreeEmp()
 {
 	numFreeEmp--;
 }
-
-// Accessors
-// int EventSimulator::getNumEmp() const
-// {
-// 	return numAddEmp;
-// }
-
-// int EventSimulator::getFreeEmp() const
-// {
-// 	return numFreeEmp;
-// }

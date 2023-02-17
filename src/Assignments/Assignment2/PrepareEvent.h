@@ -14,7 +14,7 @@ public:
     PrepareEvent(Event *, int);
 
     // Destructor
-    ~PrepareEvent();
+    // ~PrepareEvent();
 
     // Instance methods
     int calcProcessTime(int) const;

@@ -6,7 +6,13 @@ Node::Node() {}
 Node::Node(Event *newEvent, Node *next) : thisEvent(newEvent), nextEvent(next) {}
 
 // Destructor
-Node::~Node() {}
+Node::~Node()
+{
+    if (nextEvent == nullptr)
+    {
+        delete nextEvent;
+    }
+}
 
 // Accesssors
 Node *Node::getNext() const
