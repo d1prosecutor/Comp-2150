@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     // int numAddEmp = stoi(argv[2]);
 
     string filename = "test.txt";
-    int numAddEmp = 0;
+    int numAddEmp = 1;
 
     // Create a new Simulation and start the simulation
     // EventSimulator *newSimulation = new EventSimulator(filename, numAddEmp);
