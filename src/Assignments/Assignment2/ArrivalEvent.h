@@ -13,7 +13,7 @@ public:
     ArrivalEvent(Order *);
 
     // Destructor
-    // ~ArrivalEvent();
+    ~ArrivalEvent();
 
     // Instance methods
     void processEvent(EventSimulator *thisSimulation) override;

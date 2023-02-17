@@ -3,6 +3,7 @@
 
 using namespace std;
 
+#include "Order.h"
 #include "ShippingEvent.h"
 #include "PrepareEvent.h"
 #include "EventSimulator.h"
@@ -11,12 +12,16 @@ using namespace std;
 float ShippingEvent::discount = 15 / 100.0f;
 int ShippingEvent::primeroLateShip = 8;
 int ShippingEvent::standardLateShip = 24;
+
 // Constructors
 ShippingEvent::ShippingEvent() {}
 ShippingEvent::ShippingEvent(Event *newShipping, int newtime) : Event(newShipping, newtime) {}
 
-// Destructor; already here by default
-// ShippingEvent::~ShippingEvent() {}
+// Destructor
+ShippingEvent::~ShippingEvent()
+{
+    delete (getOrder());
+}
 
 // Instance methods
 void ShippingEvent::processEvent(EventSimulator *thisSimulation)

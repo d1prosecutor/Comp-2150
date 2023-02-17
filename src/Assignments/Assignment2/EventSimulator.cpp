@@ -33,7 +33,6 @@ EventSimulator::~EventSimulator()
 // Instance methods
 void EventSimulator::startSimulation()
 {
-
 	//
 	// Opening the file, reading one line (just the first one of the file here) and parsing it
 	//
@@ -53,6 +52,7 @@ void EventSimulator::startSimulation()
 		// Update the total number of work days so far
 		numWorkDays = ceil(nextEvent->getCurrTime() / (float)numStdHrs);
 
+		// When done processing that event, free its memory
 		delete nextEvent;
 	}
 

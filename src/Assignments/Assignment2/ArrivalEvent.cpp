@@ -14,7 +14,7 @@ ArrivalEvent::ArrivalEvent() {}
 ArrivalEvent::ArrivalEvent(Order *newOrder) : Event(newOrder) {}
 
 // Destructor; already here by default
-// ArrivalEvent::~ArrivalEvent() {}
+ArrivalEvent::~ArrivalEvent() {}
 
 // Instance methods
 void ArrivalEvent::processEvent(EventSimulator *thisSimulation)

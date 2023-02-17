@@ -13,19 +13,16 @@ Event::Event(Order *newOrder) : thisOrder(newOrder) {}
 Event::Event(Event *thisEvent, int newTime)
 {
     // Initialize the order instance variable with the same order contained in the event passed in
-    // thisOrder = thisEvent->thisOrder;
+    thisOrder = thisEvent->thisOrder;
     // thisOrder = new Order(newTime, thisEvent->getCustomerType(), thisEvent->getOrderValue(), thisEvent->getArrTime());
-    thisOrder = new Order(*thisEvent->getOrder());
+    // thisOrder = new Order(*thisEvent->getOrder());
 
     // Update the current Time of the current event
-    // thisEvent->thisOrder->setCurrTime(newTime);
+    thisOrder->setCurrTime(newTime);
 }
 
-// Destructor
-Event::~Event()
-{
-    delete thisOrder;
-}
+// Destry
+Event::~Event() {}
 
 // Instance methods
 void Event::processEvent(EventSimulator *thisSimulation)
