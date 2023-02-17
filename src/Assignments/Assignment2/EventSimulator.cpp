@@ -52,6 +52,8 @@ void EventSimulator::startSimulation()
 
 		// Update the total number of work days so far
 		numWorkDays = ceil(nextEvent->getCurrTime() / (float)numStdHrs);
+
+		delete nextEvent;
 	}
 
 	// Print out the statistics
@@ -74,7 +76,8 @@ void EventSimulator::readNextLine()
 		sst >> value;		 // extracting the order value
 
 		// Put the first line into the event queue
-		Event *nextArrival = new ArrivalEvent(new Order(time, customerType, value, time));
+		Order *newOrder = new Order(time, customerType, value, time);
+		Event *nextArrival = new ArrivalEvent(newOrder);
 		addToQueue(nextArrival, time, nextArrival->getOrderID());
 
 		// Update the profit with each new Order Created

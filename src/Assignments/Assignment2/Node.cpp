@@ -5,10 +5,10 @@ Node::Node() {}
 
 Node::Node(Event *newEvent, Node *next) : thisEvent(newEvent), nextEvent(next) {}
 
-// Destructor
+// Destructor; already here by default
 Node::~Node()
 {
-    if (nextEvent == nullptr)
+    if (nextEvent != nullptr)
     {
         delete nextEvent;
     }

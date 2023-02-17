@@ -22,6 +22,7 @@ public:
     virtual ~Event() = 0;
 
     // Accessors
+    Order *getOrder() const;
     int getArrTime() const;
     int getOrderID() const;
     int getCurrTime() const;

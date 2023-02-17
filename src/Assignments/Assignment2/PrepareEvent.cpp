@@ -13,7 +13,7 @@ int PrepareEvent::pricePerHour = 200;
 PrepareEvent::PrepareEvent() {}
 PrepareEvent::PrepareEvent(Event *currEvent, int currentTime) : Event(currEvent, currentTime) {}
 
-// Destructor
+// Destructor; already here by default
 // PrepareEvent::~PrepareEvent() {}
 
 // Instance methods

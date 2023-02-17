@@ -13,10 +13,12 @@ Event::Event(Order *newOrder) : thisOrder(newOrder) {}
 Event::Event(Event *thisEvent, int newTime)
 {
     // Initialize the order instance variable with the same order contained in the event passed in
-    thisOrder = thisEvent->thisOrder;
+    // thisOrder = thisEvent->thisOrder;
+    // thisOrder = new Order(newTime, thisEvent->getCustomerType(), thisEvent->getOrderValue(), thisEvent->getArrTime());
+    thisOrder = new Order(*thisEvent->getOrder());
 
     // Update the current Time of the current event
-    thisEvent->thisOrder->setCurrTime(newTime);
+    // thisEvent->thisOrder->setCurrTime(newTime);
 }
 
 // Destructor
@@ -34,6 +36,12 @@ void Event::processEvent(EventSimulator *thisSimulation)
 }
 
 // Accessors
+
+Order *Event::getOrder() const
+{
+    return thisOrder;
+}
+
 int Event::getCurrTime() const
 {
     return thisOrder->getCurrTime();

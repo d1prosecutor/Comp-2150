@@ -13,8 +13,8 @@ ArrivalEvent::ArrivalEvent() {}
 
 ArrivalEvent::ArrivalEvent(Order *newOrder) : Event(newOrder) {}
 
-// Destructor
-ArrivalEvent::~ArrivalEvent() {}
+// Destructor; already here by default
+// ArrivalEvent::~ArrivalEvent() {}
 
 // Instance methods
 void ArrivalEvent::processEvent(EventSimulator *thisSimulation)
@@ -34,8 +34,10 @@ void ArrivalEvent::processEvent(EventSimulator *thisSimulation)
         // Start processing the next event in the queue if there is an available worker
         if (thisSimulation->getFreeEmp() > 0)
         {
+            Event *tempPending = thisSimulation->getNextPending();
+
             // Get the next order in the pending orders list and start processing it
-            Event *processNode = new PrepareEvent(thisSimulation->getNextPending(), getCurrTime());
+            Event *processNode = new PrepareEvent(tempPending, getCurrTime());
 
             // Insert the order in the pending events queue
             thisSimulation->addToQueue(processNode, processNode->getCurrTime(), processNode->getOrderID());

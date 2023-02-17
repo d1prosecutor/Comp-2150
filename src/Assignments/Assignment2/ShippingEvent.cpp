@@ -15,7 +15,7 @@ int ShippingEvent::standardLateShip = 24;
 ShippingEvent::ShippingEvent() {}
 ShippingEvent::ShippingEvent(Event *newShipping, int newtime) : Event(newShipping, newtime) {}
 
-// Destructor
+// Destructor; already here by default
 // ShippingEvent::~ShippingEvent() {}
 
 // Instance methods

@@ -8,11 +8,11 @@ PriorityQueue::PriorityQueue()
     front = nullptr;
 }
 
-// Destructor
-PriorityQueue::~PriorityQueue()
-{
-    delete front;
-}
+// Destructor; already here by default
+// PriorityQueue::~PriorityQueue()
+// {
+//     delete front;
+// }
 
 // Instance methods
 void PriorityQueue::enqueue(Event *newEvent, int priority, int id)
@@ -88,11 +88,14 @@ Event *PriorityQueue::dequeue()
 
     // Free the memory allocated here
     //
-    return tempFront->getEvent();
+    Event *tempEvent = tempFront->getEvent();
 
-    //
-    // Check for memory leaks here
-    //
+    // Free the memory taken by the removed node
+    // First unlink it from the node it points to
+    tempFront->setNext(nullptr);
+    delete tempFront;
+
+    return tempEvent;
 }
 
 bool PriorityQueue::isEmpty() const

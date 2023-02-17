@@ -13,7 +13,7 @@ public:
     PriorityQueue();
 
     // Destructor
-    ~PriorityQueue();
+    // ~PriorityQueue();
 
     // Instance methods
     bool isEmpty() const;
