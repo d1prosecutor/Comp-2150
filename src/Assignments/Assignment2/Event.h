@@ -21,11 +21,13 @@ public:
     // Destructor
     virtual ~Event() = 0;
 
+    // Accessors
+    int getArrTime() const;
+    int getOrderID() const;
+    int getCurrTime() const;
+    int getOrderValue() const;
+    string getCustomerType() const;
+
     // Instance methods
-    const int getArrTime();
-    const int getOrderID();
-    const int getCurrTime();
-    const int getOrderValue();
-    const string getCustomerType();
     virtual void processEvent(EventSimulator *);
 };

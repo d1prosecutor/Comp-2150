@@ -13,7 +13,7 @@ Order::Order(int currTime, string customerType, int orderValue, int arrivalTime)
                                                                                    orderID(++Order::ID) {}
 
 // Instance Methods
-const int Order::getCurrTime()
+const int Order::getCurrTime() const
 {
     return currTime;
 }
@@ -23,22 +23,22 @@ void Order::setCurrTime(int newTime)
     currTime = newTime;
 }
 
-const int Order::getArrivalTime()
+const int Order::getArrivalTime() const
 {
     return arrivalTime;
 }
 
-const string Order::getCustomerType()
+const string Order::getCustomerType() const
 {
     return customerType;
 }
 
-const int Order::getOrderValue()
+const int Order::getOrderValue() const
 {
     return orderValue;
 }
 
-const int Order::getOrderID()
+const int Order::getOrderID() const
 {
     return orderID;
 }

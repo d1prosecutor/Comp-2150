@@ -92,7 +92,7 @@ Event *PriorityQueue::dequeue()
     //
 }
 
-bool PriorityQueue::isEmpty()
+bool PriorityQueue::isEmpty() const
 {
     return front == nullptr;
 }

@@ -8,17 +8,18 @@ Node::Node(Event *newEvent, Node *next) : thisEvent(newEvent), nextEvent(next) {
 // Destructor
 Node::~Node() {}
 
-// Instance methods
-Node *Node::getNext()
+// Accesssors
+Node *Node::getNext() const
 {
     return nextEvent;
 }
 
-Event *Node::getEvent()
+Event *Node::getEvent() const
 {
     return thisEvent;
 }
 
+// Mutators
 void Node::setNext(Node *newEvent)
 {
     nextEvent = newEvent;

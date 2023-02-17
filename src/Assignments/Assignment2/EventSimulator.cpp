@@ -78,7 +78,7 @@ void EventSimulator::readNextLine()
 	}
 }
 
-void EventSimulator::printStats()
+void EventSimulator::printStats() const
 {
 	// Now print out stats here
 	// truncating the output to 2 decimal places
@@ -101,14 +101,14 @@ void EventSimulator::updateProfit(float plusOrMinus)
 	initialProfit += plusOrMinus;
 }
 
-float EventSimulator::calcCostOfBusiness(int numWorkers)
+float EventSimulator::calcCostOfBusiness(int numWorkers) const
 {
 	// Calculate the cost of additional workers
 	return (numWorkDays * numStdHrs * empWage * numWorkers) +
 		   (numWorkDays * numWorkers);
 }
 
-float EventSimulator::calcFinalProfit(int numWorkers)
+float EventSimulator::calcFinalProfit(int numWorkers) const
 {
 	return initialProfit - calcCostOfBusiness(numWorkers);
 }
@@ -123,42 +123,44 @@ void EventSimulator::addToPending(Event *newEvent, int timePriority, int orderPr
 	pendingOrders->addToLine(newEvent, timePriority, orderPriority);
 }
 
-int EventSimulator::getNumEmp()
-{
-	return EventSimulator::numAddEmp;
-}
-
-int EventSimulator::getFreeEmp()
-{
-	return EventSimulator::numFreeEmp;
-}
-
-void EventSimulator::incrFreeEmp()
-{
-	EventSimulator::numFreeEmp++;
-}
-
-void EventSimulator::decrFreeEmp()
-{
-	EventSimulator::numFreeEmp--;
-}
-
-Event *EventSimulator::getNextOrder()
+Event *EventSimulator::getNextOrder() const
 {
 	return eventQueue->dequeue();
 }
 
-Event *EventSimulator::getNextPending()
+Event *EventSimulator::getNextPending() const
 {
 	return pendingOrders->dequeue();
 }
 
-bool EventSimulator::queueIsEmpty()
+bool EventSimulator::queueIsEmpty() const
 {
 	return eventQueue->isEmpty();
 }
 
-bool EventSimulator::lineIsEmpty()
+bool EventSimulator::lineIsEmpty() const
 {
 	return pendingOrders->isEmpty();
 }
+
+// Mutators
+void EventSimulator::incrFreeEmp()
+{
+	numFreeEmp++;
+}
+
+void EventSimulator::decrFreeEmp()
+{
+	numFreeEmp--;
+}
+
+// Accessors
+// int EventSimulator::getNumEmp() const
+// {
+// 	return numAddEmp;
+// }
+
+// int EventSimulator::getFreeEmp() const
+// {
+// 	return numFreeEmp;
+// }

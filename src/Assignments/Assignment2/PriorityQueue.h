@@ -16,7 +16,7 @@ public:
     ~PriorityQueue();
 
     // Instance methods
-    bool isEmpty();
+    bool isEmpty() const;
     Event *dequeue();
     void enqueue(Event *, int, int);
     void addToLine(Event *, int, int);

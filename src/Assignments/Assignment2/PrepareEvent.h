@@ -17,6 +17,6 @@ public:
     ~PrepareEvent();
 
     // Instance methods
-    int calcProcessTime(int);
+    int calcProcessTime(int) const;
     void processEvent(EventSimulator *thisSimulation) override;
 };

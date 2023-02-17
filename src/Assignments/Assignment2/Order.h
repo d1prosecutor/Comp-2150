@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 using namespace std;
 
@@ -19,11 +21,13 @@ public:
     Order();
     Order(int, string, int, int);
 
-    // Instance Variables
+    // Accessors
+    const int getOrderID() const;
+    const int getCurrTime() const;
+    const int getOrderValue() const;
+    const int getArrivalTime() const;
+    const string getCustomerType() const;
+
+    // Mutators
     void setCurrTime(int);
-    const int getOrderID();
-    const int getCurrTime();
-    const int getOrderValue();
-    const int getArrivalTime();
-    const string getCustomerType();
 };

@@ -16,9 +16,10 @@ public:
 
     // Destructor
     ~ShippingEvent();
+
     // instance methods
-    float calcDiscount(int);
-    void printPrimeroDiscount(EventSimulator *);
-    void printStandardDiscount(EventSimulator *);
+    float calcDiscount(int) const;
+    void printPrimeroDiscount(EventSimulator *) const;
+    void printStandardDiscount(EventSimulator *) const;
     void processEvent(EventSimulator *thisSimulation) override;
 };

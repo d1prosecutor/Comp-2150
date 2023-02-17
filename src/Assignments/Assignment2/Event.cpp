@@ -8,7 +8,7 @@ using namespace std;
 // Constructors
 Event::Event() {}
 
-Event::Event(Order *newOrder) : thisOrder(newOrder){}
+Event::Event(Order *newOrder) : thisOrder(newOrder) {}
 
 Event::Event(Event *thisEvent, int newTime)
 {
@@ -30,27 +30,28 @@ void Event::processEvent(EventSimulator *thisSimulation)
          << " (" + thisOrder->getCustomerType() + ", $" << thisOrder->getOrderValue() << ") ";
 }
 
-const int Event::getCurrTime()
+// Accessors
+int Event::getCurrTime() const
 {
     return thisOrder->getCurrTime();
 }
 
-const int Event::getOrderID()
+int Event::getOrderID() const
 {
     return thisOrder->getOrderID();
 }
 
-const int Event::getOrderValue()
+int Event::getOrderValue() const
 {
     return thisOrder->getOrderValue();
 }
 
-const int Event::getArrTime()
+int Event::getArrTime() const
 {
     return thisOrder->getArrivalTime();
 }
 
-const string Event::getCustomerType()
+string Event::getCustomerType() const
 {
     return thisOrder->getCustomerType();
 }

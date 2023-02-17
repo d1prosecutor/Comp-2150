@@ -39,7 +39,7 @@ void PrepareEvent::processEvent(EventSimulator *thisSimulation)
     thisSimulation->addToQueue(newShippingOrder, newShippingOrder->getCurrTime(), newShippingOrder->getOrderID());
 }
 
-int PrepareEvent::calcProcessTime(int orderValue)
+int PrepareEvent::calcProcessTime(int orderValue) const
 {
     return (orderValue + PrepareEvent::pricePerHour) / PrepareEvent::pricePerHour;
 }

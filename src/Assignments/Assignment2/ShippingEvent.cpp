@@ -54,12 +54,12 @@ void ShippingEvent::processEvent(EventSimulator *thisSimulation)
     }
 }
 
-float ShippingEvent::calcDiscount(int orderValue)
+float ShippingEvent::calcDiscount(int orderValue) const
 {
     return (ShippingEvent::discount) * (float)orderValue;
 }
 
-void ShippingEvent::printPrimeroDiscount(EventSimulator *thisSimulation)
+void ShippingEvent::printPrimeroDiscount(EventSimulator *thisSimulation) const
 {
     if (getCurrTime() - getArrTime() >= ShippingEvent::primeroLateShip)
     {
@@ -74,7 +74,7 @@ void ShippingEvent::printPrimeroDiscount(EventSimulator *thisSimulation)
     }
 }
 
-void ShippingEvent::printStandardDiscount(EventSimulator *thisSimulation)
+void ShippingEvent::printStandardDiscount(EventSimulator *thisSimulation) const
 {
     if (getCurrTime() - getArrTime() >= ShippingEvent::standardLateShip)
     {

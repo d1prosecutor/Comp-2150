@@ -12,7 +12,9 @@ public:
     ArrivalEvent();
     ArrivalEvent(Order *);
 
-    // Instance methods
+    // Destructor
     ~ArrivalEvent();
+
+    // Instance methods
     void processEvent(EventSimulator *thisSimulation) override;
 };

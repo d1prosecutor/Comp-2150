@@ -32,22 +32,23 @@ public:
     // Destructor
     ~EventSimulator();
 
+    // Accessors
+    // int getNumEmp() const;
+    // int getFreeEmp() const;
+
     // Instance methods
-    int getNumEmp();
-    int getFreeEmp();
-    void printStats();
+    bool lineIsEmpty() const;
     void incrFreeEmp();
     void decrFreeEmp();
+    bool queueIsEmpty() const;
     void readNextLine();
     void startSimulation();
-
-    bool lineIsEmpty();
-    bool queueIsEmpty();
-    Event *getNextOrder();
-    Event *getNextPending();
+    void printStats() const;
+    Event *getNextOrder() const;
+    Event *getNextPending() const;
+    float calcFinalProfit(int) const;
     void addToQueue(Event *, int, int);
+    float calcCostOfBusiness(int) const;
     void addToPending(Event *, int, int);
     void updateProfit(float plusOrMinus);
-    float calcFinalProfit(int);
-    float calcCostOfBusiness(int);
 };

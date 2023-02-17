@@ -13,11 +13,13 @@ public:
     Node();
     Node(Event *, Node *);
 
-    //Destructor
+    // Destructor
     ~Node();
 
-    // Instance methods
-    Node *getNext();
-    Event *getEvent();
+    // Accessors
+    Node *getNext() const;
+    Event *getEvent() const;
+
+    // Mutators
     void setNext(Node *);
 };
