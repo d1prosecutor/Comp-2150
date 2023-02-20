@@ -8,11 +8,13 @@ PriorityQueue::PriorityQueue()
     front = nullptr;
 }
 
-// Destructor; already here by default
-// PriorityQueue::~PriorityQueue()
-// {
-//     delete front;
-// }
+// Destructor
+// Doesn't actually delete anything in this program because every node is deleted
+// when removed from the queue in the dequeue method
+PriorityQueue::~PriorityQueue()
+{
+    delete front;
+}
 
 // Instance methods
 void PriorityQueue::enqueue(Event *newEvent, int priority, int id)
