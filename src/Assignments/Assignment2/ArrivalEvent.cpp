@@ -40,6 +40,7 @@ void ArrivalEvent::processEvent(EventSimulator *thisSimulation)
             thisSimulation->addToQueue(processNode, processNode->getCurrTime(), processNode->getOrderID());
         }
 
+        // Read the next order from the file and add it to the event queue
         thisSimulation->readNextLine();
     }
 }
