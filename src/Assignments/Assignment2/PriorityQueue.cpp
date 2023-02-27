@@ -7,6 +7,8 @@
  *
  * REMARKS: Implements the Priority Queue class
  **********************************************/
+using namespace std;
+
 #include "PriorityQueue.h"
 #include "Node.h"
 #include "Event.h"
