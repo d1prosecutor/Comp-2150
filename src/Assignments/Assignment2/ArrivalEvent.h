@@ -5,7 +5,7 @@
  * INSTRUCTOR: Olivier Tremblay-Savard
  * ASSIGNMENT: Assignment 2
  *
- * REMARKS: Interface for the Arrival Event Class
+ * REMARKS: Interface for the Arrival-Event Class
  **************************************************/
 #pragma once
 
