@@ -31,11 +31,11 @@ public:
     Order(int, string, int, int);
 
     // Accessors
-    const int getOrderID() const;
-    const int getCurrTime() const;
-    const int getOrderValue() const;
-    const int getArrivalTime() const;
-    const string getCustomerType() const;
+    int getOrderID() const;
+    int getCurrTime() const;
+    int getOrderValue() const;
+    int getArrivalTime() const;
+    string getCustomerType() const;
 
     // Mutators
     void setCurrTime(int);
