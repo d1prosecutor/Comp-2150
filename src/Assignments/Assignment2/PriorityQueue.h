@@ -8,6 +8,7 @@
  * REMARKS: Interface for the Priority Queue Class
  **************************************************/
 #pragma once
+#include <string>
 
 class Event;
 class Node;
