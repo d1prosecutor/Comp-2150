@@ -1,3 +1,12 @@
+/***********************************************
+ * NAME: Chukwunaza Chukwuocha
+ * STUDENT NUMBER: 7928676
+ * COURSE: COMP 2150, SECTION: A02
+ * INSTRUCTOR: Olivier Tremblay-Savard
+ * ASSIGNMENT: Assignment 2
+ *
+ * REMARKS: Implements the Priority Queue class
+ **********************************************/
 #include "PriorityQueue.h"
 #include "Node.h"
 #include "Event.h"
@@ -17,6 +26,17 @@ PriorityQueue::~PriorityQueue()
 }
 
 // Instance methods
+/******************************************************************************
+ * enqueue
+ *
+ * PURPOSE: This Method adds the given event to a queue based on priority
+ *          (current time) and the id of the order
+ *
+ * INPUT PARAMETERS:
+ *      newEvent: Event to be added to the queue
+ *      priority: The current time in the simulation
+ *      id: The id of the event to be added
+ *******************************************************************************/
 void PriorityQueue::enqueue(Event *newEvent, int priority, int id)
 {
     Node *temp = front;
@@ -42,7 +62,19 @@ void PriorityQueue::enqueue(Event *newEvent, int priority, int id)
 }
 
 // This organizes the waiting line to attend to PRIMERO customers first
-void PriorityQueue::addToLine(Event *newEvent, int priority, int id)
+/******************************************************************************
+ * addToLine
+ *
+ * PURPOSE: This Method adds the given event to a queue based on customer priority
+ *          (primero before standard), time priority and the id of the order
+ *
+ * INPUT PARAMETERS:
+ *      newEvent: Event to be added to the queue
+ *      customerType: The customer type (primero vs standard)
+ *      priority: The current time in the simulation
+ *      id: The id of the event to be added
+ *******************************************************************************/
+void PriorityQueue::addToLine(Event *newEvent, string customerType, int priority, int id)
 {
     Node *temp = front;
     Node *prev = nullptr;
@@ -70,7 +102,7 @@ void PriorityQueue::addToLine(Event *newEvent, int priority, int id)
         }
     }
 
-    // Insert the new event into the list
+    // Insert the new event into the queue
     if (prev != nullptr)
     {
         prev->setNext(new Node(newEvent, prev->getNext()));
@@ -81,6 +113,11 @@ void PriorityQueue::addToLine(Event *newEvent, int priority, int id)
     }
 }
 
+/******************************************************************************
+ * dequeue
+ *
+ * PURPOSE: This Method removes and returns the event at the front of the queue
+ *******************************************************************************/
 Event *PriorityQueue::dequeue()
 {
     Node *tempFront = front;
@@ -88,8 +125,6 @@ Event *PriorityQueue::dequeue()
     // dequeue the event from the queue
     front = front->getNext();
 
-    // Free the memory allocated here
-    //
     Event *tempEvent = tempFront->getEvent();
 
     // Free the memory taken by the removed node

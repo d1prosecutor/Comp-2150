@@ -1,3 +1,12 @@
+/***********************************************************************************
+ * NAME: Chukwunaza Chukwuocha
+ * STUDENT NUMBER: 7928676
+ * COURSE: COMP 2150, SECTION: A02
+ * INSTRUCTOR: Olivier Tremblay-Savard
+ * ASSIGNMENT: Assignment 2
+ *
+ * REMARKS: Implements the Node class. Each Node object is a container for an Event
+ ***********************************************************************************/
 #include "Node.h"
 
 // Constructors

@@ -58,15 +58,15 @@ public abstract class Activity
         TOTAL_TIME = TOTAL_TIME.plus(newActivity.duration);
     }
 
-    /******************************************************************************
-     * queryBetweenDates
-     *
-     * PURPOSE: This Method prints all activities occurring between two specified
-     *          dates
-     *
-     * INPUT PARAMETERS:
-     *      The two parameters are the dates that specify the range of activities
-     *******************************************************************************/
+        /******************************************************************************
+         * queryBetweenDates
+         *
+         * PURPOSE: This Method prints all activities occurring between two specified
+         *          dates
+         *
+         * INPUT PARAMETERS:
+         *      The two parameters are the dates that specify the range of activities
+         *******************************************************************************/
     public static void queryBetweenDates(LocalDate firstDate, LocalDate lastDate)
     {
         System.out.println("\n>>> Querying activity time between " + firstDate + " and " + lastDate + ":");

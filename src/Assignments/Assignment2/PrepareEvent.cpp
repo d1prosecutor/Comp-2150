@@ -1,3 +1,12 @@
+/***********************************************************************************
+ * NAME: Chukwunaza Chukwuocha
+ * STUDENT NUMBER: 7928676
+ * COURSE: COMP 2150, SECTION: A02
+ * INSTRUCTOR: Olivier Tremblay-Savard
+ * ASSIGNMENT: Assignment 2
+ *
+ * REMARKS: Implements the Prepare-Event class which is a subclass of the Event class
+ ***********************************************************************************/
 #include <iostream>
 
 using namespace std;
@@ -14,6 +23,15 @@ PrepareEvent::PrepareEvent() {}
 PrepareEvent::PrepareEvent(Event *currEvent, int currentTime) : Event(currEvent, currentTime) {}
 
 // Instance methods
+/******************************************************************************
+ * processEvent
+ *
+ * PURPOSE: This Method completes the processing of an order and prepares the
+ *          order for shipping
+ *
+ * INPUT PARAMETERS:
+ *      thisSimulation: The current Simulation in progress
+ *******************************************************************************/
 void PrepareEvent::processEvent(EventSimulator *thisSimulation)
 {
     // Call the superclass 'processEvent' method to print the details common to all events
@@ -36,6 +54,11 @@ void PrepareEvent::processEvent(EventSimulator *thisSimulation)
     thisSimulation->addToQueue(newShippingOrder, newShippingOrder->getCurrTime(), newShippingOrder->getOrderID());
 }
 
+/************************************************************************
+ * calcProcessTime
+ *
+ * PURPOSE: This Method calculates the time it takes to prepare an order
+ ***********************************************************************/
 int PrepareEvent::calcProcessTime(int orderValue) const
 {
     return (orderValue + PrepareEvent::pricePerHour) / PrepareEvent::pricePerHour;

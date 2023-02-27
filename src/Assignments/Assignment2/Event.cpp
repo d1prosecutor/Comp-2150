@@ -1,3 +1,13 @@
+/***********************************************************************************
+ * NAME: Chukwunaza Chukwuocha
+ * STUDENT NUMBER: 7928676
+ * COURSE: COMP 2150, SECTION: A02
+ * INSTRUCTOR: Olivier Tremblay-Savard
+ * ASSIGNMENT: Assignment 2
+ *
+ * REMARKS: Implements the Event class which is an abstract class that has three
+ *          subclasses
+ ***********************************************************************************/
 #include <iostream>
 
 using namespace std;
@@ -23,6 +33,15 @@ Event::Event(Event *thisEvent, int newTime)
 Event::~Event() {}
 
 // Instance methods
+/******************************************************************************
+ * processEvent
+ *
+ * PURPOSE: This method prints out details common to all types of events and
+ *          activates polymorphism for the subclass implementations of the method
+ *
+ * INPUT PARAMETERS:
+ *      thisSimulation: The current Simulation in progress
+ *******************************************************************************/
 void Event::processEvent(EventSimulator *thisSimulation)
 {
     // Print out the details common to all the events
@@ -31,7 +50,6 @@ void Event::processEvent(EventSimulator *thisSimulation)
 }
 
 // Accessors
-
 Order *Event::getOrder() const
 {
     return thisOrder;

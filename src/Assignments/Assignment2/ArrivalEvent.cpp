@@ -1,3 +1,12 @@
+/***********************************************************************************
+ * NAME: Chukwunaza Chukwuocha
+ * STUDENT NUMBER: 7928676
+ * COURSE: COMP 2150, SECTION: A02
+ * INSTRUCTOR: Olivier Tremblay-Savard
+ * ASSIGNMENT: Assignment 2
+ *
+ * REMARKS: Implements the Arrival-Event class which is a subclass of the Event class
+ ***********************************************************************************/
 #include <sstream> //necessary for using stringstream
 #include <fstream> //necessary to use ifstream (to open a file)
 #include <iostream>
@@ -14,14 +23,23 @@ ArrivalEvent::ArrivalEvent() {}
 ArrivalEvent::ArrivalEvent(Order *newOrder) : Event(newOrder) {}
 
 // Instance methods
+/******************************************************************************
+ * processEvent
+ *
+ * PURPOSE: This Method acknowledges the arrival of a new order and starts the
+ *          processing of the order
+ *
+ * INPUT PARAMETERS:
+ *      thisSimulation: The current Simulation in progress
+ *******************************************************************************/
 void ArrivalEvent::processEvent(EventSimulator *thisSimulation)
 {
-    // Add new customer from the file into the waiting line here
-    thisSimulation->addToPending(this, this->getCurrTime(), this->getOrderID());
-
-    // This check might cause problems, check if you'll remove it
+    // Just checking to make sure invalid orders dont get processed
     if (getOrderValue() > 0)
     {
+        // Add new customer from the file into the waiting line here
+        thisSimulation->addToPending(this, getCustomerType(), getCurrTime(), getOrderID());
+
         // Call the superclass 'processEvent' method to print the details common to all events
         Event::processEvent(thisSimulation);
 

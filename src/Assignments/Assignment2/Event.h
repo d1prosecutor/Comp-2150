@@ -1,3 +1,12 @@
+/*****************************************
+ * NAME: Chukwunaza Chukwuocha
+ * STUDENT NUMBER: 7928676
+ * COURSE: COMP 2150, SECTION: A02
+ * INSTRUCTOR: Olivier Tremblay-Savard
+ * ASSIGNMENT: Assignment 2
+ *
+ * REMARKS: Interface for the Event Class
+ ****************************************/
 #pragma once
 
 #include <string>
@@ -22,9 +31,9 @@ public:
     virtual ~Event() = 0;
 
     // Accessors
-    Order *getOrder() const;
     int getArrTime() const;
     int getOrderID() const;
+    Order *getOrder() const;
     int getCurrTime() const;
     int getOrderValue() const;
     string getCustomerType() const;

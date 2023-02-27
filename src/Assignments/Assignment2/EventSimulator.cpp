@@ -1,3 +1,13 @@
+/***********************************************************************************
+ * NAME: Chukwunaza Chukwuocha
+ * STUDENT NUMBER: 7928676
+ * COURSE: COMP 2150, SECTION: A02
+ * INSTRUCTOR: Olivier Tremblay-Savard
+ * ASSIGNMENT: Assignment 2
+ *
+ * REMARKS: Implements the EventSimulator class which handles a simulation to be run
+ *          and print results of the simulation
+ ***********************************************************************************/
 #include <cmath>
 #include <iomanip>
 #include <iostream>
@@ -31,11 +41,15 @@ EventSimulator::~EventSimulator()
 }
 
 // Instance methods
+/******************************************************************************
+ * startSimulation
+ *
+ * PURPOSE: This Method runs the simulation by reading the input file and
+ *           processing the events contained in it
+ *******************************************************************************/
 void EventSimulator::startSimulation()
 {
-	//
 	// Opening the file, reading one line (just the first one of the file here) and parsing it
-	//
 	inputFile.open(filename); // opening the file for reading
 
 	// cout << "The first line of the file is: " << endl;
@@ -45,7 +59,7 @@ void EventSimulator::startSimulation()
 	// Process the events in the Event Queue
 	while (!(queueIsEmpty()))
 	{
-		Event *nextEvent = getNextOrder();
+		Event *nextEvent = getNextEvent();
 
 		nextEvent->processEvent(this);
 
@@ -60,6 +74,12 @@ void EventSimulator::startSimulation()
 	printStats();
 }
 
+/******************************************************************************
+ * readNextLine
+ *
+ * PURPOSE: This Method reads the next line from the input file, creates a new
+ *          arrival event based on that line and adds it to the event queue
+ *******************************************************************************/
 void EventSimulator::readNextLine()
 {
 	string nextLine;
@@ -85,6 +105,11 @@ void EventSimulator::readNextLine()
 	}
 }
 
+/******************************************************************************
+ * printStats
+ *
+ * PURPOSE: This Method prints out all the collected statistics about the simulation
+ *******************************************************************************/
 void EventSimulator::printStats() const
 {
 	// Now print out stats here
@@ -103,11 +128,27 @@ void EventSimulator::printStats() const
 	cout << endl;
 }
 
+/******************************************************************************
+ * updateProfit
+ *
+ * PURPOSE: This Method updates the profit of the owner of the business after
+ *           each discount is applied
+ * INPUT PARAMETERS:
+ *      plusOrMinus: The value (positive or negative) to be added to the profit
+ *******************************************************************************/
 void EventSimulator::updateProfit(float plusOrMinus)
 {
 	initialProfit += plusOrMinus;
 }
 
+/******************************************************************************
+ * calcCostOfBusiness
+ *
+ * PURPOSE: This Method calculates and returns the total amount spent on the
+ *          employees
+ * INPUT PARAMETERS:
+ *      numWorkers: The numebr of employees
+ *******************************************************************************/
 float EventSimulator::calcCostOfBusiness(int numWorkers) const
 {
 	// Calculate the cost of additional workers
@@ -115,26 +156,65 @@ float EventSimulator::calcCostOfBusiness(int numWorkers) const
 		   (numWorkDays * numWorkers);
 }
 
+/******************************************************************************
+ * calcFinalProfit
+ *
+ * PURPOSE: This Method calculates and returns the owner's final profit after
+ *          expenditures on the employees
+ * INPUT PARAMETERS:
+ *      numWorkers: The number of employees
+ *******************************************************************************/
 float EventSimulator::calcFinalProfit(int numWorkers) const
 {
 	return initialProfit - calcCostOfBusiness(numWorkers);
 }
 
+/******************************************************************************
+ * addToQueue
+ *
+ * PURPOSE: This Method adds the given event to the event queue
+ *
+ * INPUT PARAMETERS:
+ *      newEvent: The new event to be added to the queue
+ *      timePriority: The current time in the simulation
+ *      orderPriority: The orderId of the event given
+ *******************************************************************************/
 void EventSimulator::addToQueue(Event *newEvent, int timePriority, int orderPriority)
 {
 	eventQueue->enqueue(newEvent, timePriority, orderPriority);
 }
 
-void EventSimulator::addToPending(Event *newEvent, int timePriority, int orderPriority)
+/******************************************************************************
+ * addToPending
+ *
+ * PURPOSE: This Method adds an arrival event to the pending line of arrival orders
+ *
+ * INPUT PARAMETERS:
+ *      newEvent: The new event to be added to the queue
+ *      customerType: The customer type (primero vs standard)
+ *      timePriority: The current time in the simulation
+ *      orderPriority: The orderId of the event given
+ *******************************************************************************/
+void EventSimulator::addToPending(Event *newEvent, string customerType, int timePriority, int orderPriority)
 {
-	pendingOrders->addToLine(newEvent, timePriority, orderPriority);
+	pendingOrders->addToLine(newEvent, customerType, timePriority, orderPriority);
 }
 
-Event *EventSimulator::getNextOrder() const
+/******************************************************************************
+ * getNextEvent
+ *
+ * PURPOSE: This Method gets the next event from the eventQueue
+ *******************************************************************************/
+Event *EventSimulator::getNextEvent() const
 {
 	return eventQueue->dequeue();
 }
 
+/******************************************************************************
+ * getNextPending
+ *
+ * PURPOSE: This Method gets the next arrival event from the pending orders line
+ *******************************************************************************/
 Event *EventSimulator::getNextPending() const
 {
 	return pendingOrders->dequeue();
@@ -145,7 +225,7 @@ bool EventSimulator::queueIsEmpty() const
 	return eventQueue->isEmpty();
 }
 
-bool EventSimulator::lineIsEmpty() const
+bool EventSimulator::pendingIsEmpty() const
 {
 	return pendingOrders->isEmpty();
 }

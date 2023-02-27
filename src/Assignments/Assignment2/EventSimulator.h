@@ -1,3 +1,12 @@
+/*************************************************
+ * NAME: Chukwunaza Chukwuocha
+ * STUDENT NUMBER: 7928676
+ * COURSE: COMP 2150, SECTION: A02
+ * INSTRUCTOR: Olivier Tremblay-Savard
+ * ASSIGNMENT: Assignment 2
+ *
+ * REMARKS: Interface for the EventSimulator Class
+ ************************************************/
 #pragma once
 
 #include <sstream> //necessary for using stringstream
@@ -36,18 +45,18 @@ public:
     int getFreeEmp() const;
 
     // Instance methods
-    bool lineIsEmpty() const;
     void incrFreeEmp();
     void decrFreeEmp();
-    bool queueIsEmpty() const;
     void readNextLine();
     void startSimulation();
     void printStats() const;
-    Event *getNextOrder() const;
+    bool queueIsEmpty() const;
+    bool pendingIsEmpty() const;
+    Event *getNextEvent() const;
     Event *getNextPending() const;
     float calcFinalProfit(int) const;
     void addToQueue(Event *, int, int);
     float calcCostOfBusiness(int) const;
-    void addToPending(Event *, int, int);
+    void addToPending(Event *, string, int, int);
     void updateProfit(float plusOrMinus);
 };
