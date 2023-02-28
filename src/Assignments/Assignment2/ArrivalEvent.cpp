@@ -38,7 +38,7 @@ void ArrivalEvent::processEvent(EventSimulator *thisSimulation)
     if (getOrderValue() > 0)
     {
         // Add new customer from the file into the waiting line here
-        thisSimulation->addToPending(this, getCustomerType(), getCurrTime(), getOrderID());
+        thisSimulation->addToPending(this, getCurrTime(), getOrderID());
 
         // Call the superclass 'processEvent' method to print the details common to all events
         Event::processEvent(thisSimulation);

@@ -57,6 +57,6 @@ public:
     float calcFinalProfit(int) const;
     void addToQueue(Event *, int, int);
     float calcCostOfBusiness(int) const;
-    void addToPending(Event *, string, int, int);
+    void addToPending(Event *, int, int);
     void updateProfit(float plusOrMinus);
 };
