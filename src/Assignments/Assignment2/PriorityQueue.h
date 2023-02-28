@@ -31,5 +31,5 @@ public:
     Event *dequeue();
     bool isEmpty() const;
     void enqueue(Event *, int, int);
-    void addToLine(Event *, int, int);
+    void addToLine(Event *, string, int, int);
 };

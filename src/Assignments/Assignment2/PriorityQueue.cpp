@@ -74,7 +74,7 @@ void PriorityQueue::enqueue(Event *newEvent, int priority, int id)
  *      priority: The current time in the simulation
  *      id: The id of the event to be added
  *******************************************************************************/
-void PriorityQueue::addToLine(Event *newEvent, int priority, int id)
+void PriorityQueue::addToLine(Event *newEvent, string customerType, int priority, int id)
 {
     Node *temp = front;
     Node *prev = nullptr;
@@ -90,7 +90,7 @@ void PriorityQueue::addToLine(Event *newEvent, int priority, int id)
     // its correct spot in the STANDARD section of the line, else if it is PRIMERO, then
     // it should go at the end of the PRIMERO section of the line(just before the first STANDARD customer)
     // -> Since the input file is time ordered, there will be no line cutting/jumping
-    if (newEvent->getCustomerType() == "standard")
+    if (customerType == "standard")
     {
         // Then Order the events by TIME priority
         // If the times are the same, order the events by ORDER_ID priority

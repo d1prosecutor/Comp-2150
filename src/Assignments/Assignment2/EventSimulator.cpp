@@ -195,9 +195,9 @@ void EventSimulator::addToQueue(Event *newEvent, int timePriority, int orderPrio
  *      timePriority: The current time in the simulation
  *      orderPriority: The orderId of the event given
  *******************************************************************************/
-void EventSimulator::addToPending(Event *newEvent, int timePriority, int orderPriority)
+void EventSimulator::addToPending(Event *newEvent, string customerType, int timePriority, int orderPriority)
 {
-	pendingOrders->addToLine(newEvent, timePriority, orderPriority);
+	pendingOrders->addToLine(newEvent, customerType, timePriority, orderPriority);
 }
 
 /******************************************************************************
