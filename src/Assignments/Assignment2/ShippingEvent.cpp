@@ -76,7 +76,13 @@ void ShippingEvent::processEvent(EventSimulator *thisSimulation)
 
         // Add this new order to the list of pending orders
         thisSimulation->addToQueue(nextEvent, nextEvent->getCurrTime(), nextEvent->getOrderID());
+
+        // When done with the next Pending event, free its memory
+        delete tempEvent;
     }
+
+    // When done with the Shipping event, free its memory
+    delete this;
 }
 
 /************************************************************************

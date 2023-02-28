@@ -61,10 +61,10 @@ void EventSimulator::startSimulation()
 	{
 		Event *nextEvent = getNextEvent();
 
-		nextEvent->processEvent(this);
-
 		// Update the total number of work days so far
 		numWorkDays = ceil(nextEvent->getCurrTime() / (float)numStdHrs);
+
+		nextEvent->processEvent(this);
 	}
 
 	// Print out the statistics
