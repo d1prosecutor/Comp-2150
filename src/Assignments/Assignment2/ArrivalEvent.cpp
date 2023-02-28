@@ -22,8 +22,8 @@ ArrivalEvent::ArrivalEvent() {}
 
 ArrivalEvent::ArrivalEvent(Order *newOrder) : Event(newOrder) {}
 
-//Destructor
-ArrivalEvent::~ArrivalEvent(){}
+// Destructor
+ArrivalEvent::~ArrivalEvent() {}
 
 // Instance methods
 /******************************************************************************
@@ -55,10 +55,13 @@ void ArrivalEvent::processEvent(EventSimulator *thisSimulation)
             Event *tempPending = thisSimulation->getNextPending();
 
             // Get the next order in the pending orders list and start processing it
-            Event *processNode = new PrepareEvent(tempPending, getCurrTime());
+            Event *processOrder = new PrepareEvent(tempPending, getCurrTime());
 
             // Insert the order in the pending events queue
-            thisSimulation->addToQueue(processNode, processNode->getCurrTime(), processNode->getOrderID());
+            thisSimulation->addToQueue(processOrder, processOrder->getCurrTime(), processOrder->getOrderID());
+
+            // When done with the arrival event, free its memory
+            delete this;
         }
 
         // Read the next order from the file and add it to the event queue
