@@ -22,6 +22,9 @@ public:
     PrepareEvent();
     PrepareEvent(Event *, int);
 
+    // Destructor
+    ~PrepareEvent();
+
     // Instance methods
     int calcProcessTime(int) const;
     void processEvent(EventSimulator *thisSimulation) override;

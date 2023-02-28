@@ -67,7 +67,7 @@ void EventSimulator::startSimulation()
 		numWorkDays = ceil(nextEvent->getCurrTime() / (float)numStdHrs);
 
 		// When done processing that event, free its memory
-		delete nextEvent;
+		// delete nextEvent;
 	}
 
 	// Print out the statistics

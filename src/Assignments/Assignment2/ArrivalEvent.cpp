@@ -22,6 +22,9 @@ ArrivalEvent::ArrivalEvent() {}
 
 ArrivalEvent::ArrivalEvent(Order *newOrder) : Event(newOrder) {}
 
+//Destructor
+ArrivalEvent::~ArrivalEvent(){}
+
 // Instance methods
 /******************************************************************************
  * processEvent
